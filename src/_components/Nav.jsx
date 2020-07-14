@@ -3,6 +3,7 @@ import { NavLink, Route } from 'react-router-dom';
 
 import { Role } from '@/_helpers';
 import { accountService } from '@/_services';
+import Header from './Header';
 
 function Nav() {
     const [user, setUser] = useState({});
@@ -16,15 +17,17 @@ function Nav() {
     if (!user) return null;
 
     return (
-        <div>
+        <div>            
             <nav className="navbar navbar-expand navbar-dark bg-dark">
                 <div className="navbar-nav">
+                    <Header exact to="/"/>
                     <NavLink exact to="/" className="nav-item nav-link">Home</NavLink>
                     <NavLink to="/profile" className="nav-item nav-link">Profile</NavLink>
                     {user.role === Role.Admin &&
                         <NavLink to="/admin" className="nav-item nav-link">Admin</NavLink>
                     }
                     <a onClick={accountService.logout} className="nav-item nav-link">Logout</a>
+
                 </div>
             </nav>
             <Route path="/admin" component={AdminNav} />

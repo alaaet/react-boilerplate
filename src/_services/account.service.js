@@ -4,7 +4,7 @@ import config from 'config';
 import { fetchWrapper, history } from '@/_helpers';
 
 const userSubject = new BehaviorSubject(null);
-const baseUrl = `${config.apiUrl}/accounts`;
+const baseUrl = "http://192.168.1.131:8080/users";
 
 export const accountService = {
     login,
@@ -24,8 +24,8 @@ export const accountService = {
     get userValue () { return userSubject.value }
 };
 
-function login(email, password) {
-    return fetchWrapper.post(`${baseUrl}/authenticate`, { email, password })
+function login(username, password) {
+    return fetchWrapper.post(`${baseUrl}/authenticate`, { username, password })
         .then(user => {
             // publish user to subscribers and start timer to refresh token
             userSubject.next(user);

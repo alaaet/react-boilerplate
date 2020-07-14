@@ -20,6 +20,7 @@ function App() {
 
     return (
         <div className={'app-container' + (user && ' bg-light')}>
+
             <Nav />
             <Alert />
             <Switch>

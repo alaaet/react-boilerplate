@@ -11,6 +11,7 @@
         "start": "webpack-dev-server --open"
     },
     "dependencies": {
+        "babel-plugin-file-loader": "^2.0.0",
         "formik": "^2.1.4",
         "history": "^4.10.1",
         "prop-types": "^15.7.2",

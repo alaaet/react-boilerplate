@@ -2,25 +2,26 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import logo from '../img/logo.png'
 
 import { accountService, alertService } from '@/_services';
 
 function Login({ history, location }) {
     const initialValues = {
-        email: '',
+        username: '',
         password: ''
     };
 
     const validationSchema = Yup.object().shape({
-        email: Yup.string()
+        username: Yup.string()
             .email('Email is invalid')
             .required('Email is required'),
         password: Yup.string().required('Password is required')
     });
 
-    function onSubmit({ email, password }, { setSubmitting }) {
+    function onSubmit({ username, password }, { setSubmitting }) {
         alertService.clear();
-        accountService.login(email, password)
+        accountService.login(username, password)
             .then(() => {
                 const { from } = location.state || { from: { pathname: "/" } };
                 history.push(from);
@@ -31,16 +32,17 @@ function Login({ history, location }) {
             });
     }
 
-    return (
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+    return (<div>
+        
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>            
             {({ errors, touched, isSubmitting }) => (
-                <Form>
-                    <h3 className="card-header">Login</h3>
+                <Form>                    
+                    <h3 className="card-header"><img className='login-img' src={logo} alt=''/>Login</h3>
                     <div className="card-body">
                         <div className="form-group">
                             <label>Email</label>
-                            <Field name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
-                            <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                            <Field name="username" type="text" className={'form-control' + (errors.username && touched.username ? ' is-invalid' : '')} />
+                            <ErrorMessage name="username" component="div" className="invalid-feedback" />
                         </div>
                         <div className="form-group">
                             <label>Password</label>
@@ -63,6 +65,7 @@ function Login({ history, location }) {
                 </Form>
             )}
         </Formik>
+        </div>
     )
 }
 

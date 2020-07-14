@@ -13,16 +13,18 @@ function get(url) {
         method: 'GET',
         headers: authHeader(url)
     };
+    //console.log(requestOptions)
     return fetch(url, requestOptions).then(handleResponse);
 }
 
 function post(url, body) {
     const requestOptions = {
-        method: 'POST',
+        method: 'POST', 
         headers: { 'Content-Type': 'application/json', ...authHeader(url) },
-        credentials: 'include',
+        //credentials: 'include',
         body: JSON.stringify(body)
     };
+    //console.log(requestOptions);
     return fetch(url, requestOptions).then(handleResponse);
 }
 
@@ -51,6 +53,8 @@ function authHeader(url) {
     const user = accountService.userValue;
     const isLoggedIn = user && user.jwtToken;
     const isApiUrl = url.startsWith(config.apiUrl);
+    //console.log(isLoggedIn)
+    //console.log(config.apiUrl+"/"+url)
     if (isLoggedIn && isApiUrl) {
         return { Authorization: `Bearer ${user.jwtToken}` };
     } else {
