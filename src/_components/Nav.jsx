@@ -37,10 +37,12 @@ function Nav() {
               Admin
             </NavLink>
           )}
-          <a
-            onClick={accountService.logout}
-            className="nav-item nav-link ml-auto"
-          >
+          {user.role === Role.User && (
+            <NavLink to="/inbox" className="nav-item nav-link pr-3 ml-auto ">
+              <i className="fa fa-inbox" aria-hidden="true"></i>
+            </NavLink>
+          )}
+          <a onClick={accountService.logout} className="nav-item nav-link ">
             <i className="fa fa-sign-out" aria-hidden="true"></i>
           </a>
         </div>
@@ -76,9 +78,6 @@ function TagsNav({ match }) {
         </NavLink>
         <NavLink to={`${path}/activate`} className="nav-item nav-link">
           Activate a tag
-        </NavLink>
-        <NavLink to={`${path}/buy-tags`} className="nav-item nav-link">
-          Buy tags
         </NavLink>
       </div>
     </nav>

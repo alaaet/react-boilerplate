@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch, Redirect, useLocation } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  Redirect,
+  useLocation,
+  withRouter,
+} from "react-router-dom";
 
-import { Role } from "@/_helpers";
+import { Role, history } from "@/_helpers";
 import { accountService } from "@/_services";
 import { Nav, PrivateRoute, Alert } from "@/_components";
 import { Home } from "@/home";
@@ -9,18 +15,31 @@ import { Profile } from "@/profile";
 import { Admin } from "@/admin";
 import { Account } from "@/account";
 import { Tags } from "@/tags";
+import NotFoundPage from "../_components/NotFoundPage";
+import Footer from "../_components/Footer";
+import Inbox from "../inbox";
 
 function App() {
   const { pathname } = useLocation();
   const [user, setUser] = useState({});
+  //const [showFooter, setShowFooter] = useState(true);
+  //const location = useLocation();
 
   useEffect(() => {
+    /*
+    history.listen((location, action) => {
+      //if (location.pathname.match(/inbox/)) setShowFooter(false);
+      if (location.pathname == "/") setShowFooter(true);
+      else setShowFooter(false);
+      //console.log(action, location.pathname, location.state);
+      console.log(location.pathname == "/");
+    });*/
     const subscription = accountService.user.subscribe((x) => setUser(x));
     return subscription.unsubscribe;
   }, []);
 
   return (
-    <div className={"app-container" + (user && " bg-light")}>
+    <div className={"app-container " + (user && " bg-light")}>
       <Nav />
       <Alert />
       <Switch>
@@ -29,8 +48,9 @@ function App() {
         <PrivateRoute path="/profile" component={Profile} />
         <PrivateRoute path="/admin" roles={[Role.Admin]} component={Admin} />
         <PrivateRoute path="/tags" component={Tags} />
+        <PrivateRoute path="/inbox" component={Inbox} />
         <Route path="/account" component={Account} />
-        <Redirect from="*" to="/" />
+        <Route path="*" component={NotFoundPage} />
       </Switch>
     </div>
   );

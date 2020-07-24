@@ -1,21 +1,109 @@
 // global styles
-a { cursor: pointer; }
+.fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+}
+a {
+  cursor: pointer;
+}
 
 .app-container {
-    min-height: 320px;
+  min-height: 100%;
+  height: 100%;
+  //overflow: hidden;
 }
 
 .admin-nav {
-    padding-top: 0;
-    padding-bottom: 0;
-    background-color: #e8e9ea;
-    border-bottom: 1px solid #ccc;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: #e8e9ea;
+  border-bottom: 1px solid #ccc;
 }
 
 .nav-img {
-    height: 40px;
-    filter: invert(90%);
-  }
-  .login-img {
-    height: 40px;
-  }
+  height: 40px;
+  filter: invert(90%);
+}
+.login-img {
+  height: 40px;
+}
+
+.card-one {
+  text-align: center;
+  border-radius: 30px;
+}
+
+.blocktext {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.top-shadow {
+  box-shadow: 0 -5px 5px -5px #333;
+}
+.date {
+  display: block;
+  font-size: 14px;
+  font-style: italic;
+  color: #666;
+}
+
+// INBOX
+#inbox {
+  min-height: 100%;
+  height: 100%;
+  background-color: #e5ddd5;
+  background: url("./img/spikes.png");
+}
+#conversations-list {
+  min-height: 90%;
+  height: 90%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.contact-img {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  max-width: 80px;
+}
+.clickable {
+  cursor: pointer;
+}
+#conversation {
+  min-height: 80%;
+  height: 80%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.message-sent {
+  background-color: #dcf8c6;
+}
+.conv-bg {
+  background-color: #e5ddd5;
+  background: url("./img/spikes.png");
+}
+.bg-active {
+  background-color: #ebebeb;
+}
+
+.the-end-shadow {
+  height: 10px;
+  -webkit-box-shadow: 0 -8px 10px -6px rgb(99, 99, 99) inset;
+  -moz-box-shadow: 0 -8px 10px -6px rgb(99, 99, 99) inset;
+  box-shadow: 0 -8px 10px -6px rgb(99, 99, 99) inset;
+}
+// Message form
+#message {
+  overflow: hidden;
+  resize: none;
+}
+.input-group-btn {
+  position: absolute;
+  bottom: 0px;
+  overflow: hidden;
+  transition: 0.2s;
+}

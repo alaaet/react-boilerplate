@@ -4,8 +4,8 @@ import config from "config";
 import { fetchWrapper, history } from "@/_helpers";
 
 const userSubject = new BehaviorSubject(null);
-//const baseUrl = "http://167.86.81.129:8080/Aqar/users";
-const baseUrl = "http://localhost:8080/users";
+const baseUrl = "http://167.86.81.129:8080/Aqar/users";
+//const baseUrl = "http://localhost:8080/users";
 
 export const accountService = {
   setUser,
