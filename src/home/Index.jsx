@@ -1,7 +1,6 @@
 import React from "react";
 
 import { accountService } from "@/_services";
-import Footer from "../_components/Footer";
 
 function Home() {
   const user = accountService.userValue;
@@ -12,7 +11,6 @@ function Home() {
         <h1>Hi {user.firstName}!</h1>
         <p>Welcome to our website...</p>
       </div>
-      <Footer />
     </div>
   );
 }

@@ -1,17 +1,18 @@
 import React from "react";
 
 const MessageForm = () => {
-  handleExpand();
+  //handleExpand();
   return (
     <div className="row">
       <div className="container p-2">
         <form>
           <div className="input-group ">
-            <div style={{ width: "90%" }}>
+            <div style={{ width: "90%" }} className="pr-1">
               <textarea
                 id="message"
                 type="text"
-                rows="1"
+                rows="2"
+                ma
                 className="form-control p-1"
               />
             </div>
@@ -29,20 +30,23 @@ const MessageForm = () => {
     </div>
   );
 };
+/*
 const handleExpand = () => {
   $(document).ready(() => {
     //console.log("loaded");
     $("#message").keydown((e) => {
-      //console.log("pressed");
+      console.log($(e.target).parent().height() + "  :  " + e.which);
       var el = e.target;
       setTimeout(() => {
         el.style.cssText = "height:auto; padding:0";
         // for box-sizing other than "content-box" use:
         // el.style.cssText = '-moz-box-sizing:content-box';
         //console.log(el.scrollHeight);
-        el.style.cssText = "height:" + el.scrollHeight + "px";
+        el.style.cssText =
+          "height:" + ($(e.target).parent().height() - 5) + "px";
       }, 0);
     });
   });
-};
+};*/
+
 export default MessageForm;

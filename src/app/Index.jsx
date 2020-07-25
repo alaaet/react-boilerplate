@@ -3,13 +3,12 @@ import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 
 import { Role, history } from "@/_helpers";
 import { accountService } from "@/_services";
-import { Nav, PrivateRoute, Alert } from "@/_components";
+import { Nav, PrivateRoute, Alert, Footer, NotFoundPage } from "@/_components";
 import { Home } from "@/home";
 import { Profile } from "@/profile";
 import { Admin } from "@/admin";
 import { Account } from "@/account";
 import { Tags } from "@/tags";
-import NotFoundPage from "../_components/NotFoundPage";
 import Inbox from "../inbox";
 
 function App() {
@@ -45,6 +44,7 @@ function App() {
         <Route path="/account" component={Account} />
         <Route path="*" component={NotFoundPage} />
       </Switch>
+      <Footer />
     </div>
   );
 }

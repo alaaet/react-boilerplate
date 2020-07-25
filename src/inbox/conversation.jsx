@@ -18,7 +18,12 @@ const Conversation = () => {
         })}
         <div
           className="the-end-shadow"
-          style={{ position: "absolute", bottom: "0", width: "100%" }}
+          style={{
+            position: "absolute",
+            bottom: "0",
+            right: "0",
+            width: "100%",
+          }}
         />
       </div>
     </div>
