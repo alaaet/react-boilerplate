@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Route,
-  Switch,
-  Redirect,
-  useLocation,
-  withRouter,
-} from "react-router-dom";
+import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 
 import { Role, history } from "@/_helpers";
 import { accountService } from "@/_services";
@@ -16,7 +10,6 @@ import { Admin } from "@/admin";
 import { Account } from "@/account";
 import { Tags } from "@/tags";
 import NotFoundPage from "../_components/NotFoundPage";
-import Footer from "../_components/Footer";
 import Inbox from "../inbox";
 
 function App() {

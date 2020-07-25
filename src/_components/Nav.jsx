@@ -48,7 +48,6 @@ function Nav() {
         </div>
       </nav>
       <Route path="/admin" component={AdminNav} />
-      <Route path="/tags" component={TagsNav} />
     </div>
   );
 }
@@ -61,23 +60,6 @@ function AdminNav({ match }) {
       <div className="navbar-nav">
         <NavLink to={`${path}/users`} className="nav-item nav-link">
           Users
-        </NavLink>
-      </div>
-    </nav>
-  );
-}
-
-function TagsNav({ match }) {
-  const { path } = match;
-
-  return (
-    <nav className="admin-nav navbar navbar-expand navbar-light">
-      <div className="navbar-nav">
-        <NavLink to={`${path}/my-tags`} className="nav-item nav-link">
-          My tags
-        </NavLink>
-        <NavLink to={`${path}/activate`} className="nav-item nav-link">
-          Activate a tag
         </NavLink>
       </div>
     </nav>
