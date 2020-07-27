@@ -4,7 +4,7 @@ const ContactUs = () => {
   return (
     <section id="contact">
       <div className="well well-sm">
-        <h3 class="text-success">Contact Us</h3>
+        <h3 className="text-success">Contact Us</h3>
       </div>
 
       <div className="row">

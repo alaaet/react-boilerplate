@@ -1,18 +1,17 @@
 import React from "react";
-import Activate from "./activate";
-import TagsList from "./tagsList";
 import { Route, Switch } from "react-router-dom";
+import Inform from "./inform";
 
-function Tags({ match }) {
+const Guest = ({ history, match }) => {
   const { path } = match;
   return (
     <div className="container pb-3">
-      <Activate />
       <Switch>
-        <Route path={path} component={TagsList} />
+        <Route path={`${path}/inform`} component={Inform} />
       </Switch>
+      <br />
     </div>
   );
-}
+};
 
-export { Tags };
+export default Guest;

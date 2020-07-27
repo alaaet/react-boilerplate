@@ -11,6 +11,7 @@ import { Account } from "@/account";
 import { Tags } from "@/tags";
 import Inbox from "../inbox";
 import Company from "../company";
+import Guest from "../guest";
 
 function App() {
   const { pathname } = useLocation();
@@ -32,7 +33,7 @@ function App() {
   }, []);
 
   return (
-    <div className={"app-container " + (user && " bg-light")}>
+    <div className={"app-container pb-4" + (user && " bg-light")}>
       <Nav />
       <Alert />
       <Switch>
@@ -44,6 +45,7 @@ function App() {
         <PrivateRoute path="/inbox" component={Inbox} />
         <Route path="/account" component={Account} />
         <Route path="/company" component={Company} />
+        <Route path="/guest" component={Guest} />
         <Route path="*" component={NotFoundPage} />
       </Switch>
       <Footer />

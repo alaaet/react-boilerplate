@@ -80,17 +80,17 @@ const WorkWithUs = () => {
                     </span>
 
                     <span className="col-5 col-md-3 my-3 my-sm-0 color--text">
-                      <i className="fas fa-clock mr-1"></i> Full time
+                      <i className="fa fa-clock mr-1"></i> Full time
                     </span>
 
                     <span className="col-7 col-md-3 my-3 my-sm-0 color--text">
-                      <i className="fas fa-map-marker-alt mr-1"></i> San
+                      <i className="fa fa-map-marker-alt mr-1"></i> San
                       Fransisco, US
                     </span>
 
                     <span className="d-none d-md-block col-1 text-center color--text">
                       <small>
-                        <i className="fas fa-chevron-right"></i>
+                        <i className="fa fa-chevron-right"></i>
                       </small>
                     </span>
                   </span>
@@ -111,16 +111,16 @@ const WorkWithUs = () => {
                     </span>
 
                     <span className="col-5 col-md-3 my-3 my-sm-0 color--text">
-                      <i className="fas fa-clock mr-1"></i> Remote
+                      <i className="fa fa-clock mr-1"></i> Remote
                     </span>
 
                     <span className="col-7 col-md-3 my-3 my-sm-0 color--text">
-                      <i className="fas fa-map-marker-alt mr-1"></i> Anywhere
+                      <i className="fa fa-map-marker-alt mr-1"></i> Anywhere
                     </span>
 
                     <span className="d-none d-md-block col-1 text-center color--text">
                       <small>
-                        <i className="fas fa-chevron-right"></i>
+                        <i className="fa fa-chevron-right"></i>
                       </small>
                     </span>
                   </span>
@@ -141,17 +141,17 @@ const WorkWithUs = () => {
                     </span>
 
                     <span className="col-5 col-md-3 my-3 my-sm-0 color--text">
-                      <i className="fas fa-clock mr-1"></i> Full time
+                      <i className="fa fa-clock mr-1"></i> Full time
                     </span>
 
                     <span className="col-7 col-md-3 my-3 my-sm-0 color--text">
-                      <i className="fas fa-map-marker-alt mr-1"></i> Birmingham,
+                      <i className="fa fa-map-marker-alt mr-1"></i> Birmingham,
                       UK
                     </span>
 
                     <span className="d-none d-md-block col-1 text-center color--text">
                       <small>
-                        <i className="fas fa-chevron-right"></i>
+                        <i className="fa fa-chevron-right"></i>
                       </small>
                     </span>
                   </span>
@@ -176,16 +176,16 @@ const WorkWithUs = () => {
                     </span>
 
                     <span className="col-5 col-md-3 my-3 my-sm-0 color--text">
-                      <i className="fas fa-clock mr-1"></i> Part time
+                      <i className="fa fa-clock mr-1"></i> Part time
                     </span>
 
                     <span className="col-7 col-md-3 my-3 my-sm-0 color--text">
-                      <i className="fas fa-map-marker-alt mr-1"></i> Sydney, AU
+                      <i className="fa fa-map-marker-alt mr-1"></i> Sydney, AU
                     </span>
 
                     <span className="d-none d-md-block col-1 text-center color--text">
                       <small>
-                        <i className="fas fa-chevron-right"></i>
+                        <i className="fa fa-chevron-right"></i>
                       </small>
                     </span>
                   </span>
@@ -206,17 +206,17 @@ const WorkWithUs = () => {
                     </span>
 
                     <span className="col-5 col-md-3 my-3 my-sm-0 color--text">
-                      <i className="fas fa-clock mr-1"></i> Full-time
+                      <i className="fa fa-clock mr-1"></i> Full-time
                     </span>
 
                     <span className="col-7 col-md-3 my-3 my-sm-0 color--text">
-                      <i className="fas fa-map-marker-alt mr-1"></i> San
+                      <i className="fa fa-map-marker-alt mr-1"></i> San
                       Fransisco, US
                     </span>
 
                     <span className="d-none d-md-block col-1 text-center color--text">
                       <small>
-                        <i className="fas fa-chevron-right"></i>
+                        <i className="fa fa-chevron-right"></i>
                       </small>
                     </span>
                   </span>
@@ -237,17 +237,17 @@ const WorkWithUs = () => {
                     </span>
 
                     <span className="col-5 col-md-3 my-3 my-sm-0 color--text">
-                      <i className="fas fa-clock mr-1"></i> Full time
+                      <i className="fa fa-clock mr-1"></i> Full time
                     </span>
 
                     <span className="col-7 col-md-3 my-3 my-sm-0 color--text">
-                      <i className="fas fa-map-marker-alt mr-1"></i> Manchester,
+                      <i className="fa fa-map-marker-alt mr-1"></i> Manchester,
                       UK
                     </span>
 
                     <span className="d-none d-md-block col-1 text-center color--text">
                       <small>
-                        <i className="fas fa-chevron-right"></i>
+                        <i className="fa fa-chevron-right"></i>
                       </small>
                     </span>
                   </span>

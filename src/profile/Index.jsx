@@ -7,7 +7,7 @@ function Profile({ match }) {
   const { path } = match;
 
   return (
-    <div className="container ">
+    <div className="container pb-3">
       <Switch>
         <Route exact path={path} component={PublicProfile} />
         <Route path={`${path}/update`} component={Update} />
