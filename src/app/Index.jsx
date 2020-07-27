@@ -10,6 +10,7 @@ import { Admin } from "@/admin";
 import { Account } from "@/account";
 import { Tags } from "@/tags";
 import Inbox from "../inbox";
+import Company from "../company";
 
 function App() {
   const { pathname } = useLocation();
@@ -42,6 +43,7 @@ function App() {
         <PrivateRoute path="/tags" component={Tags} />
         <PrivateRoute path="/inbox" component={Inbox} />
         <Route path="/account" component={Account} />
+        <Route path="/company" component={Company} />
         <Route path="*" component={NotFoundPage} />
       </Switch>
       <Footer />
