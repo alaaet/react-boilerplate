@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import WorkWithUs from "./workWithUs";
+import WorkWithUs from "./workWithUs/index";
 import AboutUs from "./aboutUs";
 import ContactUs from "./contactUs";
 

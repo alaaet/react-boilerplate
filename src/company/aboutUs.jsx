@@ -1,6 +1,7 @@
 import React from "react";
 
-const AboutUs = () => {
+const AboutUs = ({ history, match }) => {
+  const { path } = match;
   return (
     <div className="container mt-5">
       <div className="row">
