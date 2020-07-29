@@ -49,6 +49,8 @@ function login(username, password) {
 
 function logout() {
   // revoke token, stop refresh timer, publish null to user subscribers and redirect to login page
+  sessionStorage.removeItem("user");
+  sessionStorage.removeItem("jwt");
   fetchWrapper.post(`${baseUrl}/revoke-token`, {});
   stopRefreshTokenTimer();
   userSubject.next(null);

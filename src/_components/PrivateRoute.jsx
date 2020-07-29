@@ -3,16 +3,21 @@ import { Route, Redirect } from "react-router-dom";
 
 import { accountService } from "@/_services";
 
-function PrivateRoute({ component: Component, roles, ...rest }) {
+function PrivateRoute({ component: Component, roles, path, ...rest }) {
   return (
     <Route
       {...rest}
       render={(props) => {
         let user = accountService.userValue;
         let ss_user = JSON.parse(sessionStorage.getItem("user"));
+
+        if (path.startsWith("/guest")) {
+          return <Component {...props} />; //Guest section does not need authorization
+        }
         if (!user) {
           //console.log(ss_user);
           if (ss_user == null) {
+            console.log(path);
             // not logged in so redirect to login page with the return url
             return (
               <Redirect

@@ -26,6 +26,7 @@ function Login({ history, location }) {
       .then(() => {
         //console.log("Success");
         const { from } = location.state || { from: { pathname: "/" } };
+        //console.log(from);
         history.push(from);
       })
       .catch((error) => {
@@ -101,6 +102,30 @@ function Login({ history, location }) {
                   <Link to="forgot-password" className="btn btn-link pr-0">
                     Forgot Password?
                   </Link>
+                </div>
+              </div>
+              <div className="form-row justify-content-center">
+                <div className="form-group col-10">
+                  <button
+                    class="btn btn-google m-1 text-uppercase"
+                    type="submit"
+                  >
+                    <i class="fa fa-google mr-2"></i>{" "}
+                    <span className="d-none d-md-inline">
+                      {" "}
+                      Log in with Google
+                    </span>
+                  </button>
+                  <button
+                    class="btn  btn-facebook m-1 text-uppercase"
+                    type="submit"
+                  >
+                    <i class="fa fa-facebook-f mr-2"></i>{" "}
+                    <span className="d-none d-md-inline">
+                      {" "}
+                      Log in with Facebook
+                    </span>
+                  </button>
                 </div>
               </div>
             </div>

@@ -5,7 +5,9 @@ const Alerts = () => {
   return (
     <div>
       {alerts.map((alert, index) => {
-        return <AlertItem alert={alert} key={index} index={index} />;
+        return (
+          <AlertItem alert={alert} key={index} index={index} isGuest={false} />
+        );
       })}
     </div>
   );

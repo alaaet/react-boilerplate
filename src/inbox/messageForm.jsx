@@ -7,7 +7,7 @@ const MessageForm = () => {
       <div className="container p-2">
         <form>
           <div className="input-group ">
-            <div style={{ width: "90%" }} className="pr-1">
+            <div style={{ width: "80%" }} className="pr-1">
               <textarea
                 id="message"
                 type="text"
@@ -16,9 +16,9 @@ const MessageForm = () => {
                 className="form-control p-1"
               />
             </div>
-            <div style={{ width: "10%" }}>
+            <div style={{ width: "20%" }}>
               <span className="input-group-btn">
-                <button className="btn btn-primary" type="button">
+                <button className="btn btn-lg btn-primary m-1" type="button">
                   <i className="fa fa-paper-plane"></i>
                   <span className="d-none d-md-inline"> Send</span>
                 </button>

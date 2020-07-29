@@ -8,6 +8,9 @@ const Footer = () => {
       className="navbar fixed-bottom navbar-expand-sm navbar-dark bg-light top-shadow "
     >
       <p className="blocktext">
+        <Link to="/" className="btn btn-link">
+          Home
+        </Link>
         <Link to="/company/work-with-us" className="btn btn-link">
           Work with us
         </Link>

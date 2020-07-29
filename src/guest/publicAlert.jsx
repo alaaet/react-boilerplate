@@ -32,7 +32,7 @@ const PublicAlert = () => {
         </div>
       </div>
       <hr />
-      <AlertItem alert={alert} index={1} />
+      <AlertItem alert={alert} index={1} isGuest={true} />
       <hr />
       <ContactUser />
     </div>
