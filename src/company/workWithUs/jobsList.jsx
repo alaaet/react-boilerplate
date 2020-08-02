@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { JobPositionsDD, JobTypesDD, JobLocationsDD } from "./filters";
 import JobsSection from "./jobsSection";
 
-const JobsList = () => {
+const JobsList = (props) => {
   const [currentPosition, setPosition] = useState("");
   const [currentType, setType] = useState("");
   const [currentLocation, setLocation] = useState("");
   const [filteredJobs, setFilteredJobs] = useState(jobs);
+  const { history } = props;
 
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
@@ -32,7 +33,12 @@ const JobsList = () => {
           {jobPositions.map((position, index) => {
             let items = filterByPosition(filteredJobs, position);
             return (
-              <JobsSection items={items} position={position} key={index} />
+              <JobsSection
+                items={items}
+                position={position}
+                key={index}
+                history={history}
+              />
             );
           })}
         </div>

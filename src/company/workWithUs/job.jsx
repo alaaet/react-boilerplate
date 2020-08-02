@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Job = (props) => {
-  const { job, index } = props;
+  const { job, index, history } = props;
   const bgColor = randomizeColor();
   return (
-    <a
-      href="career-single.html"
+    <Link
+      to={"/company/detailed/" + index}
       className="card p-0 mb-3 border-0 shadow-sm shadow--on-hover"
     >
       <div className="card-body">
@@ -36,7 +37,7 @@ const Job = (props) => {
           </span>
         </span>
       </div>
-    </a>
+    </Link>
   );
 };
 const colors = ["danger", "tertiary", "success", "warning", "warning2", "info"];

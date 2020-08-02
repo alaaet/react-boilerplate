@@ -107,20 +107,20 @@ function Login({ history, location }) {
               <div className="form-row justify-content-center">
                 <div className="form-group col-10">
                   <button
-                    class="btn btn-google m-1 text-uppercase"
+                    className="btn btn-google m-1 text-uppercase"
                     type="submit"
                   >
-                    <i class="fa fa-google mr-2"></i>{" "}
+                    <i className="fa fa-google mr-2"></i>{" "}
                     <span className="d-none d-md-inline">
                       {" "}
                       Log in with Google
                     </span>
                   </button>
                   <button
-                    class="btn  btn-facebook m-1 text-uppercase"
+                    className="btn  btn-facebook m-1 text-uppercase"
                     type="submit"
                   >
-                    <i class="fa fa-facebook-f mr-2"></i>{" "}
+                    <i className="fa fa-facebook-f mr-2"></i>{" "}
                     <span className="d-none d-md-inline">
                       {" "}
                       Log in with Facebook

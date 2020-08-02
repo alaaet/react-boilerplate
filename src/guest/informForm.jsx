@@ -17,11 +17,17 @@ function InformForm({ history }) {
 
   function onSubmit({ tagCode }, { setSubmitting }) {
     alertService.clear();
-    // go to destination page
-    //console.log(tagCode);
-    const { from } = { from: { pathname: "/guest/inform" } };
-    console.log(from);
-    history.push(from);
+    if (tagCode === "0000") {
+      setSubmitting(false);
+      let error = "The tag code does not exist!";
+      alertService.error(error);
+    } else {
+      // go to destination page
+      //console.log(tagCode);
+      const { from } = { from: { pathname: "/guest/inform" } };
+      console.log(from);
+      history.push(from);
+    }
   }
 
   return (

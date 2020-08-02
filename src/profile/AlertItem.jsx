@@ -5,13 +5,13 @@ const AlertItem = (props) => {
   const { alert, index, isGuest } = props;
   return (
     <div className="card text-center mb-3">
-      <div className="card-header">
-        <span className="date" style={{ float: "left" }}>
+      <div className="card-header" style={{ backgroundColor: "#343a40" }}>
+        <span className="date text-white" style={{ float: "left" }}>
           {alert.date}
         </span>
         {!isGuest ? (
           <div style={{ float: "right" }}>
-            <Link to={`/update`} className="btn btn-outline-dark">
+            <Link to={`/update`} className="btn btn-outline-light">
               <i className="fa fa-cog" aria-hidden="true"></i>
             </Link>
             <Link to={`/update`} className="btn btn-outline-danger ml-2">

@@ -18,7 +18,10 @@ function Nav() {
 
   return (
     <div>
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
+      <nav
+        className="navbar navbar-expand navbar-dark "
+        style={{ backgroundColor: "#343a40" }}
+      >
         <div className="navbar-nav w-100">
           <Header exact to="/" />
           <NavLink exact to="/" className="nav-item nav-link">

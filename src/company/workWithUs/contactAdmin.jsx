@@ -2,7 +2,7 @@ import React from "react";
 
 const contactAdmin = () => {
   return (
-    <section id="contact">
+    <section id="contact" className=" mb-5">
       <form>
         <div className="form-group">
           <input

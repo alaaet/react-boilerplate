@@ -2,7 +2,8 @@ import React from "react";
 import JobsList from "./jobsList";
 import ContactAdmin from "./contactAdmin";
 
-const WorkWithUs = () => {
+const WorkWithUs = (props) => {
+  const { history } = props;
   return (
     <section
       id="sectionJobList"
@@ -17,7 +18,7 @@ const WorkWithUs = () => {
               look at our current openings.
             </p>
           </div>
-          <JobsList />
+          <JobsList history={history} />
         </div>
         <div className="row row-grid justify-content-center">
           <div className="col-md-10 text-center">

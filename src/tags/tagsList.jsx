@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Activate from "./activate";
 
 const TagsList = ({ match }) => {
   const { path } = match;
@@ -29,58 +30,62 @@ const TagsList = ({ match }) => {
   }
 
   return (
-    <div>
-      <h1 className="blocktext">My tags</h1>
-      <table className="table table-responsive table-striped">
-        <thead>
-          <tr>
-            <th style={{ width: "30%" }}>Tag code</th>
-            <th style={{ width: "30%" }}>Status</th>
-            <th style={{ width: "30%" }} className="additional">
-              Activation date
-            </th>
-            <th style={{ width: "10%" }}></th>
-          </tr>
-        </thead>
-        <tbody>
-          {tags &&
-            tags.map((tag) => (
-              <tr key={tag.id}>
-                <td>{tag.code}</td>
-                <td>{tag.status}</td>
-                <td className="additional">{tag.activationDate}</td>
-                <td style={{ whiteSpace: "nowrap" }}>
-                  <Link
-                    to={`${path}/edit/${tag.id}`}
-                    className="btn btn-sm btn-primary mr-1"
-                  >
-                    Edit
-                  </Link>
-                  <button
-                    onClick={() => deleteTag(tag.id)}
-                    className="btn btn-sm btn-danger"
-                    style={{ width: "60px" }}
-                    disabled={tag.isDeleting}
-                  >
-                    {tag.isDeleting ? (
-                      <span className="spinner-border spinner-border-sm"></span>
-                    ) : (
-                      <span>Delete</span>
-                    )}
-                  </button>
+    <React.Fragment>
+      <Activate />
+
+      <div>
+        <h1 className="blocktext">My tags</h1>
+        <table className="table table-responsive table-striped table-bordered">
+          <thead className="thead-dark bg-dark">
+            <tr>
+              <th style={{ width: "30%" }}>Tag code</th>
+              <th style={{ width: "30%" }}>Status</th>
+              <th style={{ width: "30%" }} className="additional">
+                Activation date
+              </th>
+              <th style={{ width: "10%" }}></th>
+            </tr>
+          </thead>
+          <tbody>
+            {tags &&
+              tags.map((tag) => (
+                <tr key={tag.id}>
+                  <td>{tag.code}</td>
+                  <td>{tag.status}</td>
+                  <td className="additional">{tag.activationDate}</td>
+                  <td style={{ whiteSpace: "nowrap" }}>
+                    <Link
+                      to={`${path}/edit/${tag.id}`}
+                      className="btn btn-sm btn-primary mr-1"
+                    >
+                      Edit
+                    </Link>
+                    <button
+                      onClick={() => deleteTag(tag.id)}
+                      className="btn btn-sm btn-danger"
+                      style={{ width: "60px" }}
+                      disabled={tag.isDeleting}
+                    >
+                      {tag.isDeleting ? (
+                        <span className="spinner-border spinner-border-sm"></span>
+                      ) : (
+                        <span>Delete</span>
+                      )}
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            {!tags && (
+              <tr>
+                <td colSpan="4" className="text-center">
+                  <span className="spinner-border spinner-border-lg align-center"></span>
                 </td>
               </tr>
-            ))}
-          {!tags && (
-            <tr>
-              <td colSpan="4" className="text-center">
-                <span className="spinner-border spinner-border-lg align-center"></span>
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </React.Fragment>
   );
 };
 
