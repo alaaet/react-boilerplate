@@ -275,3 +275,52 @@ body {
 a {
   text-decoration: none !important;
 }
+
+// ALERTS
+
+aside.sticker {
+  font-size: 20px;
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
+  color: black;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  border-radius: 100%;
+  background: -webkit-linear-gradient(
+    135deg,
+    transparent 32px,
+    #aaa 20px,
+    #eee
+  );
+  text-align: center;
+  padding-top: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+aside.sticker:after {
+  content: " ";
+  display: block;
+  border-radius: 100%;
+  background: -webkit-linear-gradient(
+    135deg,
+    transparent 110px,
+    #000 100px,
+    #666 100px,
+    #fff 85%
+  );
+  box-shadow: -3px -3px 15px 1px rgba(0, 0, 0, 0.2);
+  width: 100px;
+  height: 100px;
+  margin-left: 56px;
+  margin-top: 4px;
+}
+
+aside.sticker.cyan {
+  color: white;
+  background: -webkit-linear-gradient(
+    135deg,
+    transparent 32px,
+    #2d8aa6 20px,
+    #57b1c7
+  );
+}

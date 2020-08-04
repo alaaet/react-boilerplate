@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const AlertItem = (props) => {
-  const { alert, index, isGuest } = props;
+  const { alert, tag, index, isGuest, path } = props;
+
   return (
     <div className="card text-center mb-3">
       <div className="card-header" style={{ backgroundColor: "#343a40" }}>
@@ -11,7 +12,13 @@ const AlertItem = (props) => {
         </span>
         {!isGuest ? (
           <div style={{ float: "right" }}>
-            <Link to={`/update`} className="btn btn-outline-light">
+            <Link
+              to={{
+                pathname: `${path}/update-alert/${tag.id}`,
+                state: { alert: alert, tag: tag },
+              }}
+              className="btn btn-outline-light"
+            >
               <i className="fa fa-cog" aria-hidden="true"></i>
             </Link>
             <Link to={`/update`} className="btn btn-outline-danger ml-2">

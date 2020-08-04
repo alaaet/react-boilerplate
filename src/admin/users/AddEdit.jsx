@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-import { accountService, alertService } from "@/_services";
+import { accountService, notificationService } from "@/_services";
 
 function AddEdit({ history, match }) {
   const { id } = match.params;
@@ -48,14 +48,14 @@ function AddEdit({ history, match }) {
     accountService
       .create(fields)
       .then(() => {
-        alertService.success("User added successfully", {
+        notificationService.success("User added successfully", {
           keepAfterRouteChange: true,
         });
         history.push(".");
       })
       .catch((error) => {
         setSubmitting(false);
-        alertService.error(error);
+        notificationService.error(error);
       });
   }
 
@@ -63,14 +63,14 @@ function AddEdit({ history, match }) {
     accountService
       .update(id, fields)
       .then(() => {
-        alertService.success("Update successful", {
+        notificationService.success("Update successful", {
           keepAfterRouteChange: true,
         });
         history.push("..");
       })
       .catch((error) => {
         setSubmitting(false);
-        alertService.error(error);
+        notificationService.error(error);
       });
   }
 

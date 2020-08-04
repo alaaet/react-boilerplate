@@ -4,7 +4,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import logo from "../img/logo.png";
 
-import { accountService, alertService } from "@/_services";
+import { accountService, notificationService } from "@/_services";
 
 function Login({ history, location }) {
   const initialValues = {
@@ -20,7 +20,7 @@ function Login({ history, location }) {
   });
 
   function onSubmit({ username, password }, { setSubmitting }) {
-    alertService.clear();
+    notificationService.clear();
     accountService
       .login(username, password)
       .then(() => {
@@ -32,7 +32,7 @@ function Login({ history, location }) {
       .catch((error) => {
         //console.log(error);
         setSubmitting(false);
-        alertService.error(error);
+        notificationService.error(error);
       });
   }
 

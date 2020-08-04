@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-import { accountService, alertService } from "@/_services";
+import { accountService, notificationService } from "@/_services";
 
 function InformForm({ history }) {
   const location = useLocation();
@@ -16,11 +16,11 @@ function InformForm({ history }) {
   });
 
   function onSubmit({ tagCode }, { setSubmitting }) {
-    alertService.clear();
+    notificationService.clear();
     if (tagCode === "0000") {
       setSubmitting(false);
       let error = "The tag code does not exist!";
-      alertService.error(error);
+      notificationService.error(error);
     } else {
       // go to destination page
       //console.log(tagCode);

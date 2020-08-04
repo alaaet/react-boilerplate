@@ -40,10 +40,10 @@ const TagsList = ({ match }) => {
             <tr>
               <th style={{ width: "30%" }}>Tag code</th>
               <th style={{ width: "30%" }}>Status</th>
-              <th style={{ width: "30%" }} className="additional">
+              <th style={{ width: "25%" }} className="additional">
                 Activation date
               </th>
-              <th style={{ width: "10%" }}></th>
+              <th style={{ width: "15%" }}></th>
             </tr>
           </thead>
           <tbody>
@@ -54,6 +54,15 @@ const TagsList = ({ match }) => {
                   <td>{tag.status}</td>
                   <td className="additional">{tag.activationDate}</td>
                   <td style={{ whiteSpace: "nowrap" }}>
+                    <Link
+                      to={{
+                        pathname: `${path}/create-alert/${tag.id}`,
+                        state: { alert: null, tag: tag },
+                      }}
+                      className="btn btn-sm btn-success mr-1"
+                    >
+                      Create Alert
+                    </Link>
                     <Link
                       to={`${path}/edit/${tag.id}`}
                       className="btn btn-sm btn-primary mr-1"

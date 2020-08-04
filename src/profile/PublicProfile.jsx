@@ -45,7 +45,7 @@ function PublicProfile({ match }) {
         </div>
       </div>
       <hr />
-      <Alerts />
+      <Alerts path={path} />
     </div>
   );
 }

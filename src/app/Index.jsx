@@ -16,18 +16,8 @@ import Guest from "../guest";
 function App() {
   const { pathname } = useLocation();
   const [user, setUser] = useState({});
-  //const [showFooter, setShowFooter] = useState(true);
-  //const location = useLocation();
 
   useEffect(() => {
-    /*
-    history.listen((location, action) => {
-      //if (location.pathname.match(/inbox/)) setShowFooter(false);
-      if (location.pathname == "/") setShowFooter(true);
-      else setShowFooter(false);
-      //console.log(action, location.pathname, location.state);
-      console.log(location.pathname == "/");
-    });*/
     const subscription = accountService.user.subscribe((x) => setUser(x));
     return subscription.unsubscribe;
   }, []);
