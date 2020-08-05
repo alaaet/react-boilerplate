@@ -4,13 +4,11 @@ import { CustomModal } from "@/_components";
 
 const AlertItem = (props) => {
   const { alert, tag, index, isGuest, path, handleDelete } = props;
-  const modalFeedback = (val) => {
-    console.log("modal returned: " + val);
-    handleDelete(alert);
-  };
   const deleteButton = {
     variant: "outline-danger",
     className: "ml-2",
+    style: "",
+    size: "",
     innerHtml: () => {
       return <i className="fa fa-trash" aria-hidden="true"></i>;
     },
@@ -39,7 +37,7 @@ const AlertItem = (props) => {
               <i className="fa fa-cog" aria-hidden="true"></i>
             </Link>
             <CustomModal
-              handleAction={modalFeedback}
+              handleAction={() => handleDelete(alert)}
               btn={deleteButton}
               val={index}
               content={deleteModalContent}

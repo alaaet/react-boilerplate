@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 const CustomModal = (props) => {
   const [show, setShow] = useState(false);
   const { handleAction, btn, val, content } = props;
-
+  const styles = btn.style;
   const handleClose = (doAction) => {
     setShow(false);
     if (doAction) handleAction(val);
@@ -16,6 +16,8 @@ const CustomModal = (props) => {
       <Button
         variant={btn.variant}
         className={btn.className}
+        style={{ styles }}
+        size={btn.size}
         onClick={handleShow}
       >
         {btn.innerHtml()}
@@ -36,7 +38,7 @@ const CustomModal = (props) => {
             Close
           </Button>
           <Button
-            variant="primary"
+            variant={content.confirmBtn === "Delete" ? "danger" : "primary"}
             onClick={() => {
               handleClose(true);
             }}
