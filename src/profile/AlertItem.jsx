@@ -1,8 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { CustomModal } from "@/_components";
 
 const AlertItem = (props) => {
-  const { alert, tag, index, isGuest, path } = props;
+  const { alert, tag, index, isGuest, path, handleDelete } = props;
+  const modalFeedback = (val) => {
+    console.log("modal returned: " + val);
+    handleDelete(alert);
+  };
+  const deleteButton = {
+    variant: "outline-danger",
+    className: "ml-2",
+    innerHtml: () => {
+      return <i className="fa fa-trash" aria-hidden="true"></i>;
+    },
+  };
+  const deleteModalContent = {
+    title: "Confirm Delete",
+    description: "Are you sure you want to delete this alert?",
+    confirmBtn: "Delete",
+  };
 
   return (
     <div className="card text-center mb-3">
@@ -21,9 +38,12 @@ const AlertItem = (props) => {
             >
               <i className="fa fa-cog" aria-hidden="true"></i>
             </Link>
-            <Link to={`/update`} className="btn btn-outline-danger ml-2">
-              <i className="fa fa-trash" aria-hidden="true"></i>
-            </Link>
+            <CustomModal
+              handleAction={modalFeedback}
+              btn={deleteButton}
+              val={index}
+              content={deleteModalContent}
+            />
           </div>
         ) : null}
       </div>

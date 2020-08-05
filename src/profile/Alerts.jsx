@@ -1,47 +1,80 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AlertItem from "./AlertItem";
+import { notificationService } from "@/_services";
 
 const Alerts = ({ path }) => {
+  const [currentAlerts, setCurrentAlerts] = useState(alerts);
+  const [deletedAlert, setDeletedAlert] = useState(null);
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    if (deletedAlert !== null) {
+      console.log(deletedAlert);
+      setCurrentAlerts(
+        currentAlerts.filter(function (alert) {
+          if (alert.id === deletedAlert.id)
+            notificationService.success(
+              `The alert titled: (` +
+                alert.title +
+                `) has been deleted successfully!`
+            );
+          else return true;
+        })
+      );
+    }
+  }, [deletedAlert]);
   return (
     <div>
-      {alerts.map((alert, index) => {
-        return (
-          <AlertItem
-            alert={alert}
-            tag={tags[index]}
-            key={index}
-            index={index}
-            isGuest={false}
-            path={path}
-          />
-        );
-      })}
+      {currentAlerts.length > 0 ? (
+        currentAlerts.map((alert, index) => {
+          return (
+            <AlertItem
+              alert={alert}
+              tag={tags[index]}
+              key={index}
+              index={index}
+              isGuest={false}
+              path={path}
+              handleDelete={setDeletedAlert}
+            />
+          );
+        })
+      ) : (
+        <p className={"text-muted blocktext pb-3"}>
+          you currently have no active alerts, to add a new alert, please check
+          the tags section!
+        </p>
+      )}
     </div>
   );
 };
 
 const alerts = [
   {
+    id: 0,
     date: "Thursday 2020/07/22",
     title: "I lost my wallet",
     description: "The item was lost on day yyyy/mm/dd in the area of blabla",
   },
   {
+    id: 1,
     date: "Thursday 2020/07/22",
     title: "I lost my cat",
     description: "The item was lost on day yyyy/mm/dd in the area of blabla",
   },
   {
+    id: 2,
     date: "Thursday 2020/07/22",
     title: "I lost my dog",
     description: "The item was lost on day yyyy/mm/dd in the area of blabla",
   },
   {
+    id: 3,
     date: "Thursday 2020/07/22",
     title: "I lost my laptop",
     description: "The item was lost on day yyyy/mm/dd in the area of blabla",
   },
   {
+    id: 4,
     date: "Thursday 2020/07/22",
     title: "I lost my bag",
     description: "The item was lost on day yyyy/mm/dd in the area of blabla",
