@@ -1,0 +1,108 @@
+{
+  "home": {
+    "txt1": "Login",
+    "txt2": "Email",
+    "txt3": "Password",
+    "txt4": "Login",
+    "txt5": "Register",
+    "txt6": "Forgot Password",
+    "txt7": "Log in with Google",
+    "txt8": "Log in with FaceBook",
+    "txt9": "Check a Tag!",
+    "txt10": "tag code",
+    "txt11": "Check",
+    "txt12": "Home",
+    "txt13": "Work with us",
+    "txt14": "About",
+    "txt15": "Contact"
+  },
+
+  "about": {
+    "txt1": "Know More About Us",
+    "txt2": "Objective:",
+    "txt3": "Reference tag (RefTag) aims to connect the real world to the digital world, in a way that makes life easier, smarter, and safer.",
+    "txt4": "Vision:",
+    "txt5": "Reference tag (RefTag) aims to connect the real world to the digital world, in a way that makes life easier, smarter, and safer.",
+    "txt6": "Mission:",
+    "txt7": "Reference tag (RefTag) aims to connect the real world to the digital world, in a way that makes life easier, smarter, and safer."
+  },
+
+  "contact": {
+    "txt1": "Contact Us",
+    "txt2": "Get in Touch",
+    "txt3": "Name",
+    "txt4": "E-mail",
+    "txt5": "Phone",
+    "txt6": "Message",
+    "txt7": "Submit"
+  },
+
+  "workwithus": {
+    "txt1": "Jobs Openings at Reference Tag",
+    "txt2": "We’re always searching for amazing people to join our team. Take a look at our current openings.",
+    "txt3": "Position:",
+    "txt4": "Type:",
+    "txt5": "Location:",
+    "txt6": "Business",
+    "txt7": "Design",
+    "txt8": "Development",
+    "txt9": "Engineering",
+    "txt10": "Finance",
+    "txt11": "Marketing",
+    "txt12": "Other",
+    "txt13": "Full-time",
+    "txt14": "Part-time",
+    "txt15": "Remote",
+    "txt16": "Sevilla",
+    "txt17": "Madrid",
+    "txt18": "Barcelona",
+    "txt19": "Zaragoza",
+    "txt20": "Would you like to partner up with us?",
+    "txt21": "Name",
+    "txt22": "E-mail",
+    "txt23": "Phone",
+    "txt24": "Message",
+    "txt25": "Submit"
+  },
+
+  "home-user": {
+    "txt1": "Hi",
+    "txt2": "Welcome to our website..."
+  },
+
+  "profile": {
+    "txt1": "Your public profile",
+    "txt2": "this is a description about me...",
+    "txt3": "Call me",
+    "txt4": "Contact me"
+  },
+
+  "tags": {
+    "txt1": "Insert your tag information",
+    "txt2": "Tag code",
+    "txt3": "Activation code",
+    "txt4": "Enter tag code",
+    "txt5": "Enter activation code",
+    "txt6": "Activate",
+    "txt7": "My tags",
+    "txt8": "Tag code",
+    "txt9": "Status",
+    "txt10": "Activation date",
+    "txt11": "Active",
+    "txt12": "Inactive",
+    "txt13": "Edit",
+    "txt14": "Deactivate"
+  },
+
+  "Messages": {
+    "txt1": "INBOX",
+    "txt2": "",
+    "txt3": "",
+    "txt4": ""
+  },
+  "nav": {
+    "home": "Home",
+    "profile": "Profile",
+    "tags": "Tags"
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "home": {
+    "txt1": "Iniciar sesión",
+    "txt2": "Correo electrónico",
+    "txt3": "Contraseña",
+    "txt4": "Iniciar sesión",
+    "txt5": "Registrarte",
+    "txt6": "No recuerdo mi contraseña",
+    "txt7": "Continuar con Google",
+    "txt8": "Continuar con FaceBook",
+    "txt9": "Verifique una etiqueta!",
+    "txt10": "Código de etiqueta",
+    "txt11": "Verificar",
+    "txt12": "Página de inicio",
+    "txt13": "Trabaja con nosotros",
+    "txt14": "Sobre nosotros",
+    "txt15": "Contacto"
+  },
+
+  "about": {
+    "txt1": "Saber más sobre nosotros",
+    "txt2": "Objetivo:",
+    "txt3": "Reference tag (RefTag) tiene como objetivo conectar el mundo real con el mundo digital, de manera que hace la vida sea más fácil, más inteligente y más segura.",
+    "txt4": "Visión:",
+    "txt5": "Reference tag (RefTag) tiene como objetivo conectar el mundo real con el mundo digital, de manera que hace la vida sea más fácil, más inteligente y más segura.",
+    "txt6": "Misión:",
+    "txt7": "Reference tag (RefTag) tiene como objetivo conectar el mundo real con el mundo digital, de manera que hace la vida sea más fácil, más inteligente y más segura."
+  },
+
+  "contact": {
+    "txt1": "Contacta con nosotros",
+    "txt2": "Envíanos un mensaje",
+    "txt3": "Nombre",
+    "txt4": "Correo electrónico",
+    "txt5": "Teléfono",
+    "txt6": "Mensaje",
+    "txt7": "Enviar"
+  },
+
+  "workwithus": {
+    "txt1": "Ofertas de trabajo en Reference Tag",
+    "txt2": "Siempre estamos buscando personas increíbles para unirse a nuestro equipo. Echa un vistazo a nuestras aperturas actuales.",
+    "txt3": "Puesto de trabajo:",
+    "txt4": "Tipo:",
+    "txt5": "Ubicación:",
+    "txt6": "Comercial",
+    "txt7": "Diseño",
+    "txt8": "Desarrollo",
+    "txt9": "Ingenieria",
+    "txt10": "Finanzas",
+    "txt11": "Marketing",
+    "txt12": "Otro",
+    "txt13": "Jornada completa",
+    "txt14": "Media jornada",
+    "txt15": "Trabajar a distancia",
+    "txt16": "Sevilla",
+    "txt17": "Madrid",
+    "txt18": "Barcelona",
+    "txt19": "Zaragoza",
+    "txt20": "¿Te gustaría asociarte con nosotros?",
+    "txt21": "Nombre",
+    "txt22": "Correo electrónico",
+    "txt23": "Teléfono",
+    "txt24": "Mensaje",
+    "txt25": "Enviar"
+  },
+
+  "user-home": {
+    "txt1": "Hola",
+    "txt2": "Bienvenido a nuestro web..."
+  },
+
+  "profile": {
+    "txt1": "Tu perfil publico",
+    "txt2": "Esta es una descripción sobre mí ...",
+    "txt3": "Llámame",
+    "txt4": "Contáctame"
+  },
+
+  "tags": {
+    "txt1": "Introduce la información de tu etiqueta",
+    "txt2": "Código de etiqueta",
+    "txt3": "Código de activación",
+    "txt4": "Introduce el código de la etiqueta",
+    "txt5": "Introduce el código de activación",
+    "txt6": "Activar",
+    "txt7": "Mis etiquetas",
+    "txt8": "Código de etiqueta",
+    "txt9": "Estado",
+    "txt10": "Fecha de activacion",
+    "txt11": "Activa",
+    "txt12": "Inactiva",
+    "txt13": "Editar",
+    "txt14": "Desactivar"
+  },
+
+  "Messages": {
+    "txt1": "Mis mensajes",
+    "txt2": "",
+    "txt3": "",
+    "txt4": ""
+  },
+  "nav": {
+    "home": "Inicio",
+    "profile": "Perfil",
+    "tags": "Etiquetas"
+  }
+}

@@ -12,11 +12,15 @@ import { Tags } from "@/tags";
 import Inbox from "../inbox";
 import Company from "../company";
 import Guest from "../guest";
+import { useTranslation } from "react-i18next";
 
 function App() {
   const { pathname } = useLocation();
   const [user, setUser] = useState({});
-
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+  };
   useEffect(() => {
     const subscription = accountService.user.subscribe((x) => setUser(x));
     return subscription.unsubscribe;
@@ -24,7 +28,7 @@ function App() {
 
   return (
     <div className={"app-container pb-4 " + user}>
-      <Nav />
+      <Nav lng={i18n.languages[0]} changeLanguage={changeLanguage} />
       <Alert />
       <Switch>
         <Redirect from="/:url*(/+)" to={pathname.slice(0, -1)} />

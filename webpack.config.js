@@ -10,6 +10,10 @@ module.exports = {
         loader: "babel-loader",
       },
       {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      {
         test: /\.less$/,
         use: [
           { loader: "style-loader" },
@@ -18,7 +22,11 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
+        test: /\.svg$/,
+        loader: "svg-url-loader",
+      },
+      {
+        test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf)(\?[a-z0-9=.]+)?$/,
         use: [{ loader: "url-loader?limit=100000" }],
       },
     ],
