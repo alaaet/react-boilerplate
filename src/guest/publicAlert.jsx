@@ -1,8 +1,11 @@
 import React from "react";
 import AlertItem from "../profile/AlertItem";
 import ContactUser from "./contactUser";
+import { useTranslation } from "react-i18next";
 
 const PublicAlert = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="pt-3">
       <div className="row h-100 justify-content-center align-items-center mb-3">
@@ -16,16 +19,18 @@ const PublicAlert = () => {
                 alt="Profile image"
               />
             </h1>
-            <p className="lead">Mr John Doe</p>
+            <p className="lead">{t("honorifics.mr")} John Doe</p>
             <span className="badge"> john@gmail.com</span>
             <hr className="my-4" />
             <p>this is a description about me...</p>
             <div className="d-flex justify-content-around">
               <a href="#" className="btn btn-outline-dark">
-                <i className="fa fa-phone" aria-hidden="true"></i> Call me
+                <i className="fa fa-phone" aria-hidden="true"></i>{" "}
+                {t("examine-result.profile.call-me")}
               </a>
               <a href="#" className="btn btn-outline-dark">
-                <i className="fa fa-envelope" aria-hidden="true"></i> Contact me
+                <i className="fa fa-envelope" aria-hidden="true"></i>{" "}
+                {t("examine-result.profile.contact-me")}
               </a>
             </div>
           </div>

@@ -20,8 +20,7 @@ function InformForm({ history }) {
     notificationService.clear();
     if (tagCode === "0000") {
       setSubmitting(false);
-      let error = "The tag code does not exist!";
-      notificationService.error(error);
+      notificationService.error(t("examine.notification"));
     } else {
       // go to destination page
       //console.log(tagCode);

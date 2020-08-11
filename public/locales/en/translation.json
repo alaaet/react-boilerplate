@@ -55,10 +55,15 @@
     "submit": "Search",
     "validation": {
       "tag-code": "Tag code is required"
-    }
+    },
+    "notification": "The tag code does not exist!"
   },
   "examine-result": {
-    "contact": {
+    "profile": {
+      "call-me": "Call me",
+      "contact-me": "Contact me"
+    },
+    "contact-form": {
       "title": "Contact {{username}}",
       "name-ph": "Name",
       "e-mail-ph": "E-mail",

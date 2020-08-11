@@ -55,11 +55,16 @@
     "submit": "Verificar",
     "validation": {
       "tag-code": "Código de etiqueta es necesario"
-    }
+    },
+    "notification": "El código de etiqueta no existe!"
   },
   "examine-result": {
-    "contact": {
-      "title": "Contacto {{username}}",
+    "profile": {
+      "call-me": "Llámame",
+      "contact-me": "Contáctame"
+    },
+    "contact-form": {
+      "title": "Contactar con {{username}}",
       "name-ph": "Nombre",
       "e-mail-ph": "Correo electrónico",
       "phone-ph": "Teléfono",
