@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Job = (props) => {
   const { job, index, history } = props;
+  const { t } = useTranslation();
   const bgColor = randomizeColor();
   return (
     <Link
@@ -23,11 +25,13 @@ const Job = (props) => {
           </span>
 
           <span className="col-5 col-md-3 my-3 my-sm-0 color--text">
-            <i className="fa fa-clock mr-1"></i> {job.type}
+            <i className="fa fa-clock mr-1"></i>{" "}
+            {t("work-with-us.types." + job.type.toLowerCase())}
           </span>
 
           <span className="col-7 col-md-3 my-3 my-sm-0 color--text">
-            <i className="fa fa-map-marker-alt mr-1"></i> {job.location}
+            <i className="fa fa-map-marker-alt mr-1"></i>{" "}
+            {t("work-with-us.locations." + job.location.toLowerCase())}
           </span>
 
           <span className="d-none d-md-block col-1 text-center color--text">

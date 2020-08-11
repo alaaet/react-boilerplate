@@ -1,10 +1,13 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const ContactUs = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="contact">
       <div className="well well-sm">
-        <h3 className="text-success">Contact Us</h3>
+        <h3 className="text-success">{t("contact.title1")}</h3>
       </div>
 
       <div className="row">
@@ -21,7 +24,7 @@ const ContactUs = () => {
 
         <div className="col-md-5">
           <h4>
-            <strong>Get in Touch</strong>
+            <strong>{t("contact.title2")}</strong>
           </h4>
           <form>
             <div className="form-group">
@@ -30,7 +33,7 @@ const ContactUs = () => {
                 className="form-control"
                 name=""
                 value=""
-                placeholder="Name"
+                placeholder={t("contact.name-ph")}
               />
             </div>
             <div className="form-group">
@@ -39,7 +42,7 @@ const ContactUs = () => {
                 className="form-control"
                 name=""
                 value=""
-                placeholder="E-mail"
+                placeholder={t("contact.e-mail-ph")}
               />
             </div>
             <div className="form-group">
@@ -48,7 +51,7 @@ const ContactUs = () => {
                 className="form-control"
                 name=""
                 value=""
-                placeholder="Phone"
+                placeholder={t("contact.phone-ph")}
               />
             </div>
             <div className="form-group">
@@ -56,11 +59,12 @@ const ContactUs = () => {
                 className="form-control"
                 name=""
                 rows="3"
-                placeholder="Message"
+                placeholder={t("contact.msg-ph")}
               ></textarea>
             </div>
             <button className="btn btn-default" type="submit" name="button">
-              <i className="fa fa-paper-plane-o" aria-hidden="true"></i> Submit
+              <i className="fa fa-paper-plane-o" aria-hidden="true"></i>{" "}
+              {t("contact.submit")}
             </button>
           </form>
         </div>

@@ -1,108 +1,208 @@
 {
-  "home": {
-    "txt1": "Login",
-    "txt2": "Email",
-    "txt3": "Password",
-    "txt4": "Login",
-    "txt5": "Register",
-    "txt6": "Forgot Password",
-    "txt7": "Log in with Google",
-    "txt8": "Log in with FaceBook",
-    "txt9": "Check a Tag!",
-    "txt10": "tag code",
-    "txt11": "Check",
-    "txt12": "Home",
-    "txt13": "Work with us",
-    "txt14": "About",
-    "txt15": "Contact"
+  "_comment": "//////////////THIS SECTION IS FOR PUBLIC COMPONENTS//////////////",
+  "login": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "login-btn": "Login",
+    "validation": {
+      "username": "Username is required",
+      "password": "Password is required"
+    },
+    "register-btn": "Register",
+    "forgot-password": "Forgot Password?",
+    "fb-btn": "LOG IN WITH FACEBOOK",
+    "gl-btn": "LOG IN WITH GOOGLE"
   },
-
+  "register": {
+    "title": "Register",
+    "p-title": "Title",
+    "fname": "First Name",
+    "lname": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "confirm-password": "Confirm Password",
+    "terms": "Accept Terms & Conditions",
+    "submit": "Register",
+    "cancel": "Cancel",
+    "validation": {
+      "title": "Title is required",
+      "fname": "First Name is required",
+      "lname": "Last Name is required",
+      "email": "Email is required",
+      "email-validity": "Email is invalid",
+      "password": "Password is required",
+      "password-min-length": "Password should be at least 6 characters",
+      "confirm-password": "Confirm Password is required",
+      "password-matching": "Passwords must match",
+      "terms": "Accept Terms & Conditions is required"
+    }
+  },
+  "forgot-password": {
+    "title": "Forgot Password",
+    "email": "Email",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "validation": {
+      "email": "Email is required",
+      "email-validity": "Email is invalid"
+    },
+    "instructions": "Please check your email for password reset instructions"
+  },
+  "examine": {
+    "title": "Examine a RefTag!",
+    "tag-code": "tag code",
+    "submit": "Search",
+    "validation": {
+      "tag-code": "Tag code is required"
+    }
+  },
+  "examine-result": {
+    "contact": {
+      "title": "Contact {{username}}",
+      "name-ph": "Name",
+      "e-mail-ph": "E-mail",
+      "phone-ph": "Phone",
+      "msg-ph": "Message",
+      "submit": "Submit"
+    }
+  },
+  "work-with-us": {
+    "title-l1": "Jobs Openings at RefTag",
+    "title-l2": "We’re always searching for amazing people to join our team. Take a look at our current openings.",
+    "filter1": "Position",
+    "filter2": "Type",
+    "filter3": "Location",
+    "positions": {
+      "business": "Business",
+      "design": "Design",
+      "development": "Development",
+      "engineering": "Engineering",
+      "finance": "Finance",
+      "marketing": "Marketing"
+    },
+    "types": {
+      "full-time": "Full-time",
+      "part-time": "Part-time",
+      "remote": "Remote"
+    },
+    "locations": {
+      "madrid": "Madrid",
+      "zaragoza": "Zaragoza",
+      "sevilla": "Sevilla",
+      "barcelona": "Barcelona"
+    },
+    "contact": {
+      "title": "Would you like to partner up with us?",
+      "name-ph": "Name",
+      "e-mail-ph": "E-mail",
+      "phone-ph": "Phone",
+      "msg-ph": "Message",
+      "submit": "Submit"
+    }
+  },
   "about": {
-    "txt1": "Know More About Us",
-    "txt2": "Objective:",
-    "txt3": "Reference tag (RefTag) aims to connect the real world to the digital world, in a way that makes life easier, smarter, and safer.",
-    "txt4": "Vision:",
-    "txt5": "Reference tag (RefTag) aims to connect the real world to the digital world, in a way that makes life easier, smarter, and safer.",
-    "txt6": "Mission:",
-    "txt7": "Reference tag (RefTag) aims to connect the real world to the digital world, in a way that makes life easier, smarter, and safer."
+    "title": "Know More About Us",
+    "description": "We focus on providing innovative solutions to satisfy people needs. Our goal is to help people benefit from technology in their daily lives in a simple and useful way. We start by listening and observing society, giving greater priority and importance to people's feedback, not only to develop better solutions but also to continuously improve the user experience.",
+    "objective": "Objective:",
+    "objective-text": "Reference tag (RefTag) aims to connect the real world to the digital world, in a way that makes life easier, smarter, and safer.",
+    "vision": "Vision:",
+    "vision-text": "Reference tag (RefTag) aims to connect the real world to the digital world, in a way that makes life easier, smarter, and safer.",
+    "mission": "Mission:",
+    "mission-text": "Reference tag (RefTag) aims to connect the real world to the digital world, in a way that makes life easier, smarter, and safer."
   },
-
   "contact": {
-    "txt1": "Contact Us",
-    "txt2": "Get in Touch",
-    "txt3": "Name",
-    "txt4": "E-mail",
-    "txt5": "Phone",
-    "txt6": "Message",
-    "txt7": "Submit"
+    "title1": "Contact Us",
+    "title2": "Get in Touch",
+    "name-ph": "Name",
+    "e-mail-ph": "E-mail",
+    "phone-ph": "Phone",
+    "msg-ph": "Message",
+    "submit": "Submit"
   },
 
-  "workwithus": {
-    "txt1": "Jobs Openings at Reference Tag",
-    "txt2": "We’re always searching for amazing people to join our team. Take a look at our current openings.",
-    "txt3": "Position:",
-    "txt4": "Type:",
-    "txt5": "Location:",
-    "txt6": "Business",
-    "txt7": "Design",
-    "txt8": "Development",
-    "txt9": "Engineering",
-    "txt10": "Finance",
-    "txt11": "Marketing",
-    "txt12": "Other",
-    "txt13": "Full-time",
-    "txt14": "Part-time",
-    "txt15": "Remote",
-    "txt16": "Sevilla",
-    "txt17": "Madrid",
-    "txt18": "Barcelona",
-    "txt19": "Zaragoza",
-    "txt20": "Would you like to partner up with us?",
-    "txt21": "Name",
-    "txt22": "E-mail",
-    "txt23": "Phone",
-    "txt24": "Message",
-    "txt25": "Submit"
-  },
-
-  "home-user": {
-    "txt1": "Hi",
-    "txt2": "Welcome to our website..."
-  },
-
-  "profile": {
-    "txt1": "Your public profile",
-    "txt2": "this is a description about me...",
-    "txt3": "Call me",
-    "txt4": "Contact me"
-  },
-
-  "tags": {
-    "txt1": "Insert your tag information",
-    "txt2": "Tag code",
-    "txt3": "Activation code",
-    "txt4": "Enter tag code",
-    "txt5": "Enter activation code",
-    "txt6": "Activate",
-    "txt7": "My tags",
-    "txt8": "Tag code",
-    "txt9": "Status",
-    "txt10": "Activation date",
-    "txt11": "Active",
-    "txt12": "Inactive",
-    "txt13": "Edit",
-    "txt14": "Deactivate"
-  },
-
-  "Messages": {
-    "txt1": "INBOX",
-    "txt2": "",
-    "txt3": "",
-    "txt4": ""
-  },
-  "nav": {
+  "_comment": "//////////////THIS SECTION IS FOR AUTHENTICATED COMPONENTS//////////////",
+  "nav": { "home": "Home", "profile": "Profile", "tags": "Tags" },
+  "footer": {
     "home": "Home",
-    "profile": "Profile",
-    "tags": "Tags"
-  }
+    "work-with-us": "Work with us",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "welcome-msg-l1": "Hi {{username}}!",
+    "welcome-msg-l2": "Welcome to our website..."
+  },
+  "profile": {
+    "pp-card-title": "Your public profile",
+    "call-me": "Call me",
+    "contact-me": "Contact me"
+  },
+  "tags": {
+    "add-title": "Insert your tag information",
+    "tag-code": "Tag Code",
+    "act-code": "Activation code",
+    "tag-code-ph": "Enter tag code",
+    "act-code-ph": "Enter activation code",
+    "submit": "Activate",
+    "validation": {
+      "tagCode": "Tag code is required",
+      "actCode": "Activation code is required"
+    },
+    "notification": "The tag with code: {{tagCode}} has been deleted successfully!",
+    "table-title": "My tags",
+    "table-h1": "Tag code",
+    "table-h2": "Status",
+    "table-h3": "Activation date",
+    "tag-status": { "active": "active", "inactive": "inactive" },
+    "edit-form": {
+      "title": "Edit Tag",
+      "status": "Active",
+      "submit": "Save",
+      "cancel": "Cancel"
+    },
+    "btns": { "new-alert": "Create Alert", "edit": "Edit", "del": "Delete" },
+    "modal": {
+      "title": "Confirm Delete",
+      "description": "Are you sure you want to delete this tag?",
+      "confirmBtn": "Delete"
+    },
+    "no-tags": "you currently have no active tags, use the the Activation section above to start enjoying our tags"
+  },
+  "alerts": {
+    "new-form": {
+      "title": { "update": "Update", "create": "Create", "text": " an alert" },
+      "tag": "TAG",
+      "alert-title": "Title",
+      "description": "Description",
+      "status": "Active",
+      "comp": "Compensation",
+      "submit": "Save",
+      "cancel": "Cancel",
+      "validation": {
+        "title": "Title is required",
+        "description": "Description is required"
+      },
+      "del-modal": {
+        "title": "Confirm Delete",
+        "description": "Are you sure you want to delete this alert?",
+        "confirmBtn": "Delete"
+      },
+      "del-notification": "The alert titled: '{{alertTitle}}' has been deleted successfully!"
+    }
+  },
+  "inbox": { "title": "INBOX", "send-btn": "Send" },
+
+  "_comment": "//////////////THIS SECTION IS FOR GENERIC DATA//////////////",
+  "honorifics": { "mr": "Mr", "mrs": "Mrs", "miss": "Miss", "ms": "Ms" },
+  "weekdays": {
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday"
+  },
+  "modal": { "close": "Close" }
 }

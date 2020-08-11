@@ -1,7 +1,10 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const MessageForm = () => {
   //handleExpand();
+  const { t } = useTranslation();
+
   return (
     <div className="row">
       <div className="container p-2">
@@ -20,7 +23,9 @@ const MessageForm = () => {
               <span className="input-group-btn">
                 <button className="btn btn-lg btn-primary m-1" type="button">
                   <i className="fa fa-paper-plane"></i>
-                  <span className="d-none d-md-inline"> Send</span>
+                  <span className="d-none d-md-inline">
+                    &nbsp;{t("inbox.send-btn")}
+                  </span>
                 </button>
               </span>
             </div>

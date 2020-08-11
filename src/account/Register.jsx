@@ -2,10 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useTranslation } from "react-i18next";
 
 import { accountService, notificationService } from "@/_services";
 
 function Register({ history }) {
+  const { t } = useTranslation();
+
   const initialValues = {
     title: "",
     firstName: "",
@@ -17,20 +20,22 @@ function Register({ history }) {
   };
 
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required("Title is required"),
-    firstName: Yup.string().required("First Name is required"),
-    lastName: Yup.string().required("Last Name is required"),
-    email: Yup.string().email("Email is invalid").required("Email is required"),
+    title: Yup.string().required(t("register.validation.title")),
+    firstName: Yup.string().required(t("register.validation.fname")),
+    lastName: Yup.string().required(t("register.validation.lname")),
+    email: Yup.string()
+      .email(t("register.validation.email-validity"))
+      .required(t("register.validation.email")),
     password: Yup.string()
-      .min(6, "Password must be at least 6 characters")
-      .required("Password is required"),
+      .min(6, t("register.validation.password-min-length"))
+      .required(t("register.validation.password")),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref("password"), null], "Passwords must match")
-      .required("Confirm Password is required"),
-    acceptTerms: Yup.bool().oneOf(
-      [true],
-      "Accept Terms & Conditions is required"
-    ),
+      .oneOf(
+        [Yup.ref("password"), null],
+        t("register.validation.password-matching")
+      )
+      .required(t("register.validation.confirm-password")),
+    acceptTerms: Yup.bool().oneOf([true], t("register.validation.terms")),
   });
 
   function onSubmit(fields, { setStatus, setSubmitting }) {
@@ -58,11 +63,11 @@ function Register({ history }) {
     >
       {({ errors, touched, isSubmitting }) => (
         <Form>
-          <h3 className="card-header">Register</h3>
+          <h3 className="card-header">{t("register.title")}</h3>
           <div className="card-body">
             <div className="form-row">
               <div className="form-group col">
-                <label>Title</label>
+                <label>{t("register.p-title")}</label>
                 <Field
                   name="title"
                   as="select"
@@ -72,10 +77,10 @@ function Register({ history }) {
                   }
                 >
                   <option value=""></option>
-                  <option value="Mr">Mr</option>
-                  <option value="Mrs">Mrs</option>
-                  <option value="Miss">Miss</option>
-                  <option value="Ms">Ms</option>
+                  <option value="Mr">{t("honorifics.mr")}</option>
+                  <option value="Mrs">{t("honorifics.mrs")}</option>
+                  <option value="Miss">{t("honorifics.miss")}</option>
+                  <option value="Ms">{t("honorifics.ms")}</option>
                 </Field>
                 <ErrorMessage
                   name="title"
@@ -84,7 +89,7 @@ function Register({ history }) {
                 />
               </div>
               <div className="form-group col-5">
-                <label>First Name</label>
+                <label>{t("register.fname")}</label>
                 <Field
                   name="firstName"
                   type="text"
@@ -100,7 +105,7 @@ function Register({ history }) {
                 />
               </div>
               <div className="form-group col-5">
-                <label>Last Name</label>
+                <label>{t("register.lname")}</label>
                 <Field
                   name="lastName"
                   type="text"
@@ -117,7 +122,7 @@ function Register({ history }) {
               </div>
             </div>
             <div className="form-group">
-              <label>Email</label>
+              <label>{t("register.email")}</label>
               <Field
                 name="email"
                 type="text"
@@ -134,7 +139,7 @@ function Register({ history }) {
             </div>
             <div className="form-row">
               <div className="form-group col">
-                <label>Password</label>
+                <label>{t("register.password")}</label>
                 <Field
                   name="password"
                   type="password"
@@ -150,7 +155,7 @@ function Register({ history }) {
                 />
               </div>
               <div className="form-group col">
-                <label>Confirm Password</label>
+                <label>{t("register.confirm-password")}</label>
                 <Field
                   name="confirmPassword"
                   type="password"
@@ -181,7 +186,7 @@ function Register({ history }) {
                 }
               />
               <label htmlFor="acceptTerms" className="form-check-label">
-                Accept Terms & Conditions
+                {t("register.terms")}
               </label>
               <ErrorMessage
                 name="acceptTerms"
@@ -198,10 +203,10 @@ function Register({ history }) {
                 {isSubmitting && (
                   <span className="spinner-border spinner-border-sm mr-1"></span>
                 )}
-                Register
+                {t("register.submit")}
               </button>
               <Link to="login" className="btn btn-link">
-                Cancel
+                {t("register.cancel")}
               </Link>
             </div>
           </div>

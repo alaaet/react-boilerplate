@@ -3,20 +3,21 @@ import { Link } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import logo from "../img/logo.png";
+import { useTranslation } from "react-i18next";
 
 import { accountService, notificationService } from "@/_services";
 
 function Login({ history, location }) {
+  const { t } = useTranslation();
+
   const initialValues = {
     username: "",
     password: "",
   };
 
   const validationSchema = Yup.object().shape({
-    username: Yup.string()
-      .email("Email is invalid")
-      .required("Email is required"),
-    password: Yup.string().required("Password is required"),
+    username: Yup.string().required(t("login.validation.username")),
+    password: Yup.string().required(t("login.validation.password")),
   });
 
   function onSubmit({ username, password }, { setSubmitting }) {
@@ -47,11 +48,11 @@ function Login({ history, location }) {
           <Form>
             <h3 className="card-header">
               <img className="login-img" src={logo} alt="" />
-              Login
+              {t("login.title")}
             </h3>
             <div className="card-body">
               <div className="form-group">
-                <label>Email</label>
+                <label>{t("login.username")}</label>
                 <Field
                   name="username"
                   type="text"
@@ -67,7 +68,7 @@ function Login({ history, location }) {
                 />
               </div>
               <div className="form-group">
-                <label>Password</label>
+                <label>{t("login.password")}</label>
                 <Field
                   name="password"
                   type="password"
@@ -92,15 +93,15 @@ function Login({ history, location }) {
                     {isSubmitting && (
                       <span className="spinner-border spinner-border-sm mr-1"></span>
                     )}
-                    Login
+                    {t("login.login-btn")}
                   </button>
                   <Link to="register" className="btn btn-link">
-                    Register
+                    {t("login.register-btn")}
                   </Link>
                 </div>
                 <div className="form-group col text-right">
                   <Link to="forgot-password" className="btn btn-link pr-0">
-                    Forgot Password?
+                    {t("login.forgot-password")}
                   </Link>
                 </div>
               </div>
@@ -113,7 +114,7 @@ function Login({ history, location }) {
                     <i className="fa fa-google mr-2"></i>{" "}
                     <span className="d-none d-md-inline">
                       {" "}
-                      Log in with Google
+                      {t("login.gl-btn")}
                     </span>
                   </button>
                   <button
@@ -123,7 +124,7 @@ function Login({ history, location }) {
                     <i className="fa fa-facebook-f mr-2"></i>{" "}
                     <span className="d-none d-md-inline">
                       {" "}
-                      Log in with Facebook
+                      {t("login.fb-btn")}
                     </span>
                   </button>
                 </div>

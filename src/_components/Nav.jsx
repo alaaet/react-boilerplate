@@ -64,13 +64,6 @@ function Nav(props) {
               >
                 <span className="flag-icon flag-icon-es"> </span> Español
               </NavDropdown.Item>
-              <NavDropdown.Item
-                onClick={() => {
-                  changeLanguage("ar");
-                }}
-              >
-                <span className="flag-icon flag-icon-sa"> </span> العربية
-              </NavDropdown.Item>
             </NavDropdown>
 
             {user.role === Role.User && (

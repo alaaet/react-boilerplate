@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { JobPositionsDD, JobTypesDD, JobLocationsDD } from "./filters";
 import JobsSection from "./jobsSection";
+import { useTranslation } from "react-i18next";
 
 const JobsList = (props) => {
   const [currentPosition, setPosition] = useState("");
@@ -8,6 +9,7 @@ const JobsList = (props) => {
   const [currentLocation, setLocation] = useState("");
   const [filteredJobs, setFilteredJobs] = useState(jobs);
   const { history } = props;
+  const { t } = useTranslation();
 
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
@@ -35,7 +37,7 @@ const JobsList = (props) => {
             return (
               <JobsSection
                 items={items}
-                position={position}
+                position={t("work-with-us.positions." + position.toLowerCase())}
                 key={index}
                 history={history}
               />

@@ -20,8 +20,11 @@ function App() {
   const { t, i18n } = useTranslation();
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
+    localStorage.setItem("lang", language);
   };
   useEffect(() => {
+    const lang = localStorage.getItem("lang");
+    if (lang !== null) changeLanguage(lang);
     const subscription = accountService.user.subscribe((x) => setUser(x));
     return subscription.unsubscribe;
   }, []);

@@ -2,17 +2,18 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-
+import { useTranslation } from "react-i18next";
 import { accountService, notificationService } from "@/_services";
 
 function InformForm({ history }) {
+  const { t } = useTranslation();
   const location = useLocation();
   const initialValues = {
     tagCode: "",
   };
 
   const validationSchema = Yup.object().shape({
-    tagCode: Yup.string().required("Tag code is required"),
+    tagCode: Yup.string().required(t("examine.validation.tag-code")),
   });
 
   function onSubmit({ tagCode }, { setSubmitting }) {
@@ -40,12 +41,12 @@ function InformForm({ history }) {
         {({ errors, touched, isSubmitting }) => (
           <Form>
             <h3 className="card-header">
-              <i className="fa fa-qrcode" aria-hidden="true"></i> Examine a
-              RefTag!
+              <i className="fa fa-qrcode" aria-hidden="true"></i>{" "}
+              {t("examine.title")}
             </h3>
             <div className="card-body">
               <div className="form-group">
-                <label>tag code</label>
+                <label>{t("examine.tag-code")}</label>
                 <Field
                   name="tagCode"
                   type="text"
@@ -70,7 +71,7 @@ function InformForm({ history }) {
                     {isSubmitting && (
                       <span className="spinner-border spinner-border-sm mr-1"></span>
                     )}
-                    Search
+                    {t("examine.submit")}
                   </button>
                 </div>
               </div>

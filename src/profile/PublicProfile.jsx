@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 import { accountService } from "@/_services";
 import Alerts from "./Alerts";
 
 function PublicProfile({ match }) {
   const { path } = match;
   const user = accountService.userValue;
+  const { t } = useTranslation();
 
   return (
     <div>
       <h5 className="blocktext mt-2 mb-2">
-        Your public profile&nbsp;
+        {t("profile.pp-card-title")}&nbsp;
         <Link to={`${path}/update`} className="btn btn-outline-dark blocktext">
           <i className="fa fa-cog" aria-hidden="true"></i>
         </Link>
@@ -35,10 +36,12 @@ function PublicProfile({ match }) {
             <p>this is a description about me...</p>
             <div className="d-flex justify-content-around">
               <a href="#" className="btn btn-outline-dark">
-                <i className="fa fa-phone" aria-hidden="true"></i> Call me
+                <i className="fa fa-phone" aria-hidden="true"></i>&nbsp;
+                {t("profile.call-me")}
               </a>
               <a href="#" className="btn btn-outline-dark">
-                <i className="fa fa-envelope" aria-hidden="true"></i> Contact me
+                <i className="fa fa-envelope" aria-hidden="true"></i>&nbsp;
+                {t("profile.contact-me")}
               </a>
             </div>
           </div>

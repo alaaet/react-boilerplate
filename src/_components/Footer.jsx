@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <nav
       id="footer"
@@ -9,16 +12,16 @@ const Footer = () => {
     >
       <p className="blocktext">
         <Link to="/" className="btn btn-link">
-          Home
+          {t("footer.home")}
         </Link>
         <Link to="/company/work-with-us" className="btn btn-link">
-          Work with us
+          {t("footer.work-with-us")}
         </Link>
         <Link to="/company/about-us" className="btn btn-link">
-          About
+          {t("footer.about")}
         </Link>
         <Link to="/company/contact-us" className="btn btn-link">
-          Contact
+          {t("footer.contact")}
         </Link>
       </p>
     </nav>

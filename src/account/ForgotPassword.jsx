@@ -2,16 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-
+import { useTranslation } from "react-i18next";
 import { accountService, notificationService } from "@/_services";
 
 function ForgotPassword() {
+  const { t } = useTranslation();
+
   const initialValues = {
     email: "",
   };
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().email("Email is invalid").required("Email is required"),
+    email: Yup.string()
+      .email(t("forgot-password.validation.email-validity"))
+      .required(t("forgot-password.validation.email")),
   });
 
   function onSubmit({ email }, { setSubmitting }) {
@@ -19,9 +23,7 @@ function ForgotPassword() {
     accountService
       .forgotPassword(email)
       .then(() =>
-        notificationService.success(
-          "Please check your email for password reset instructions"
-        )
+        notificationService.success(t("forgot-password.instructions"))
       )
       .catch((error) => notificationService.error(error))
       .finally(() => setSubmitting(false));
@@ -35,10 +37,10 @@ function ForgotPassword() {
     >
       {({ errors, touched, isSubmitting }) => (
         <Form>
-          <h3 className="card-header">Forgot Password</h3>
+          <h3 className="card-header">{t("forgot-password.title")}</h3>
           <div className="card-body">
             <div className="form-group">
-              <label>Email</label>
+              <label>{t("forgot-password.email")}</label>
               <Field
                 name="email"
                 type="text"
@@ -63,10 +65,10 @@ function ForgotPassword() {
                   {isSubmitting && (
                     <span className="spinner-border spinner-border-sm mr-1"></span>
                   )}
-                  Submit
+                  {t("forgot-password.submit")}
                 </button>
                 <Link to="login" className="btn btn-link">
-                  Cancel
+                  {t("forgot-password.cancel")}
                 </Link>
               </div>
             </div>

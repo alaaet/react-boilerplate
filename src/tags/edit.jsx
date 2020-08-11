@@ -4,11 +4,13 @@ import { Formik, Field, Form, ErrorMessage, Switch } from "formik";
 import * as Yup from "yup";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import { alertService } from "@/_services";
+import { useTranslation } from "react-i18next";
 
 function Edit({ history }) {
   const initialValues = {
     tagStatus: true,
   };
+  const { t } = useTranslation();
 
   const validationSchema = Yup.object().shape({});
 
@@ -28,11 +30,13 @@ function Edit({ history }) {
           >
             {({ errors, touched, isSubmitting }) => (
               <Form>
-                <h3 className="card-header">Edit Tag</h3>
+                <h3 className="card-header">{t("tags.edit-form.title")}</h3>
                 <div className="card-body">
                   <div className="form-row">
                     <div className="form-group col">
-                      <label className="mr-3">Active </label>
+                      <label className="mr-3">
+                        {t("tags.edit-form.status")}{" "}
+                      </label>
                       <Field name="tagStatus">
                         {(props) => {
                           return (
@@ -62,14 +66,14 @@ function Edit({ history }) {
                         {isSubmitting && (
                           <span className="spinner-border spinner-border-sm mr-1"></span>
                         )}
-                        Save
+                        {t("tags.edit-form.submit")}
                       </button>
                       <Link
                         to="."
                         className="btn btn-outline-danger ml-2"
-                        style={{ width: "75px" }}
+                        style={{ width: "100px" }}
                       >
-                        Cancel
+                        {t("tags.edit-form.cancel")}
                       </Link>
                     </div>
                   </div>

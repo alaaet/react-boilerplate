@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import Activate from "./activate";
 import { notificationService } from "@/_services";
 import TagRow from "./tagRow";
+import { useTranslation } from "react-i18next";
 
 const TagsList = ({ match }) => {
   const { path } = match;
   console.log(path);
   const [deletedTag, setDeletedTag] = useState(null);
   const [tags, setTags] = useState(randomTags);
+  const { t } = useTranslation();
 
   useEffect(() => {
     // get all tags
@@ -15,13 +17,10 @@ const TagsList = ({ match }) => {
       console.log(deletedTag);
       setTags(
         tags.filter(function (tag) {
-          if (tag.id === deletedTag.id)
-            notificationService.success(
-              `The tag with code: (` +
-                tag.code +
-                `) has been deleted successfully!`
-            );
-          else return true;
+          if (tag.id === deletedTag.id) {
+            const msg = t("tags.notification", { tagCode: tag.code });
+            notificationService.success(msg);
+          } else return true;
         })
       );
     }
@@ -32,15 +31,15 @@ const TagsList = ({ match }) => {
       <Activate />
 
       <div>
-        <h1 className="blocktext">My tags</h1>
+        <h1 className="blocktext">{t("tags.table-title")}</h1>
         {tags.length > 0 ? (
           <table className="table table-responsive table-striped table-bordered">
             <thead className="thead-dark bg-dark">
               <tr>
-                <th style={{ width: "30%" }}>Tag code</th>
-                <th style={{ width: "30%" }}>Status</th>
+                <th style={{ width: "30%" }}>{t("tags.table-h1")}</th>
+                <th style={{ width: "30%" }}>{t("tags.table-h2")}</th>
                 <th style={{ width: "25%" }} className="additional">
-                  Activation date
+                  {t("tags.table-h3")}
                 </th>
                 <th style={{ width: "15%" }}></th>
               </tr>
@@ -58,10 +57,7 @@ const TagsList = ({ match }) => {
             </tbody>
           </table>
         ) : (
-          <p className={"text-muted blocktext pb-3"}>
-            you currently have no active tags, use the the Activation section
-            above to start enjoying our tags
-          </p>
+          <p className={"text-muted blocktext pb-3"}>{t("tags.no-tags")}</p>
         )}
       </div>
     </React.Fragment>

@@ -1,16 +1,17 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useTranslation } from "react-i18next";
 
 const Activate = () => {
+  const { t } = useTranslation();
   const initialValues = {
     tagCode: "",
     actCode: "",
   };
-
   const validationSchema = Yup.object().shape({
-    tagCode: Yup.string().required("Tag code is required"),
-    actCode: Yup.string().required("Activation code is required"),
+    tagCode: Yup.string().required(t("tags.validation.tagCode")),
+    actCode: Yup.string().required(t("tags.validation.actCode")),
   });
 
   function onSubmit({ tagCode, actCode }, { setSubmitting }) {
@@ -34,16 +35,16 @@ const Activate = () => {
                   src={require("../img/qr.png")}
                   alt="Profile image"
                 />
-                <p className="lead">Insert your tag information</p>
+                <p className="lead">{t("tags.add-title")}</p>
               </div>
             </div>
             <div className="row">
               <div className="col">
-                <label>Tag code</label>
+                <label>{t("tags.tag-code")}</label>
                 <Field
                   name="tagCode"
                   type="text"
-                  placeholder="Enter tag code"
+                  placeholder={t("tags.tag-code-ph")}
                   className={
                     "form-control" +
                     (errors.tagCode && touched.tagCode ? " is-invalid" : "")
@@ -56,11 +57,11 @@ const Activate = () => {
                 />
               </div>
               <div className="col">
-                <label>Activation code</label>
+                <label>{t("tags.act-code")}</label>
                 <Field
                   name="actCode"
                   type="text"
-                  placeholder="Enter activation code"
+                  placeholder={t("tags.act-code-ph")}
                   className={
                     "form-control" +
                     (errors.actCode && touched.actCode ? " is-invalid" : "")
@@ -84,7 +85,7 @@ const Activate = () => {
                     {isSubmitting && (
                       <span className="spinner-border spinner-border-sm mr-1"></span>
                     )}
-                    Activate
+                    {t("tags.submit")}
                   </button>
                   <hr />
                 </div>

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import { useTranslation } from "react-i18next";
 
 const CustomModal = (props) => {
   const [show, setShow] = useState(false);
   const { handleAction, btn, val, content } = props;
+  const { t } = useTranslation();
   const styles = btn.style;
   const handleClose = (doAction) => {
     setShow(false);
@@ -35,10 +37,14 @@ const CustomModal = (props) => {
               handleClose(false);
             }}
           >
-            Close
+            {t("modal.close")}
           </Button>
           <Button
-            variant={content.confirmBtn === "Delete" ? "danger" : "primary"}
+            variant={
+              content.confirmBtn === t("alerts.del-modal.confirmBtn")
+                ? "danger"
+                : "primary"
+            }
             onClick={() => {
               handleClose(true);
             }}

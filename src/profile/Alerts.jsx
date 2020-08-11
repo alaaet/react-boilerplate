@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import AlertItem from "./AlertItem";
 import { notificationService } from "@/_services";
+import { useTranslation } from "react-i18next";
 
 const Alerts = ({ path }) => {
+  const { t } = useTranslation();
+
   const [currentAlerts, setCurrentAlerts] = useState(alerts);
   const [deletedAlert, setDeletedAlert] = useState(null);
   // Similar to componentDidMount and componentDidUpdate:
@@ -13,9 +16,7 @@ const Alerts = ({ path }) => {
         currentAlerts.filter(function (alert) {
           if (alert.id === deletedAlert.id)
             notificationService.success(
-              `The alert titled: (` +
-                alert.title +
-                `) has been deleted successfully!`
+              t("alerts.del-notification", { alertTitle: alert.title })
             );
           else return true;
         })

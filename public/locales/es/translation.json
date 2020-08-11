@@ -1,108 +1,225 @@
 {
-  "home": {
-    "txt1": "Iniciar sesión",
-    "txt2": "Correo electrónico",
-    "txt3": "Contraseña",
-    "txt4": "Iniciar sesión",
-    "txt5": "Registrarte",
-    "txt6": "No recuerdo mi contraseña",
-    "txt7": "Continuar con Google",
-    "txt8": "Continuar con FaceBook",
-    "txt9": "Verifique una etiqueta!",
-    "txt10": "Código de etiqueta",
-    "txt11": "Verificar",
-    "txt12": "Página de inicio",
-    "txt13": "Trabaja con nosotros",
-    "txt14": "Sobre nosotros",
-    "txt15": "Contacto"
+  "_comment": "//////////////THIS SECTION IS FOR PUBLIC COMPONENTS//////////////",
+  "login": {
+    "title": "Iniciar sesión",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "login-btn": "Iniciar sesión",
+    "validation": {
+      "username": "Nombre de usuario es necesario",
+      "password": "Contraseña es necesaria"
+    },
+    "register-btn": "Registrarse",
+    "forgot-password": "¿Ha olvidado la contraseña?",
+    "fb-btn": "Continuar con FaceBook",
+    "gl-btn": "Continuar con Google"
   },
-
+  "register": {
+    "title": "Registrar",
+    "p-title": "Título",
+    "fname": "Nombre",
+    "lname": "Apellido",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "confirm-password": "Confirmar Contraseña",
+    "terms": "Acceptar las Condiciones",
+    "submit": "Registrar",
+    "cancel": "Cancelar",
+    "validation": {
+      "title": "El título es necesario",
+      "fname": "El nombre es necesario",
+      "lname": "El apellido es necesario",
+      "email": "El correo electrónico es necesario",
+      "email-validity": "El correo electrónico no es valido",
+      "password": "La contraseña es necesaria",
+      "password-min-length": "La contraseña debe tener un mínimo de 6 carácteres",
+      "confirm-password": "Confirmar Contraseña es necesario",
+      "password-matching": "Las contraseñas deben coincidir",
+      "terms": "Acceptar las Condiciones es necesario"
+    }
+  },
+  "forgot-password": {
+    "title": "Recuperar la contraseña",
+    "email": "Correo Electrónico",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "validation": {
+      "email": "El correo electrónico es necesario",
+      "email-validity": "El correo electrónico no es valido"
+    },
+    "instructions": "Por favor, compruebe su correo electrónico para las instrucciones de la recuperación de la contraseña"
+  },
+  "examine": {
+    "title": "Verifique una etiqueta!",
+    "tag-code": "Código de etiqueta",
+    "submit": "Verificar",
+    "validation": {
+      "tag-code": "Código de etiqueta es necesario"
+    }
+  },
+  "examine-result": {
+    "contact": {
+      "title": "Contacto {{username}}",
+      "name-ph": "Nombre",
+      "e-mail-ph": "Correo electrónico",
+      "phone-ph": "Teléfono",
+      "msg-ph": "Mensaje",
+      "submit": "Enviar"
+    }
+  },
+  "work-with-us": {
+    "title-l1": "Ofertas de trabajo en Reference Tag",
+    "title-l2": "Siempre estamos buscando personas increíbles para unirse a nuestro equipo. Echa un vistazo a nuestras aperturas actuales.",
+    "filter1": "Puesto de trabajo",
+    "filter2": "Tipo",
+    "filter3": "Ubicación",
+    "positions": {
+      "business": "Comercial",
+      "design": "Diseño",
+      "development": "Desarrollo",
+      "engineering": "Ingenieria",
+      "finance": "Finanza",
+      "marketing": "Marketing"
+    },
+    "types": {
+      "full-time": "Jornada completa",
+      "part-time": "Media jornada",
+      "remote": "Remoto"
+    },
+    "locations": {
+      "madrid": "Madrid",
+      "zaragoza": "Zaragoza",
+      "sevilla": "Sevilla",
+      "barcelona": "Barcelona"
+    },
+    "contact": {
+      "title": "¿Te gustaría asociarte con nosotros?",
+      "name-ph": "Nombre",
+      "e-mail-ph": "Correo electrónico",
+      "phone-ph": "Teléfono",
+      "msg-ph": "Mensaje",
+      "submit": "Enviar"
+    }
+  },
   "about": {
-    "txt1": "Saber más sobre nosotros",
-    "txt2": "Objetivo:",
-    "txt3": "Reference tag (RefTag) tiene como objetivo conectar el mundo real con el mundo digital, de manera que hace la vida sea más fácil, más inteligente y más segura.",
-    "txt4": "Visión:",
-    "txt5": "Reference tag (RefTag) tiene como objetivo conectar el mundo real con el mundo digital, de manera que hace la vida sea más fácil, más inteligente y más segura.",
-    "txt6": "Misión:",
-    "txt7": "Reference tag (RefTag) tiene como objetivo conectar el mundo real con el mundo digital, de manera que hace la vida sea más fácil, más inteligente y más segura."
+    "title": "Saber más sobre nosotros",
+    "description": "Nos enfocamos en proveer soluciones innovadoras para satisfacer las necesidades de las personas. Nuestro objetivo es ayudar a las personas a beneficiarse de la tecnología en su vida diaria de una manera sencilla y útil. Empezamos por escuchar y observar a la sociedad, dando mayor prioridad e importancia a la retroalimentación de las personas, no solo para desarrollar mejores soluciones sino también para mejorar continuamente la experiencia del usuario.",
+    "objective": "Objetivo:",
+    "objective-text": "Reference tag (RefTag) tiene como objetivo conectar el mundo real con el mundo digital, de manera que hace la vida sea más fácil, más inteligente y más segura.",
+    "vision": "Visión:",
+    "vision-text": "Reference tag (RefTag) tiene como objetivo conectar el mundo real con el mundo digital, de manera que hace la vida sea más fácil, más inteligente y más segura.",
+    "mission": "Misión:",
+    "mission-text": "Reference tag (RefTag) tiene como objetivo conectar el mundo real con el mundo digital, de manera que hace la vida sea más fácil, más inteligente y más segura."
   },
-
   "contact": {
-    "txt1": "Contacta con nosotros",
-    "txt2": "Envíanos un mensaje",
-    "txt3": "Nombre",
-    "txt4": "Correo electrónico",
-    "txt5": "Teléfono",
-    "txt6": "Mensaje",
-    "txt7": "Enviar"
+    "title1": "Contacta con nosotros",
+    "title2": "Envíanos un mensaje",
+    "name-ph": "Nombre",
+    "e-mail-ph": "Correo electrónico",
+    "phone-ph": "Teléfono",
+    "msg-ph": "Mensaje",
+    "submit": "Enviar"
   },
 
-  "workwithus": {
-    "txt1": "Ofertas de trabajo en Reference Tag",
-    "txt2": "Siempre estamos buscando personas increíbles para unirse a nuestro equipo. Echa un vistazo a nuestras aperturas actuales.",
-    "txt3": "Puesto de trabajo:",
-    "txt4": "Tipo:",
-    "txt5": "Ubicación:",
-    "txt6": "Comercial",
-    "txt7": "Diseño",
-    "txt8": "Desarrollo",
-    "txt9": "Ingenieria",
-    "txt10": "Finanzas",
-    "txt11": "Marketing",
-    "txt12": "Otro",
-    "txt13": "Jornada completa",
-    "txt14": "Media jornada",
-    "txt15": "Trabajar a distancia",
-    "txt16": "Sevilla",
-    "txt17": "Madrid",
-    "txt18": "Barcelona",
-    "txt19": "Zaragoza",
-    "txt20": "¿Te gustaría asociarte con nosotros?",
-    "txt21": "Nombre",
-    "txt22": "Correo electrónico",
-    "txt23": "Teléfono",
-    "txt24": "Mensaje",
-    "txt25": "Enviar"
-  },
-
-  "user-home": {
-    "txt1": "Hola",
-    "txt2": "Bienvenido a nuestro web..."
-  },
-
-  "profile": {
-    "txt1": "Tu perfil publico",
-    "txt2": "Esta es una descripción sobre mí ...",
-    "txt3": "Llámame",
-    "txt4": "Contáctame"
-  },
-
-  "tags": {
-    "txt1": "Introduce la información de tu etiqueta",
-    "txt2": "Código de etiqueta",
-    "txt3": "Código de activación",
-    "txt4": "Introduce el código de la etiqueta",
-    "txt5": "Introduce el código de activación",
-    "txt6": "Activar",
-    "txt7": "Mis etiquetas",
-    "txt8": "Código de etiqueta",
-    "txt9": "Estado",
-    "txt10": "Fecha de activacion",
-    "txt11": "Activa",
-    "txt12": "Inactiva",
-    "txt13": "Editar",
-    "txt14": "Desactivar"
-  },
-
-  "Messages": {
-    "txt1": "Mis mensajes",
-    "txt2": "",
-    "txt3": "",
-    "txt4": ""
-  },
+  "_comment": "//////////////THIS SECTION IS FOR AUTHENTICATED COMPONENTS//////////////",
   "nav": {
-    "home": "Inicio",
-    "profile": "Perfil",
-    "tags": "Etiquetas"
-  }
+    "home": "Página de inicio",
+    "profile": "perfil",
+    "tags": "etiquetas"
+  },
+  "footer": {
+    "home": "Página de inicio",
+    "work-with-us": "Trabaja con nosotros",
+    "about": "Sobre nosotros",
+    "contact": "Contacto"
+  },
+  "home": {
+    "welcome-msg-l1": "¡Hola {{username}}!",
+    "welcome-msg-l2": "Bienvenido a nuestro web..."
+  },
+  "profile": {
+    "pp-card-title": "Tu perfil publico",
+    "call-me": "Llámame",
+    "contact-me": "Contáctame"
+  },
+  "tags": {
+    "add-title": "Introduce la información de tu etiqueta",
+    "tag-code": "Código de etiqueta",
+    "act-code": "Código de activación",
+    "tag-code-ph": "Introduce el código de la etiqueta",
+    "act-code-ph": "Introduce el código de activación",
+    "submit": "Activar",
+    "verification": {
+      "tagCode": "El código de etiqueta es necesario",
+      "actCode": "El código de activación es necesario"
+    },
+    "notification": "La etiqueta con el codigo: {{tagCode}} se ha eliminado satisfactoriamente!",
+    "table-title": "Mis etiquetas",
+    "table-h1": "Código de etiqueta",
+    "table-h2": "Estado",
+    "table-h3": "Fecha de activacion",
+    "tag-status": { "active": "activa", "inactive": "inactiva" },
+    "edit-form": {
+      "title": "Modificar la etiqueta",
+      "status": "Activa",
+      "submit": "Guardar",
+      "cancel": "Cancelar"
+    },
+    "btns": {
+      "new-alert": "Crear Alerta",
+      "edit": "Modificar",
+      "del": "Eliminar"
+    },
+    "modal": {
+      "title": "Confirme la Eliminación",
+      "description": "Está seguro de que quiere eliminar esta etiqueta?",
+      "confirmBtn": "Eliminar"
+    },
+    "no-tags": "actualmente no tiene etiquetas activas, use la sección Activación para comenzar a disfrutar de sus etiquetas"
+  },
+  "alerts": {
+    "new-form": {
+      "title": {
+        "update": "Modificar",
+        "create": "Crear",
+        "text": " una alerta"
+      },
+      "tag": "ETIQUETA",
+      "alert-title": "Título",
+      "description": "Descripción",
+      "status": "Activa",
+      "comp": "Compensación",
+      "submit": "Guardar",
+      "cancel": "Cancelar",
+      "verification": {
+        "title": "El título es necesario",
+        "description": "La descripción es necesaria"
+      }
+    },
+    "del-modal": {
+      "title": "Confirme la Eliminación",
+      "description": "Está seguro de que quiere eliminar esta alerta?",
+      "confirmBtn": "Eliminar"
+    },
+    "del-notification": "La alerta títulada: '{{alertTitle}}' se ha eliminado satisfactoriamente!"
+  },
+  "inbox": { "title": "Mis mensajes", "send-btn": "Enviar" },
+
+  "_comment": "//////////////THIS SECTION IS FOR GENERIC DATA//////////////",
+  "honorifics": {
+    "mr": "Sr.",
+    "mrs": "Sra.",
+    "miss": "Señorita",
+    "ms": "Sra."
+  },
+  "weekdays": {
+    "saturday": "Sábado",
+    "sunday": "Domingo",
+    "monday": "lunes",
+    "tuesday": "Martes",
+    "wednesday": "Miércoles",
+    "thursday": "Jueves",
+    "friday": "Viernes"
+  },
+  "modal": { "close": "Cerrar" }
 }

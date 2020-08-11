@@ -44,7 +44,9 @@ function Account({ history, match }) {
       <div className="row">
         <div className="col-sm-8 offset-sm-2">
           <div className="card m-3">
-            <Route component={InformForm} />
+            <Switch>
+              <Route path={`${path}/login`} component={InformForm} />
+            </Switch>
           </div>
         </div>
       </div>

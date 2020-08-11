@@ -4,10 +4,12 @@ import { Formik, Field, Form, ErrorMessage, Switch } from "formik";
 import * as Yup from "yup";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import { notificationService } from "@/_services";
+import { useTranslation } from "react-i18next";
 
 function NewOrUpdateAlert(props) {
   let location = useLocation();
   const { match } = props;
+  const { t } = useTranslation();
   const initialValues = {
     title: "",
     description: "",
@@ -31,8 +33,10 @@ function NewOrUpdateAlert(props) {
     }
   });
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required("Title is required"),
-    description: Yup.string().required("Description is required"),
+    title: Yup.string().required(t("alerts.new-form.validation.title")),
+    description: Yup.string().required(
+      t("alerts.new-form.validation.description")
+    ),
     compensation: Yup.number(),
   });
 
@@ -54,12 +58,17 @@ function NewOrUpdateAlert(props) {
             {({ errors, touched, isSubmitting }) => (
               <Form>
                 <h3 className="card-header">
-                  {isUpdate ? "Update" : "Create"} an alert
+                  {isUpdate
+                    ? t("alerts.new-form.title.update")
+                    : t("alerts.new-form.title.create")}
+                  {t("alerts.new-form.title.text")}
                 </h3>
                 <div className="card-body">
                   <div className="form-row">
                     <div className="form-group col  d-flex justify-content-center align-items-center">
-                      <label className="mr-3">TAG: </label>
+                      <label className="mr-3">
+                        {t("alerts.new-form.tag")}:
+                      </label>
                       <aside className="sticker cyan">
                         {location.state.tag.code}
                       </aside>
@@ -67,7 +76,9 @@ function NewOrUpdateAlert(props) {
                   </div>
                   <div className="form-row">
                     <div className="form-group col">
-                      <label className="mr-3">Title </label>
+                      <label className="mr-3">
+                        {t("alerts.new-form.alert-title")}{" "}
+                      </label>
                       <Field
                         name="title"
                         type="text"
@@ -85,7 +96,9 @@ function NewOrUpdateAlert(props) {
                   </div>
                   <div className="form-row">
                     <div className="form-group col">
-                      <label className="mr-3">Description </label>
+                      <label className="mr-3">
+                        {t("alerts.new-form.description")}{" "}
+                      </label>
                       <Field
                         name="description"
                         component="textarea"
@@ -105,7 +118,9 @@ function NewOrUpdateAlert(props) {
                   </div>
                   <div className="form-row">
                     <div className="form-group col">
-                      <label className="mr-3">Active </label>
+                      <label className="mr-3">
+                        {t("alerts.new-form.status")}{" "}
+                      </label>
                       <Field name="isActive">
                         {(props) => {
                           return (
@@ -128,7 +143,7 @@ function NewOrUpdateAlert(props) {
 
                   <div className="form-row">
                     <div className="form-group col">
-                      <label>Compensation </label>
+                      <label>{t("alerts.new-form.comp")} </label>
                       <div className="input-group mb-3">
                         <div className="input-group-prepend">
                           <span className="input-group-text">EUR</span>
@@ -166,14 +181,14 @@ function NewOrUpdateAlert(props) {
                         {isSubmitting && (
                           <span className="spinner-border spinner-border-sm mr-1"></span>
                         )}
-                        Save
+                        {t("alerts.new-form.submit")}
                       </button>
                       <Link
                         to={isUpdate ? ".." : "."}
                         className="btn btn-outline-danger ml-2"
-                        style={{ width: "75px" }}
+                        style={{ width: "100px" }}
                       >
-                        Cancel
+                        {t("alerts.new-form.cancel")}
                       </Link>
                     </div>
                   </div>

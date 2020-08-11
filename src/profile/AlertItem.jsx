@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { CustomModal } from "@/_components";
+import { useTranslation } from "react-i18next";
 
 const AlertItem = (props) => {
   const { alert, tag, index, isGuest, path, handleDelete } = props;
+  const { t } = useTranslation();
+
   const deleteButton = {
     variant: "outline-danger",
     className: "ml-2",
@@ -14,9 +17,9 @@ const AlertItem = (props) => {
     },
   };
   const deleteModalContent = {
-    title: "Confirm Delete",
-    description: "Are you sure you want to delete this alert?",
-    confirmBtn: "Delete",
+    title: t("alerts.del-modal.title"),
+    description: t("alerts.del-modal.description"),
+    confirmBtn: t("alerts.del-modal.confirmBtn"),
   };
 
   return (
