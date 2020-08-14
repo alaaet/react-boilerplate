@@ -18,6 +18,10 @@ module.exports = {
         ],
       },
       {
+        test: /\.css$/,
+        use: [{ loader: "css-loader" }],
+      },
+      {
         test: /\.svg$/,
         loader: "svg-url-loader",
       },
