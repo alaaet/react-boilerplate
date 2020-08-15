@@ -29,6 +29,7 @@
     "username": "Username",
     "password": "Password",
     "confirm-password": "Confirm Password",
+    "copy": "Copy data from Account",
     "publicName": "Name",
     "publicMobile": "Mobile",
     "publicPhone": "Phone",

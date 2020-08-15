@@ -22,6 +22,7 @@ function Register({ history }) {
     username: "",
     password: "",
     confirmPassword: "", //the following are public data
+    dataIsCopied: false,
     publicName: "",
     publicMobile: "",
     publicPhone: "",
@@ -183,7 +184,7 @@ function Register({ history }) {
                         //props.form.setFieldTouched("primary_phone");
                       }}
                       onBlur={() => {
-                        // props.form.setFieldTouched("primaryPhone");
+                        props.form.setFieldTouched("primaryPhone");
                         // if (props.form.values.publicPhone === "")
                         //   props.form.setFieldValue(
                         //     "publicPhone",
@@ -210,8 +211,8 @@ function Register({ history }) {
                   (errors.email && touched.email ? " is-invalid" : "")
                 }
                 onBlur={() => {
-                  if (values.publicEmail === "")
-                    setFieldValue("publicEmail", values.email);
+                  // if (values.publicEmail === "")
+                  //   setFieldValue("publicEmail", values.email);
                 }}
               />
               <ErrorMessage
@@ -307,6 +308,28 @@ function Register({ history }) {
                   ({t("register.profile-title-2")})
                 </small>
               </h4>
+            </div>
+            <div className="form-row">
+              <div className="form-group col">
+                <small className="text-muted">{t("register.copy")}&nbsp;</small>
+                <Field
+                  name="dataIsCopied"
+                  type="checkbox"
+                  style={{ verticalAlign: "middle" }}
+                  onChange={(e) => {
+                    setFieldValue("dataIsCopied", e.target.checked);
+                    if (e.target.checked == true) {
+                      setFieldValue("publicName", values.firstName);
+                      setFieldValue("publicEmail", values.email);
+                      setFieldValue("publicPhone", values.primaryPhone);
+                    } else {
+                      setFieldValue("publicName", "");
+                      setFieldValue("publicEmail", "");
+                      setFieldValue("publicPhone", "");
+                    }
+                  }}
+                />
+              </div>
             </div>
             <div className="form-row">
               <div className="form-group col">
