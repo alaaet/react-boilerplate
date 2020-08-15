@@ -10,6 +10,7 @@ const DatePickerField = ({ handleMinor, handleNull, minAge, ...props }) => {
       id="datePickerField"
       {...field}
       {...props}
+      className="w-100"
       selected={(field.value && new Date(field.value)) || null}
       onChange={(val) => {
         //console.log(val);

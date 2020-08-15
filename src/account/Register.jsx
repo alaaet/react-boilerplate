@@ -36,12 +36,12 @@ function Register({ history }) {
     firstName: Yup.string().required(t("register.validation.fname")),
     lastName: Yup.string().required(t("register.validation.lname")),
     primary_phone: Yup.string()
-      .required("phone number is required")
-      .matches(phoneRegExp, "Phone number is not valid"),
+      .required(t("register.validation.primary_phone"))
+      .matches(phoneRegExp, t("register.validation.primary_phone-validity")),
     email: Yup.string()
       .email(t("register.validation.email-validity"))
       .required(t("register.validation.email")),
-    username: Yup.string().required("USERNAME IS REQUIRED"),
+    username: Yup.string().required(t("register.validation.username")),
     password: Yup.string()
       .min(6, t("register.validation.password-min-length"))
       .required(t("register.validation.password")),
@@ -51,16 +51,16 @@ function Register({ history }) {
         t("register.validation.password-matching")
       )
       .required(t("register.validation.confirm-password")),
-    publicName: Yup.string().required("PUBLIC NAME IS REQUIRED"),
+    publicName: Yup.string().required(t("register.validation.publicName")),
     publicMobile: Yup.string()
-      .required("Public mobile number is required")
-      .matches(phoneRegExp, "Phone number is not valid"),
+      .required(t("register.validation.publicMobile"))
+      .matches(phoneRegExp, t("register.validation.publicMobile-validity")),
     publicPhone: Yup.string()
-      .required("Public phone number is required")
-      .matches(phoneRegExp, "Phone number is not valid"),
+      .required(t("register.validation.publicPhone"))
+      .matches(phoneRegExp, t("register.validation.publicPhone-validity")),
     publicEmail: Yup.string()
-      .email(t("register.validation.email-validity"))
-      .required(t("register.validation.email")),
+      .email(t("register.validation.publicEmail"))
+      .required(t("register.validation.publicEmail-validity")),
     acceptTerms: Yup.bool().oneOf([true], t("register.validation.terms")),
   });
 
@@ -69,10 +69,9 @@ function Register({ history }) {
     accountService
       .register(fields)
       .then(() => {
-        notificationService.success(
-          "Registration successful, please check your email for verification instructions",
-          { keepAfterRouteChange: true }
-        );
+        notificationService.success(t("register.notification"), {
+          keepAfterRouteChange: true,
+        });
         history.push("login");
       })
       .catch((error) => {
@@ -99,10 +98,12 @@ function Register({ history }) {
           <h3 className="card-header">{t("register.title")}</h3>
           <div className="card-body">
             <div className="form-row">
-              <h5 className="w-100 text-center">
-                Account Data &nbsp;
-                <small className="text-muted">(private)</small>
-              </h5>
+              <h4 className="w-100 text-center">
+                {t("register.account-title-1")} &nbsp;
+                <small className="text-muted">
+                  ({t("register.account-title-2")})
+                </small>
+              </h4>
             </div>
             <div className="form-row">
               <div className="form-group col">
@@ -137,8 +138,8 @@ function Register({ history }) {
                     (errors.firstName && touched.firstName ? " is-invalid" : "")
                   }
                   onBlur={() => {
-                    if (values.publicName === "")
-                      setFieldValue("publicName", values.firstName);
+                    // if (values.publicName === "")
+                    //   setFieldValue("publicName", values.firstName);
                   }}
                 />
                 <ErrorMessage
@@ -165,7 +166,7 @@ function Register({ history }) {
               </div>
             </div>
             <div className="form-group">
-              <label>Primary Phone</label>
+              <label>{t("register.primaryPhone")}</label>
               <Field name="primaryPhone">
                 {(props) => {
                   return (
@@ -182,12 +183,12 @@ function Register({ history }) {
                         //props.form.setFieldTouched("primary_phone");
                       }}
                       onBlur={() => {
-                        props.form.setFieldTouched("primaryPhone");
-                        if (props.form.values.publicPhone === "")
-                          props.form.setFieldValue(
-                            "publicPhone",
-                            props.field.value
-                          );
+                        // props.form.setFieldTouched("primaryPhone");
+                        // if (props.form.values.publicPhone === "")
+                        //   props.form.setFieldValue(
+                        //     "publicPhone",
+                        //     props.field.value
+                        //   );
                       }}
                     />
                   );
@@ -220,7 +221,7 @@ function Register({ history }) {
               />
             </div>
             <div className="form-group">
-              <label className="mr-3">Date of birth</label>
+              <label className="mr-3">{t("register.dob")}</label>
               <DatePickerField
                 name="dob"
                 minAge={18}
@@ -234,19 +235,19 @@ function Register({ history }) {
                 className="invalid-feedback"
                 style={{ display: isMinor ? "block" : "none" }}
               >
-                you are a minor!
+                {t("register.validation.dob-minor")}
               </div>
               <div
                 className="invalid-feedback"
                 style={{ display: dobIsNull ? "block" : "none" }}
               >
-                Date of birth is required
+                {t("register.validation.dob")}
               </div>
             </div>
             <br />
             <div className="form-row">
               <div className="form-group col">
-                <label>Username</label>
+                <label>{t("register.username")}</label>
                 <Field
                   name="username"
                   type="text"
@@ -300,14 +301,16 @@ function Register({ history }) {
             </div>
             <hr />
             <div className="form-row">
-              <h5 className="w-100 text-center">
-                Profile Data &nbsp;
-                <small className="text-muted">(public)</small>
-              </h5>
+              <h4 className="w-100 text-center">
+                {t("register.profile-title-1")} &nbsp;
+                <small className="text-muted">
+                  ({t("register.profile-title-2")})
+                </small>
+              </h4>
             </div>
             <div className="form-row">
               <div className="form-group col">
-                <label>Name</label>
+                <label>{t("register.publicName")}</label>
                 <Field
                   name="publicName"
                   type="text"
@@ -326,7 +329,7 @@ function Register({ history }) {
               </div>
             </div>
             <div className="form-group">
-              <label>Mobile</label>
+              <label>{t("register.publicMobile")}</label>
               <Field name="publicMobile">
                 {(props) => {
                   return (
@@ -356,7 +359,7 @@ function Register({ history }) {
               />
             </div>
             <div className="form-group">
-              <label>Phone</label>
+              <label>{t("register.publicPhone")}</label>
               <Field name="publicPhone">
                 {(props) => {
                   return (
@@ -386,7 +389,7 @@ function Register({ history }) {
               />
             </div>
             <div className="form-group">
-              <label>Email</label>
+              <label>{t("register.publicEmail")}</label>
               <Field
                 name="publicEmail"
                 type="text"
@@ -404,7 +407,7 @@ function Register({ history }) {
               />
             </div>
             <div className="form-group col">
-              <label className="mr-3">{t("tags.edit-form.status")} </label>
+              <label className="mr-3">{t("register.publicIsActive")}</label>
               <Field name="publicIsActive">
                 {(props) => {
                   return (
@@ -424,10 +427,7 @@ function Register({ history }) {
               </Field>
               <p>
                 <small className="text-muted">
-                  When your public profile is active, people can see your public
-                  data, when your public profile is inactive, people will not be
-                  able to see your public data, but they can contact you through
-                  our masseging system.
+                  {t("register.instructions")}
                 </small>
               </p>
             </div>
