@@ -429,7 +429,7 @@ function Register({ history }) {
                 className="invalid-feedback"
               />
             </div>
-            <div className="form-group col">
+            <div className="form-group">
               <label className="mr-3">{t("register.publicIsActive")}</label>
               <Field name="publicIsActive">
                 {(props) => {
@@ -448,11 +448,10 @@ function Register({ history }) {
                   );
                 }}
               </Field>
-              <p>
-                <small className="text-muted">
-                  {t("register.instructions")}
-                </small>
-              </p>
+                <div class="bs-callout bs-callout-info">
+                <i class="fa fa-lightbulb-o fa-2x pl-1" aria-hidden="true"></i>&nbsp;
+                {t("register.instructions")}
+</div>
             </div>
             <div className="form-group form-check">
               <Field

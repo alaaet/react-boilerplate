@@ -10,6 +10,7 @@ const baseUrl = "http://167.86.81.129:8080/Aqar/users";
 export const accountService = {
   setUser,
   login,
+  socialLogin,
   logout,
   refreshToken,
   register,
@@ -43,6 +44,21 @@ function login(username, password) {
         sessionStorage.setItem("user", JSON.stringify(user));
         sessionStorage.setItem("jwt", user.jwtToken);
       }
+      return user;
+    });
+}
+
+function socialLogin(token) {  
+  return fetchWrapper
+    .post(`${baseUrl}/social-authenticate`, { ...token })
+    .then((user) => {
+      // publish user to subscribers and start timer to refresh token
+      userSubject.next(user);
+      startRefreshTokenTimer();
+      if (user != null) {
+        sessionStorage.setItem("user", JSON.stringify(user));
+        sessionStorage.setItem("jwt", user.jwtToken);
+      } 
       return user;
     });
 }
