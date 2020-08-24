@@ -48,9 +48,9 @@ function login(username, password) {
     });
 }
 
-function socialLogin(token) {  
+function socialLogin(token, provider) {
   return fetchWrapper
-    .post(`${baseUrl}/social-authenticate`, { ...token })
+    .post(`${baseUrl}/social-authenticate`, { ...token, provider })
     .then((user) => {
       // publish user to subscribers and start timer to refresh token
       userSubject.next(user);
@@ -58,7 +58,7 @@ function socialLogin(token) {
       if (user != null) {
         sessionStorage.setItem("user", JSON.stringify(user));
         sessionStorage.setItem("jwt", user.jwtToken);
-      } 
+      }
       return user;
     });
 }
