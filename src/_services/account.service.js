@@ -4,8 +4,9 @@ import config from "config";
 import { fetchWrapper, history } from "@/_helpers";
 
 const userSubject = new BehaviorSubject(null);
-const baseUrl = "http://167.86.81.129:8080/Aqar/users";
-//const baseUrl = "http://localhost:8080/users";
+const serverUrl = "http://localhost:8080";
+//const serverUrl = "http://167.86.81.129:8080/Aqar";
+const baseUrl = `${serverUrl}/users`;
 
 export const accountService = {
   setUser,
@@ -23,6 +24,7 @@ export const accountService = {
   create,
   update,
   delete: _delete,
+  serverUrl,
   user: userSubject.asObservable(),
   get userValue() {
     return userSubject.value;

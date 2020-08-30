@@ -92,6 +92,9 @@ function AdminNav({ match }) {
         <NavLink to={`${path}/users`} className="nav-item nav-link">
           Users
         </NavLink>
+        <NavLink to={`${path}/tags`} className="nav-item nav-link">
+          Tags
+        </NavLink>
       </div>
     </nav>
   );
