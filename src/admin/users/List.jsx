@@ -48,6 +48,7 @@ function List({ match }) {
     });
   }
   const handlePageClick = ({ selected }) => {
+    console.log(selected);
     setOffset(Math.ceil(selected * usersPerPage));
   };
   function toggleFilters() {
@@ -107,18 +108,23 @@ function List({ match }) {
                       to={`${path}/edit/${user.id}`}
                       className="btn btn-sm btn-primary mr-1"
                     >
-                      Edit
+                      <i className="fa fa-pencil" aria-hidden="true"></i>
+                      <span className="d-none d-md-inline">&nbsp;Edit</span>
                     </Link>
                     <button
                       onClick={() => deleteUser(user.id)}
                       className="btn btn-sm btn-danger"
-                      style={{ width: "60px" }}
                       disabled={user.isDeleting}
                     >
                       {user.isDeleting ? (
                         <span className="spinner-border spinner-border-sm"></span>
                       ) : (
-                        <span>Delete</span>
+                        <React.Fragment>
+                          <i className="fa fa-trash-o" aria-hidden="true"></i>
+                          <span className="d-none d-md-inline">
+                            &nbsp;Delete
+                          </span>
+                        </React.Fragment>
                       )}
                     </button>
                   </td>
@@ -128,8 +134,8 @@ function List({ match }) {
           </table>
           {filteredUsers.length > usersPerPage && (
             <ReactPaginate
-              previousLabel={"previous"}
-              nextLabel={"next"}
+              previousLabel={"<previous"}
+              nextLabel={"next>"}
               breakLabel={"..."}
               breakClassName={"break-me"}
               pageCount={filteredUsers.length / usersPerPage}
@@ -150,10 +156,13 @@ function List({ match }) {
           )}
         </React.Fragment>
       )}
-      {filteredUsers.length == 0 && (
+      {filteredUsers.length == 0 && currentRole == "All" && (
         <p className="text-center">
           <span className="spinner-border spinner-border-lg align-center"></span>
         </p>
+      )}
+      {filteredUsers.length == 0 && currentRole != "All" && (
+        <p className="text-center">This filter did not yeald any results!</p>
       )}
     </div>
   );
