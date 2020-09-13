@@ -2,8 +2,10 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
+import { tagService, notificationService } from "@/_services";
 
-const Activate = () => {
+const Activate = (props) => {
+  const { handleActivate } = props;
   const { t } = useTranslation();
   const initialValues = {
     tagCode: "",
@@ -14,8 +16,21 @@ const Activate = () => {
     actCode: Yup.string().required(t("tags.validation.actCode")),
   });
 
-  function onSubmit({ tagCode, actCode }, { setSubmitting }) {
-    //Activate the tag
+  function onSubmit({ tagCode, actCode }, { setSubmitting, resetForm }) {
+    tagService
+      .activate(tagCode, actCode)
+      .then((tag) => {
+        handleActivate(tag);
+        notificationService.success(
+          'Tag: "' + tagCode + '" was activated successfully!'
+        );
+        resetForm({});
+      })
+      .catch((error) => {
+        console.log(error);
+        notificationService.error(error);
+      });
+    setSubmitting(false);
   }
 
   return (

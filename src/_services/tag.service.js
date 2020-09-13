@@ -8,6 +8,7 @@ export const tagService = {
   getById,
   getMaterialTypes,
   getDimensionTypes,
+  getNewActivationCode,
   create,
   update,
   delete: _delete,
@@ -33,6 +34,10 @@ function getMaterialTypes() {
 
 function getDimensionTypes() {
   return fetchWrapper.get(`${baseUrl}/dimension-types`);
+}
+
+function getNewActivationCode() {
+  return fetchWrapper.get(`${baseUrl}/gen-act-code`);
 }
 
 function create(params) {

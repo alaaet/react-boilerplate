@@ -5,11 +5,10 @@ import { useTranslation } from "react-i18next";
 
 const TagRow = (props) => {
   const { tag, index, path, handleDelete } = props;
-  console.log(tag);
   const { t } = useTranslation();
   const deleteButton = {
     variant: "danger",
-    className: "",
+    className: "btn-sm",
     style: { width: "60px" },
     size: "sm",
     innerHtml: () => {
@@ -25,23 +24,17 @@ const TagRow = (props) => {
   return (
     <tr key={tag.id}>
       <td>{tag.value}</td>
-      <td>{tag.materialType.material}</td>
-      <td className="additional">{formattedDate(tag.assignedAt)}</td>
+      <td className="additional">
+        {tag.userId == null ? "Unassigned" : tag.userId}
+      </td>
+      <td>{tag.alerts.length > 0 ? "Yse" : "No"}</td>
       <td style={{ whiteSpace: "nowrap" }}>
-        <Link
-          to={{
-            pathname: `${path}/create-alert/${tag.id}`,
-            state: { alert: null, tag: tag },
-          }}
-          className="btn btn-sm btn-success mr-1"
-        >
-          {t("tags.btns.new-alert")}
-        </Link>
         <Link
           to={`${path}/edit/${tag.id}`}
           className="btn btn-sm btn-primary mr-1"
         >
-          {t("tags.btns.edit")}
+          <i className="fa fa-pencil" aria-hidden="true"></i>
+          <span className="d-none d-md-inline">&nbsp;Edit</span>
         </Link>
         <CustomModal
           handleAction={() => handleDelete(tag)}
@@ -54,7 +47,4 @@ const TagRow = (props) => {
   );
 };
 
-const formattedDate = (elms) => {
-  return new Date(...elms).toLocaleDateString().toString();
-};
 export default TagRow;

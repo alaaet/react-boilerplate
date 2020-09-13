@@ -7,7 +7,7 @@ function Inform({ match }) {
   return (
     <div className="container ">
       <Switch>
-        <Route exact path={path} component={PublicAlert} />
+        <Route path={"/:id"} component={PublicAlert} />
       </Switch>
     </div>
   );

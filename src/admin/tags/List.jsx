@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import { MaterialTypeFilter, DimensionsTypeFilter } from "./filters";
 import { tagService } from "@/_services";
+import TagRow from "./tagRow";
 
 function List({ match }) {
   const { path } = match;
@@ -14,6 +15,7 @@ function List({ match }) {
   const [currentDimensionType, setDimensionType] = useState("All");
   const [filtersMenuCollapsed, setFiltersMenuCollapsed] = useState(true);
   const [currentPageTags, setCurrentPageTags] = useState([]);
+  const [deletedTag, setDeletedTag] = useState(null);
   useEffect(() => {
     if (tags.length == 0)
       tagService.getAll().then((x) => {
@@ -39,17 +41,18 @@ function List({ match }) {
     setCurrentPageTags(filteredTags.slice(offset, maxIndex));
   }, [filteredTags, offset]);
 
+  useEffect(() => {
+    if (deletedTag !== null) {
+      deleteTag(deletedTag.id);
+    }
+  }, [deletedTag]);
+
   function deleteTag(id) {
-    setTags(
-      tags.map((x) => {
-        if (x.id === id) {
-          x.isDeleting = true;
-        }
-        return x;
-      })
-    );
     tagService.delete(id).then(() => {
-      setTags((tags) => tags.filter((x) => x.id !== id));
+      console.log("deleted!");
+      setFilteredTags((filteredTags) =>
+        filteredTags.filter((x) => x.id !== id)
+      );
     });
   }
   const handlePageClick = ({ selected }) => {
@@ -116,39 +119,14 @@ function List({ match }) {
               </tr>
             </thead>
             <tbody>
-              {currentPageTags.map((tag) => (
-                <tr key={tag.id}>
-                  <td>{tag.value}</td>
-                  <td className="additional">
-                    {tag.userId == null ? "Unassigned" : tag.userId}
-                  </td>
-                  <td>{tag.alerts.length > 0 ? "Yse" : "No"}</td>
-                  <td style={{ whiteSpace: "nowrap" }}>
-                    <Link
-                      to={`${path}/edit/${tag.id}`}
-                      className="btn btn-sm btn-primary mr-1"
-                    >
-                      <i className="fa fa-pencil" aria-hidden="true"></i>
-                      <span className="d-none d-md-inline">&nbsp;Edit</span>
-                    </Link>
-                    <button
-                      onClick={() => deleteTag(tag.id)}
-                      className="btn btn-sm btn-danger"
-                      disabled={tag.isDeleting}
-                    >
-                      {tag.isDeleting ? (
-                        <span className="spinner-border spinner-border-sm"></span>
-                      ) : (
-                        <React.Fragment>
-                          <i className="fa fa-trash-o" aria-hidden="true"></i>
-                          <span className="d-none d-md-inline">
-                            &nbsp;Delete
-                          </span>
-                        </React.Fragment>
-                      )}
-                    </button>
-                  </td>
-                </tr>
+              {currentPageTags.map((tag, index) => (
+                <TagRow
+                  key={index}
+                  tag={tag}
+                  index={index}
+                  path={path}
+                  handleDelete={setDeletedTag}
+                />
               ))}
             </tbody>
           </table>

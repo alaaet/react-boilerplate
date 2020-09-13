@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import NotFound from "./notFound";
 import Inform from "./inform";
 
 const Guest = ({ history, match }) => {
@@ -7,7 +8,8 @@ const Guest = ({ history, match }) => {
   return (
     <div className="container pb-3">
       <Switch>
-        <Route path={`${path}/inform`} component={Inform} />
+        <Route path={`${path}/not-found`} component={NotFound} />
+        <Route path={"/:id"} component={Inform} />
       </Switch>
       <br />
     </div>

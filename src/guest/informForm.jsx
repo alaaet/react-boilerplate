@@ -4,6 +4,10 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
 import { accountService, notificationService } from "@/_services";
+import {
+  GoogleReCaptchaProvider,
+  GoogleReCaptcha,
+} from "react-google-recaptcha-v3";
 
 function InformForm({ history }) {
   const { t } = useTranslation();
@@ -24,7 +28,7 @@ function InformForm({ history }) {
     } else {
       // go to destination page
       //console.log(tagCode);
-      const { from } = { from: { pathname: "/guest/inform" } };
+      const { from } = { from: { pathname: `/${tagCode}` } };
       console.log(from);
       history.push(from);
     }
@@ -59,6 +63,13 @@ function InformForm({ history }) {
                   component="div"
                   className="invalid-feedback"
                 />
+              </div>
+              <div className="form-row">
+                <div className="form-group col">
+                  <GoogleReCaptchaProvider reCaptchaKey="6LcVEsgZAAAAAAXQVN87WW6YikSmBVDylDapa0ul">
+                    <GoogleReCaptcha onVerify={(token) => console.log(token)} />
+                  </GoogleReCaptchaProvider>
+                </div>
               </div>
               <div className="form-row">
                 <div className="form-group col">

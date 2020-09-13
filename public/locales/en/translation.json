@@ -214,14 +214,14 @@
       "validation": {
         "title": "Title is required",
         "description": "Description is required"
-      },
-      "del-modal": {
-        "title": "Confirm Delete",
-        "description": "Are you sure you want to delete this alert?",
-        "confirmBtn": "Delete"
-      },
-      "del-notification": "The alert titled: '{{alertTitle}}' has been deleted successfully!"
-    }
+      }
+    },
+    "del-modal": {
+      "title": "Confirm Delete",
+      "description": "Are you sure you want to delete this alert?",
+      "confirmBtn": "Delete"
+    },
+    "del-notification": "The alert titled: '{{alertTitle}}' has been deleted successfully!"
   },
   "inbox": { "title": "INBOX", "send-btn": "Send" },
 

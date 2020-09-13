@@ -21,6 +21,7 @@ export const accountService = {
   resetPassword,
   getAll,
   getById,
+  getByTagCode,
   create,
   update,
   delete: _delete,
@@ -79,6 +80,8 @@ function refreshToken() {
   return fetchWrapper
     .post(`${baseUrl}/refresh-token`, sessionStorage.getItem("jwt"))
     .then((user) => {
+      console.log("Token was refreshed");
+      console.log(user);
       // publish user to subscribers and start timer to refresh token
       userSubject.next(user);
       startRefreshTokenTimer();
@@ -116,6 +119,10 @@ function getAll() {
 
 function getById(id) {
   return fetchWrapper.get(`${baseUrl}/${id}`);
+}
+
+function getByTagCode(tagCode) {
+  return fetchWrapper.get(`${baseUrl}/by-tag-code/${tagCode}`);
 }
 
 function create(params) {

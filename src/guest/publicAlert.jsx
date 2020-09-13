@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AlertItem from "../profile/AlertItem";
 import ContactUser from "./contactUser";
+import { accountService } from "@/_services";
 import { useTranslation } from "react-i18next";
 
-const PublicAlert = () => {
+const PublicAlert = ({ history, match }) => {
+  const { id } = match.params;
   const { t } = useTranslation();
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    profileImage: "",
+  });
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = `This is the public information for the Tag: ${id}`;
+    // Get the user data
+    accountService
+      .getByTagCode(id)
+      .then((x) => {
+        console.log(x);
+        setUser(x);
+      })
+      .catch(() => {
+        //redirect to not found page
+        const { from } = { from: { pathname: "/guest/not-found" } };
+        console.log(from);
+        history.push(from);
+      });
+  }, [id]);
 
   return (
     <div className="pt-3">
@@ -12,15 +38,26 @@ const PublicAlert = () => {
         <div className="col-md-4 col-xl-4" data-aos="fade-up">
           <div className="card-one shadow p-5">
             <h1 className="display-4">
-              <img
-                className="img-fluid img-thumbnail rounded-circle"
-                width="150px"
-                src={require("../img/no_profile_img.png")}
-                alt="Profile image"
-              />
+              {user.profileImage !== "" && user.profileImage !== null ? (
+                <img
+                  className="img-fluid img-thumbnail rounded-circle"
+                  width="150px"
+                  src={user.profileImage}
+                  alt="Profile image"
+                />
+              ) : (
+                <img
+                  className="img-fluid img-thumbnail rounded-circle"
+                  width="150px"
+                  src={require("../img/no_profile_img.png")}
+                  alt="Profile image"
+                />
+              )}
             </h1>
-            <p className="lead">{t("honorifics.mr")} John Doe</p>
-            <span className="badge"> john@gmail.com</span>
+            <p className="lead">
+              {t("honorifics.mr")} {user.firstName} {user.lastName}
+            </p>
+            <span className="badge"> {user.email}</span>
             <hr className="my-4" />
             <p>this is a description about me...</p>
             <div className="d-flex justify-content-around">

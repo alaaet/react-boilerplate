@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, Route } from "react-router-dom";
+import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import { Role } from "@/_helpers";
 import { accountService } from "@/_services";
@@ -7,22 +8,25 @@ import Header from "./Header";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
 function Nav(props) {
-  const { lng, changeLanguage } = props;
+  const { lng, changeLanguage, history } = props;
   const { t } = useTranslation();
   const [user, setUser] = useState({});
+
   useEffect(() => {
     const subscription = accountService.user.subscribe((x) => setUser(x));
     return subscription.unsubscribe;
   }, []);
-
+  const handleSelect = (eventKey) => {
+    history.push(eventKey);
+  };
   // only show nav when logged in
   if (!user) return null;
 
   return (
     <div>
       <nav
-        className="navbar navbar-expand navbar-dark "
-        style={{ backgroundColor: "#343a40" }}
+        className="navbar navbar-expand navbar-dark  "
+        style={{ backgroundColor: "#28a745" }}
       >
         <div className="navbar-nav w-100">
           <Header exact to="/" />
@@ -70,6 +74,21 @@ function Nav(props) {
               <NavLink to="/inbox" className="nav-item nav-link pr-3 ">
                 <i className="fa fa-inbox" aria-hidden="true"></i>
               </NavLink>
+            )}
+            {user.role === Role.User && (
+              <NavDropdown
+                title={<i className="fa fa-gear" aria-hidden="true"></i>}
+                id="settings-dropdown"
+                onSelect={handleSelect}
+              >
+                <NavDropdown.Item eventKey="/user">
+                  Account Settings
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item eventKey="/inbox">
+                  Something else...
+                </NavDropdown.Item>
+              </NavDropdown>
             )}
 
             <a onClick={accountService.logout} className="nav-item nav-link ">

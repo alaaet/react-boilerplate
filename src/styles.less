@@ -1,6 +1,7 @@
 // Imports
 @import "react-datepicker/dist/react-datepicker.css";
 @import "react-phone-number-input/style.css";
+@import "react-web-tabs/dist/react-web-tabs.css";
 
 // global styles
 .fill {
@@ -30,7 +31,12 @@ a {
 
 .nav-img {
   height: 40px;
-  filter: invert(90%);
+  filter: invert(100%);
+}
+
+// settings menu
+#settings-dropdown::after {
+  display: none;
 }
 
 .bs-callout {
@@ -174,6 +180,11 @@ table {
 }
 .table th {
   text-align: center;
+}
+
+// Recaptch badge
+.grecaptcha-badge {
+  display: none;
 }
 
 // Footer
@@ -365,4 +376,10 @@ aside.sticker.cyan {
     #2d8aa6 20px,
     #57b1c7
   );
+}
+
+// Account settings tabs
+.rwt__tablist[aria-orientation="vertical"]
+  .rwt__tab[aria-selected="true"]:after {
+  border-right-color: #28a745;
 }

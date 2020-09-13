@@ -22,7 +22,8 @@ const CustomModal = (props) => {
         size={btn.size}
         onClick={handleShow}
       >
-        {btn.innerHtml()}
+        <i className="fa fa-trash-o" aria-hidden="true"></i>
+        <span className="d-none d-md-inline">&nbsp;{btn.innerHtml()}</span>
       </Button>
 
       <Modal show={show} onHide={handleClose}>

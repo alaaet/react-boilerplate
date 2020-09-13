@@ -9,8 +9,8 @@ import { App } from "./app";
 import "./styles.less";
 
 // attempt silent token refresh before startup
-accountService.refreshToken().finally(startApp);
-
+//accountService.refreshToken().finally(startApp);
+startApp();
 function handleCredentialResponse(res) {
   notificationService.clear();
   let token = parseJwt(res.credential);

@@ -13,7 +13,7 @@ const AlertItem = (props) => {
     style: "",
     size: "",
     innerHtml: () => {
-      return <i className="fa fa-trash" aria-hidden="true"></i>;
+      return;
     },
   };
   const deleteModalContent = {

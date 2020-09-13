@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import { accountService } from "@/_services";
 import { RoleFilter } from "./filters";
+import UserRow from "./userRow";
 
 function List({ match }) {
   const { path } = match;
@@ -13,6 +14,7 @@ function List({ match }) {
   const [currentRole, setCurrentRole] = useState("All");
   const [filtersMenuCollapsed, setFiltersMenuCollapsed] = useState(true);
   const [currentPageUsers, setCurrentPageUsers] = useState([]);
+  const [deletedUser, setDeletedUser] = useState(null);
 
   useEffect(() => {
     if (users.length == 0) {
@@ -34,6 +36,12 @@ function List({ match }) {
     setCurrentPageUsers(filteredUsers.slice(offset, maxIndex));
   }, [filteredUsers, offset]);
 
+  useEffect(() => {
+    if (deletedUser !== null) {
+      deleteUser(deletedUser.id);
+    }
+  }, [deletedUser]);
+
   function deleteUser(id) {
     setUsers(
       users.map((x) => {
@@ -44,7 +52,9 @@ function List({ match }) {
       })
     );
     accountService.delete(id).then(() => {
-      setUsers((users) => users.filter((x) => x.id !== id));
+      setFilteredUsers((filteredUsers) =>
+        filteredUsers.filter((x) => x.id !== id)
+      );
     });
   }
   const handlePageClick = ({ selected }) => {
@@ -96,39 +106,14 @@ function List({ match }) {
               </tr>
             </thead>
             <tbody>
-              {currentPageUsers.map((user) => (
-                <tr key={user.id}>
-                  <td>
-                    {user.firstName} {user.lastName}
-                  </td>
-                  <td className="additional">{user.email}</td>
-                  <td>{user.role}</td>
-                  <td style={{ whiteSpace: "nowrap" }}>
-                    <Link
-                      to={`${path}/edit/${user.id}`}
-                      className="btn btn-sm btn-primary mr-1"
-                    >
-                      <i className="fa fa-pencil" aria-hidden="true"></i>
-                      <span className="d-none d-md-inline">&nbsp;Edit</span>
-                    </Link>
-                    <button
-                      onClick={() => deleteUser(user.id)}
-                      className="btn btn-sm btn-danger"
-                      disabled={user.isDeleting}
-                    >
-                      {user.isDeleting ? (
-                        <span className="spinner-border spinner-border-sm"></span>
-                      ) : (
-                        <React.Fragment>
-                          <i className="fa fa-trash-o" aria-hidden="true"></i>
-                          <span className="d-none d-md-inline">
-                            &nbsp;Delete
-                          </span>
-                        </React.Fragment>
-                      )}
-                    </button>
-                  </td>
-                </tr>
+              {currentPageUsers.map((user, index) => (
+                <UserRow
+                  key={index}
+                  user={user}
+                  index={index}
+                  path={path}
+                  handleDelete={setDeletedUser}
+                />
               ))}
             </tbody>
           </table>
