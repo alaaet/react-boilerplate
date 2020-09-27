@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs, Tab, TabPanel, TabList } from "react-web-tabs";
-import { Account } from "./Account";
+import { EditAccount } from "./EditAccount";
 import { PublicProfile } from "./PublicProfile";
 
 const User = ({ match }) => {
@@ -15,7 +15,7 @@ const User = ({ match }) => {
         </TabList>
 
         <TabPanel tabId="vertical-tab-one" className="w-100">
-          <Account />
+          <EditAccount />
         </TabPanel>
 
         <TabPanel tabId="vertical-tab-two" className="w-100">

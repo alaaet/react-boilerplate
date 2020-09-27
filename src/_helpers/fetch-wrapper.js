@@ -4,6 +4,7 @@ import { accountService } from "@/_services";
 export const fetchWrapper = {
   get,
   post,
+  postFile,
   put,
   delete: _delete,
 };
@@ -23,6 +24,21 @@ function post(url, body) {
     headers: { "Content-Type": "application/json", ...authHeader(url) },
     //credentials: 'include',
     body: JSON.stringify(body),
+  };
+  //console.log(requestOptions);
+  return fetch(url, requestOptions).then(handleResponse);
+}
+
+function postFile(url, file) {
+  // Create an object of formData
+  const formData = new FormData();
+  // Update the formData object
+  formData.append("file", file);
+  const requestOptions = {
+    method: "POST",
+    headers: { ...authHeader(url) },
+    //credentials: 'include',
+    body: formData,
   };
   //console.log(requestOptions);
   return fetch(url, requestOptions).then(handleResponse);
@@ -53,9 +69,10 @@ function authHeader(url) {
   const user = accountService.userValue;
   const isLoggedIn = user && user.jwtToken;
   const isApiUrl = url.startsWith(config.apiUrl);
-  //console.log(isLoggedIn)
+  console.log("api url", config.apiUrl);
   //console.log(config.apiUrl+"/"+url)
   if (isLoggedIn && isApiUrl) {
+    console.log({ Authorization: `Bearer ${user.jwtToken}` });
     return { Authorization: `Bearer ${user.jwtToken}` };
   } else {
     return {};

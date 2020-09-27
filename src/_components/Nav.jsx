@@ -85,9 +85,7 @@ function Nav(props) {
                   Account Settings
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item eventKey="/inbox">
-                  Something else...
-                </NavDropdown.Item>
+                <NavDropdown.Item eventKey="/">Help Center</NavDropdown.Item>
               </NavDropdown>
             )}
 

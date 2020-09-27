@@ -13,7 +13,7 @@ function Login({ history, location }) {
   const { t } = useTranslation();
 
   const responseGoogle = (res) => {
-    console.log(res.tokenObj.id_token);
+    console.log(res.tokenObj);
     notificationService.clear();
     let token = parseJwt(res.tokenObj.id_token);
     accountService

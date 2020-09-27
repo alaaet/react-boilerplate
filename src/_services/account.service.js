@@ -4,14 +4,15 @@ import config from "config";
 import { fetchWrapper, history } from "@/_helpers";
 
 const userSubject = new BehaviorSubject(null);
-const serverUrl = "http://localhost:8080";
-//const serverUrl = "http://167.86.81.129:8080/Aqar";
+//const serverUrl = "http://localhost:8080";
+const serverUrl = "http://167.86.81.129:8080/Aqar";
 const baseUrl = `${serverUrl}/users`;
 
 export const accountService = {
   setUser,
   login,
   socialLogin,
+  updateProfileImage,
   logout,
   refreshToken,
   register,
@@ -19,6 +20,7 @@ export const accountService = {
   forgotPassword,
   validateResetToken,
   resetPassword,
+  uploadProfilePicture,
   getAll,
   getById,
   getByTagCode,
@@ -65,7 +67,10 @@ function socialLogin(token, provider) {
       return user;
     });
 }
-
+function updateProfileImage(link) {
+  userSubject.value.profileImage = link;
+  userSubject.next(userSubject.value);
+}
 function logout() {
   // revoke token, stop refresh timer, publish null to user subscribers and redirect to login page
   sessionStorage.removeItem("user");
@@ -111,6 +116,10 @@ function resetPassword({ token, password, confirmPassword }) {
     password,
     confirmPassword,
   });
+}
+
+function uploadProfilePicture(file) {
+  return fetchWrapper.postFile(`${baseUrl}/upload-profile-picture`, file);
 }
 
 function getAll() {

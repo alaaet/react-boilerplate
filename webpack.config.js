@@ -50,8 +50,8 @@ module.exports = {
   externals: {
     // global app config object
     config: JSON.stringify({
-      //apiUrl: "http://167.86.81.129:8080/Aqar",
-      apiUrl: "http://localhost:8080",
+      apiUrl: "http://167.86.81.129:8080/Aqar",
+      //apiUrl: "http://localhost:8080",
     }),
   },
 };

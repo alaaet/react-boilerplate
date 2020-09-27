@@ -1,51 +1,137 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { accountService } from "@/_services";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
-function PublicProfile({ path }) {
+import { accountService, notificationService } from "@/_services";
+
+function PublicProfile({ history }) {
   const user = accountService.userValue;
-  const { t } = useTranslation();
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isEdited, setIsEdited] = useState(false);
+  const initialValues = {
+    fullNameEnabled: true,
+    emailEnabled: true,
+    profilePictureEnable: true,
+  };
+
+  function onSubmit(fields, { setStatus, setSubmitting }) {
+    setStatus();
+    accountService
+      .update(user.id, fields)
+      .then(() => {
+        notificationService.success("Update successful", {
+          keepAfterRouteChange: true,
+        });
+        history.push(".");
+      })
+      .catch((error) => {
+        setSubmitting(false);
+        notificationService.error(error);
+      });
+  }
 
   return (
-    <React.Fragment>
-      <h5 className="blocktext mt-2 mb-2">
-        {t("profile.pp-card-title")}&nbsp;
-        <Link to={`${path}/update`} className="btn btn-outline-dark blocktext">
-          <i className="fa fa-cog" aria-hidden="true"></i>
-        </Link>
-      </h5>
-      <div className="row h-100 justify-content-center align-items-center mb-3">
-        <div className="col-md-4 col-xl-4" data-aos="fade-up">
-          <div className="card-one shadow p-5">
-            <h1 className="display-4">
-              <img
-                className="img-fluid img-thumbnail rounded-circle"
-                width="150px"
-                src={require("../img/no_profile_img.png")}
-                alt="Profile image"
-              />
-            </h1>
-            <p className="lead">
-              {user.title} {user.firstName} {user.lastName}
-            </p>
-            <span className="badge"> {user.email}</span>
-            <hr className="my-4" />
-            <p>this is a description about me...</p>
-            <div className="d-flex justify-content-around">
-              <a href="#" className="btn btn-outline-dark">
-                <i className="fa fa-phone" aria-hidden="true"></i>&nbsp;
-                {t("profile.call-me")}
-              </a>
-              <a href="#" className="btn btn-outline-dark">
-                <i className="fa fa-envelope" aria-hidden="true"></i>&nbsp;
-                {t("profile.contact-me")}
-              </a>
+    <div className="container">
+      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+        {({ errors, touched, isSubmitting }) => (
+          <Form>
+            <h3>Update Public Profile</h3>
+            <h6>
+              Check the following details from your account to make them public
+            </h6>
+            <div>
+              <div className="form-row">
+                <div className="form-group form-check">
+                  <Field
+                    type="checkbox"
+                    name="fullNameEnabled"
+                    id="fullName"
+                    className={
+                      "form-check-input " +
+                      (errors.fullNameEnabled && touched.fullNameEnabled
+                        ? " is-invalid"
+                        : "")
+                    }
+                  />
+                  <label htmlFor="fullName" className="form-check-label">
+                    Nickname ({user.username})
+                  </label>
+                  <ErrorMessage
+                    name="fullNameEnabled"
+                    component="div"
+                    className="invalid-feedback"
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group form-check">
+                  <Field
+                    name="emailEnabled"
+                    id="email"
+                    type="checkbox"
+                    className={
+                      "form-check-input " +
+                      (errors.emailEnabled && touched.emailEnabled
+                        ? " is-invalid"
+                        : "")
+                    }
+                  />
+                  <label htmlFor="email" className="form-check-label">
+                    Main email ({user.email})
+                  </label>
+                  <ErrorMessage
+                    name="emailEnabled"
+                    component="div"
+                    className="invalid-feedback"
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group form-check">
+                  <Field
+                    name="profilePictureEnable"
+                    id="profilePictue"
+                    type="checkbox"
+                    className={
+                      "form-check-input " +
+                      (errors.profilePictureEnable &&
+                      touched.profilePictureEnable
+                        ? " is-invalid"
+                        : "")
+                    }
+                  />
+                  <label htmlFor="profilePictue" className="form-check-label">
+                    Profile image
+                  </label>
+                  <div class="user"></div>
+
+                  <ErrorMessage
+                    name="profilePictureEnable"
+                    component="div"
+                    className="invalid-feedback"
+                  />
+                </div>
+              </div>
+              <hr />
+              <h3>Additional Data:</h3>
+              <div className="form-group">
+                <button
+                  type="submit"
+                  disabled={isSubmitting | !isEdited}
+                  className="btn btn-primary mr-2"
+                >
+                  {isSubmitting && (
+                    <span className="spinner-border spinner-border-sm mr-1"></span>
+                  )}
+                  Save Changes
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </React.Fragment>
+          </Form>
+        )}
+      </Formik>
+    </div>
   );
 }
 
