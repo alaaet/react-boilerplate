@@ -17,7 +17,11 @@ function Nav(props) {
     return subscription.unsubscribe;
   }, []);
   const handleSelect = (eventKey) => {
-    history.push(eventKey);
+    if (eventKey === "/LOGOUT") {
+      accountService.logout();
+    } else {
+      history.push(eventKey);
+    }
   };
   // only show nav when logged in
   if (!user) return null;
@@ -39,6 +43,12 @@ function Nav(props) {
           {user.role === Role.User && (
             <NavLink to="/tags" className="nav-item nav-link">
               {t("nav.tags")}
+            </NavLink>
+          )}
+          {user.role === Role.User && (
+            <NavLink to="/inbox" className="nav-item nav-link pr-3 ">
+              {/* <i className="fa fa-inbox" aria-hidden="true"></i> */}
+              Inbox
             </NavLink>
           )}
           {user.role === Role.Admin && (
@@ -69,12 +79,6 @@ function Nav(props) {
                 <span className="flag-icon flag-icon-es"> </span> Español
               </NavDropdown.Item>
             </NavDropdown>
-
-            {user.role === Role.User && (
-              <NavLink to="/inbox" className="nav-item nav-link pr-3 ">
-                <i className="fa fa-inbox" aria-hidden="true"></i>
-              </NavLink>
-            )}
             {user.role === Role.User && (
               <NavDropdown
                 title={<i className="fa fa-gear" aria-hidden="true"></i>}
@@ -84,14 +88,15 @@ function Nav(props) {
                 <NavDropdown.Item eventKey="/user">
                   Account Settings
                 </NavDropdown.Item>
-                <NavDropdown.Divider />
                 <NavDropdown.Item eventKey="/">Help Center</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item eventKey="/LOGOUT">Logout</NavDropdown.Item>
               </NavDropdown>
             )}
 
-            <a onClick={accountService.logout} className="nav-item nav-link ">
+            {/* <a onClick={accountService.logout} className="nav-item nav-link ">
               <i className="fa fa-sign-out" aria-hidden="true"></i>
-            </a>
+            </a> */}
           </div>
         </div>
       </nav>

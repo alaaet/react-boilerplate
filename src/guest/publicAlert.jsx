@@ -62,10 +62,6 @@ const PublicAlert = ({ history, match }) => {
             <p>this is a description about me...</p>
             <div className="d-flex justify-content-around">
               <a href="#" className="btn btn-outline-dark">
-                <i className="fa fa-phone" aria-hidden="true"></i>{" "}
-                {t("examine-result.profile.call-me")}
-              </a>
-              <a href="#" className="btn btn-outline-dark">
                 <i className="fa fa-envelope" aria-hidden="true"></i>{" "}
                 {t("examine-result.profile.contact-me")}
               </a>
@@ -76,7 +72,7 @@ const PublicAlert = ({ history, match }) => {
       <hr />
       <AlertItem alert={alert} index={1} isGuest={true} />
       <hr />
-      <ContactUser />
+      <ContactUser username={user.firstName} />
     </div>
   );
 };

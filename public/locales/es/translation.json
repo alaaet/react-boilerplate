@@ -87,15 +87,11 @@
   },
   "examine-result": {
     "profile": {
-      "call-me": "Llámame",
-      "contact-me": "Contáctame"
+      "contact-me": "Mensaje privado"
     },
     "contact-form": {
-      "title": "Contactar con {{username}}",
-      "name-ph": "Nombre",
-      "e-mail-ph": "Correo electrónico",
-      "phone-ph": "Teléfono",
-      "msg-ph": "Mensaje",
+      "title": "Envie un mensaje público a {{username}}",
+      "msg-ph": "Mensaje público",
       "submit": "Enviar"
     }
   },

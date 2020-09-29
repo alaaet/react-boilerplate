@@ -87,16 +87,12 @@
   },
   "examine-result": {
     "profile": {
-      "call-me": "Call me",
-      "contact-me": "Contact me"
+      "contact-me": "Private message"
     },
     "contact-form": {
-      "title": "Contact {{username}}",
-      "name-ph": "Name",
-      "e-mail-ph": "E-mail",
-      "phone-ph": "Phone",
-      "msg-ph": "Message",
-      "submit": "Submit"
+      "title": "Send a public message to {{username}}",
+      "msg-ph": "Public message",
+      "submit": "Send"
     }
   },
   "work-with-us": {

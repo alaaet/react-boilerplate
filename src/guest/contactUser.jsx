@@ -1,44 +1,19 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-const ContactUser = () => {
+const ContactUser = (props) => {
   const { t } = useTranslation();
-
+  const { username } = props;
   return (
     <section id="contact">
       <div className="well well-sm">
-        <h3>{t("examine-result.contact-form.title", { username: "John" })}</h3>
+        <h3>
+          {t("examine-result.contact-form.title", { username: username })}
+        </h3>
       </div>
 
-      <div className="col-md-5">
+      <div className="col">
         <form>
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              name=""
-              value=""
-              placeholder={t("examine-result.contact-form.name-ph")}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="email"
-              className="form-control"
-              name=""
-              value=""
-              placeholder={t("examine-result.contact-form.e-mail-ph")}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="tel"
-              className="form-control"
-              name=""
-              value=""
-              placeholder={t("examine-result.contact-form.phone-ph")}
-            />
-          </div>
           <div className="form-group">
             <textarea
               className="form-control"
