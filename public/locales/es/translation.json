@@ -170,6 +170,27 @@
     "call-me": "Llámame",
     "contact-me": "Contáctame"
   },
+  "user":{
+    "index":{
+      "account": "La cuenta",
+      "public-profile": "Perfil público",
+      "billing": "Facturación",
+      "billing-tab-content": "Contenido de la pestaña de facturación"
+    },
+    "edit-account":{
+      "update-account": "Actualizar la cuenta",
+      "first-name": "Nombre",
+      "last-name": "Apellido",
+      "email": "Correo electrónico",
+      "profile-picture": "Foto del perfil",
+      "update-profile-image": "Actualizar foto del perfil",
+      "change-password": "Cambia la contraseña",
+      "leave-psw-blank": "Déjelo en blanco para mantener la misma contraseña",
+      "password": "Contraseña",
+      "confirm-password": "Confirmar contraseña",
+      "save-changes": "Guardar los cambios"
+    }
+  },
   "tags": {
     "add-title": "Introduce la información de tu etiqueta",
     "tag-code": "Código de etiqueta",
