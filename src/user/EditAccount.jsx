@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useTranslation } from "react-i18next";
 
 import { accountService, notificationService } from "@/_services";
 
@@ -10,6 +11,7 @@ function EditAccount({ history }) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [isEdited, setIsEdited] = useState(false);
   const [profileImagePathIsSet, setProfileImagePath] = useState(false);
+  const { t } = useTranslation();
 
   const initialValues = {
     title: user.title,
@@ -99,7 +101,7 @@ function EditAccount({ history }) {
           });
           return (
             <Form>
-              <h3>Update Account</h3>
+              <h3>{t("user.edit-account.update-account")}</h3>
               <div>
                 <div className="form-row">
                   <div className="form-group col">
@@ -125,7 +127,7 @@ function EditAccount({ history }) {
                     />
                   </div>
                   <div className="form-group col-5">
-                    <label>First Name</label>
+                    <label>{t("user.edit-account.first-name")}</label>
                     <Field
                       name="firstName"
                       type="text"
@@ -143,7 +145,7 @@ function EditAccount({ history }) {
                     />
                   </div>
                   <div className="form-group col-5">
-                    <label>Last Name</label>
+                    <label>{t("user.edit-account.last-name")}</label>
                     <Field
                       name="lastName"
                       type="text"
@@ -162,7 +164,7 @@ function EditAccount({ history }) {
                   </div>
                 </div>
                 <div className="form-group">
-                  <label>Email</label>
+                  <label>{t("user.edit-account.email")}</label>
                   <Field
                     name="email"
                     type="text"
@@ -179,7 +181,7 @@ function EditAccount({ history }) {
                 </div>
                 <div className="form-row">
                   <div className="col-4 my-auto">
-                    <label>Profile Picture</label>
+                    <label>{t("user.edit-account.profile-picture")}</label>
                   </div>
                   <div className="col-4 my-auto">
                     <h1 className="display-4">
@@ -237,15 +239,15 @@ function EditAccount({ history }) {
                       className="btn btn-success w-100"
                       disabled={!profileImagePathIsSet}
                     >
-                      Update Profile Image
+                      {t("user.edit-account.update-profile-image")}
                     </button>
                   </div>
                 </div>
-                <h5 className="pt-3">Change Password</h5>
-                <p>Leave blank to keep the same password</p>
+                <h5 className="pt-3">{t("user.edit-account.change-password")}</h5>
+                <p>{t("user.edit-account.leave-psw-blank")}</p>
                 <div className="form-row">
                   <div className="form-group col">
-                    <label>Password</label>
+                    <label>{t("user.edit-account.password")}</label>
                     <Field
                       name="password"
                       type="password"
@@ -263,7 +265,7 @@ function EditAccount({ history }) {
                     />
                   </div>
                   <div className="form-group col">
-                    <label>Confirm Password</label>
+                    <label>{t("user.edit-account.confirm-password")}</label>
                     <Field
                       name="confirmPassword"
                       type="password"
@@ -290,7 +292,7 @@ function EditAccount({ history }) {
                     {isSubmitting && (
                       <span className="spinner-border spinner-border-sm mr-1"></span>
                     )}
-                    Save Changes
+                    {t("user.edit-account.save-changes")}
                   </button>
                 </div>
               </div>

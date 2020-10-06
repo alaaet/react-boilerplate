@@ -2,16 +2,18 @@ import React from "react";
 import { Tabs, Tab, TabPanel, TabList } from "react-web-tabs";
 import { EditAccount } from "./EditAccount";
 import { PublicProfile } from "./PublicProfile";
+import { useTranslation } from "react-i18next";
 
+const { t } = useTranslation();
 const User = ({ match }) => {
   const { path } = match;
   return (
     <div className="container pb-3 mt-5">
       <Tabs defaultTab="vertical-tab-one" vertical className="vertical-tabs">
         <TabList>
-          <Tab tabFor="vertical-tab-one">Account</Tab>
-          <Tab tabFor="vertical-tab-two">Public Profile</Tab>
-          <Tab tabFor="vertical-tab-three">Billing</Tab>
+          <Tab tabFor="vertical-tab-one">{t("user.index.account")}</Tab>
+          <Tab tabFor="vertical-tab-two">{t("user.index.public-profile")}</Tab>
+          <Tab tabFor="vertical-tab-three">{t("user.index.billing")}</Tab>
         </TabList>
 
         <TabPanel tabId="vertical-tab-one" className="w-100">
@@ -23,7 +25,7 @@ const User = ({ match }) => {
         </TabPanel>
 
         <TabPanel tabId="vertical-tab-three" className="w-100">
-          <p>Billing tab content</p>
+          <p>{t("user.index.billing-tab-content")}</p>
         </TabPanel>
       </Tabs>
     </div>

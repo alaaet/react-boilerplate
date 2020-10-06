@@ -166,6 +166,27 @@
     "call-me": "Call me",
     "contact-me": "Contact me"
   },
+  "user":{
+    "index":{
+      "account": "Account",
+      "public-profile": "Public Profile",
+      "billing": "Billing",
+      "billing-tab-content": "Billing tab content"
+    },
+    "edit-account":{
+      "update-account": "Update Account",
+      "first-name": "First Name",
+      "last-name": "Last Name",
+      "email": "Email",
+      "profile-picture": "Profile Picture",
+      "update-profile-image": "Update Profile Image",
+      "change-password": "Change Password",
+      "leave-psw-blank": "Leave blank to keep the same password",
+      "password": "Password",
+      "confirm-password": "Confirm Password",
+      "save-changes": "Save Changes"
+    }
+  },
   "tags": {
     "add-title": "Insert your tag information",
     "tag-code": "Tag Code",
