@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -6,14 +6,42 @@ import * as Yup from "yup";
 import { accountService, notificationService } from "@/_services";
 
 function PublicProfile({ history }) {
-  const user = accountService.userValue;
+  const [user, setUser] = useState(accountService.userValue);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isEdited, setIsEdited] = useState(false);
+  const [possibleNames, setPossibleNames] = useState([]);
+  const [possibleEmails, setPossibleEmails] = useState([]);
   const initialValues = {
-    fullNameEnabled: true,
-    emailEnabled: true,
+    publicName: "",
+    otherName: "",
+    publicEmail: "",
+    otherEmail: "",
     profilePictureEnable: true,
   };
+
+  useEffect(() => {
+    //SETTING THE POSSIBLE NAMES
+    let names = [];
+    if (user && user.username) {
+      names.push(user.username);
+    }
+    if (user && user.firstName) {
+      names.push(user.firstName);
+    }
+    if (user && user.lastName) {
+      names.push(user.lastName);
+    }
+    if (user && user.firstName && user.lastName) {
+      names.push(user.firstName + " " + user.lastName);
+    }
+    setPossibleNames(names);
+    //SETTING THE POSSIBLE EMAILS
+    let emails = [];
+    if (user && user.email) {
+      emails.push(user.email);
+    }
+    setPossibleEmails(emails);
+  }, []);
 
   function onSubmit(fields, { setStatus, setSubmitting }) {
     setStatus();
@@ -34,59 +62,86 @@ function PublicProfile({ history }) {
   return (
     <div className="container">
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        {({ errors, touched, isSubmitting }) => (
+        {({ values, errors, touched, isSubmitting, setFieldValue }) => (
           <Form>
             <h3>Update Public Profile</h3>
             <h6>
               Check the following details from your account to make them public
             </h6>
-            <div>
-              <div className="form-row">
-                <div className="form-group form-check">
+            {/* PUBLIC NAME */}
+            <label>Name:</label>
+            <div className="form-row">
+              <div className="form-group col-5">
+                <Field
+                  name="publicName"
+                  as="select"
+                  className={
+                    "form-control" +
+                    (errors.publicName && touched.publicName
+                      ? " is-invalid"
+                      : "")
+                  }
+                >
+                  <option value="">None</option>
+                  {possibleNames.map((value) => (
+                    <option value={value}>{value}</option>
+                  ))}
+                  <option value="other">Other</option>
+                </Field>
+              </div>
+              {values.publicName == "other" && (
+                <div className="form-group col">
                   <Field
-                    type="checkbox"
-                    name="fullNameEnabled"
-                    id="fullName"
+                    name="otherName"
+                    type="text"
                     className={
-                      "form-check-input " +
-                      (errors.fullNameEnabled && touched.fullNameEnabled
+                      "form-control" +
+                      (errors.otherName && touched.otherName
                         ? " is-invalid"
                         : "")
                     }
                   />
-                  <label htmlFor="fullName" className="form-check-label">
-                    Nickname ({user.username})
-                  </label>
-                  <ErrorMessage
-                    name="fullNameEnabled"
-                    component="div"
-                    className="invalid-feedback"
-                  />
                 </div>
+              )}
+            </div>
+            {/* PUBLIC EMAIL */}
+            <label>Email:</label>
+            <div className="form-row">
+              <div className="form-group col-5">
+                <Field
+                  name="publicEmail"
+                  as="select"
+                  className={
+                    "form-control" +
+                    (errors.publicEmail && touched.publicEmail
+                      ? " is-invalid"
+                      : "")
+                  }
+                >
+                  <option value="">None</option>
+                  {possibleEmails.map((value) => (
+                    <option value={value}>{value}</option>
+                  ))}
+                  <option value="other">Other</option>
+                </Field>
               </div>
-              <div className="form-row">
-                <div className="form-group form-check">
+              {values.publicEmail == "other" && (
+                <div className="form-group col">
                   <Field
-                    name="emailEnabled"
-                    id="email"
-                    type="checkbox"
+                    name="otherName"
+                    type="text"
                     className={
-                      "form-check-input " +
-                      (errors.emailEnabled && touched.emailEnabled
+                      "form-control" +
+                      (errors.otherName && touched.otherName
                         ? " is-invalid"
                         : "")
                     }
                   />
-                  <label htmlFor="email" className="form-check-label">
-                    Main email ({user.email})
-                  </label>
-                  <ErrorMessage
-                    name="emailEnabled"
-                    component="div"
-                    className="invalid-feedback"
-                  />
                 </div>
-              </div>
+              )}
+            </div>
+            {/* PROFILE PICTURE */}
+            {user.profileImage !== "" && user.profileImage !== null ? (
               <div className="form-row">
                 <div className="form-group form-check">
                   <Field
@@ -94,39 +149,43 @@ function PublicProfile({ history }) {
                     id="profilePictue"
                     type="checkbox"
                     className={
-                      "form-check-input " +
-                      (errors.profilePictureEnable &&
+                      errors.profilePictureEnable &&
                       touched.profilePictureEnable
                         ? " is-invalid"
-                        : "")
+                        : ""
                     }
                   />
-                  <label htmlFor="profilePictue" className="form-check-label">
-                    Profile image
+                  <label
+                    htmlFor="profilePictue"
+                    className="form-check-label m-2"
+                  >
+                    Show my profile image
                   </label>
-                  <div class="user"></div>
-
-                  <ErrorMessage
-                    name="profilePictureEnable"
-                    component="div"
-                    className="invalid-feedback"
-                  />
+                  <div className="user">
+                    <img
+                      className="img-fluid img-thumbnail rounded-circle ml-3"
+                      width="150px"
+                      src={user.profileImage}
+                      alt="Profile image"
+                    />
+                  </div>
                 </div>
               </div>
-              <hr />
-              <h3>Additional Data:</h3>
-              <div className="form-group">
-                <button
-                  type="submit"
-                  disabled={isSubmitting | !isEdited}
-                  className="btn btn-primary mr-2"
-                >
-                  {isSubmitting && (
-                    <span className="spinner-border spinner-border-sm mr-1"></span>
-                  )}
-                  Save Changes
-                </button>
-              </div>
+            ) : null}
+
+            <hr />
+            <h3>Additional Data:</h3>
+            <div className="form-group">
+              <button
+                type="submit"
+                disabled={isSubmitting | !isEdited}
+                className="btn btn-primary mr-2"
+              >
+                {isSubmitting && (
+                  <span className="spinner-border spinner-border-sm mr-1"></span>
+                )}
+                Save Changes
+              </button>
             </div>
           </Form>
         )}
