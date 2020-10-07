@@ -25,15 +25,15 @@ function EditAccount({ history }) {
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required("Title is required"),
-    firstName: Yup.string().required("First Name is required"),
-    lastName: Yup.string().required("Last Name is required"),
-    email: Yup.string().email("Email is invalid").required("Email is required"),
-    password: Yup.string().min(6, "Password must be at least 6 characters"),
+    firstName: Yup.string().required(t("user.edit-account.validation.fname")),
+    lastName: Yup.string().required(t("user.edit-account.validation.lname")),
+    email: Yup.string().email(t("user.edit-account.validation.email-validity")).required(t("user.edit-account.validation.email")),
+    password: Yup.string().min(6, t("user.edit-account.validation.password-min-length")),
     confirmPassword: Yup.string()
       .when("password", (password, schema) => {
-        if (password) return schema.required("Confirm Password is required");
+        if (password) return schema.required(t("user.edit-account.validation.confirm-password"));
       })
-      .oneOf([Yup.ref("password")], "Passwords must match"),
+      .oneOf([Yup.ref("password")], t("user.edit-account.validation.password-matching")),
   });
 
   function onSubmit(fields, { setStatus, setSubmitting }) {
@@ -42,7 +42,7 @@ function EditAccount({ history }) {
       accountService
         .update(user.id, fields)
         .then(() => {
-          notificationService.success("Update successful", {
+          notificationService.success(t("user.edit-account.validation.notification-update-success"), {
             keepAfterRouteChange: true,
           });
           history.push(".");
@@ -59,7 +59,7 @@ function EditAccount({ history }) {
         .uploadProfilePicture(fields.profileImgFile)
         .then((res) => {
           notificationService.success(
-            "Profile picture was updated successfully",
+            t("user.edit-account.validation.notification-update-picture"),
             {
               keepAfterRouteChange: true,
             }
@@ -76,12 +76,12 @@ function EditAccount({ history }) {
   }
 
   function onDelete() {
-    if (confirm("Are you sure?")) {
+    if (confirm(t("user.edit-account.validation.notification-confirm-delete"))) {
       setIsDeleting(true);
       accountService
         .delete(user.id)
         .then(() =>
-          notificationService.success("Account deleted successfully")
+          notificationService.success(t("user.edit-account.validation.notification-delete-success"))
         );
     }
   }

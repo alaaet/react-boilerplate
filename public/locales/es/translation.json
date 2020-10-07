@@ -178,6 +178,20 @@
       "billing-tab-content": "Contenido de la pestaña de facturación"
     },
     "edit-account":{
+      "validation": {
+        "fname": "El nombre es necesario",
+        "lname": "El apellido es necesario",
+        "email": "El correo electrónico es necesario",
+        "email-validity": "El correo electrónico no es valido",
+        "password": "La contraseña es necesaria",
+        "password-min-length": "La contraseña debe tener un mínimo de 6 carácteres",
+        "confirm-password": "Confirmar Contraseña es necesario",
+        "password-matching": "Las contraseñas deben coincidir",
+        "notification-update-success": "Actualización exitosa",
+        "notification-update-picture": "La imagen de perfil se actualizó correctamente",
+        "notification-confirm-delete": "¿Estas seguro?",
+        "notification-delete-success": "Cuenta eliminada con éxito"
+      },
       "update-account": "Actualizar la cuenta",
       "first-name": "Nombre",
       "last-name": "Apellido",
