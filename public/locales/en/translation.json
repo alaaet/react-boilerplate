@@ -173,25 +173,7 @@
       "billing": "Billing",
       "billing-tab-content": "Billing tab content"
     },
-<<<<<<< HEAD
     "edit-account": {
-=======
-    "edit-account":{
-      "validation": {
-        "fname": "First Name is required",
-        "lname": "Last Name is required",
-        "email": "Email is required",
-        "email-validity": "Email is not valid",
-        "password": "Password is required",
-        "password-min-length": "Password should be at least 6 characters",
-        "confirm-password": "Confirm Password is required",
-        "password-matching": "Passwords must match",
-        "notification-update-success": "Update successful",
-        "notification-update-picture": "Profile picture was updated successfully",
-        "notification-confirm-delete": "¿Estas seguro?",
-        "notification-delete-success": "Account deleted successfully"
-      },
->>>>>>> d76919caf311ebfda73d251e2416a97c073e2f01
       "update-account": "Update Account",
       "first-name": "First Name",
       "last-name": "Last Name",

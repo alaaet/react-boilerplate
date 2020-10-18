@@ -6,12 +6,15 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import logo from "../img/logo.png";
 import { useTranslation } from "react-i18next";
-
+import NavDropdown from "react-bootstrap/NavDropdown";
 import { accountService, notificationService } from "@/_services";
 
 function Login({ history, location }) {
-  const { t } = useTranslation();
-
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+    localStorage.setItem("lang", language);
+  };
   const responseGoogle = (res) => {
     console.log(res.tokenObj);
     notificationService.clear();
@@ -86,10 +89,38 @@ function Login({ history, location }) {
       >
         {({ errors, touched, isSubmitting }) => (
           <Form>
-            <h3 className="card-header">
-              <img className="login-img" src={logo} alt="" />
-              {t("login.title")}
-            </h3>
+            <div className="card-header">
+              <div className="row">
+                <img className="login-img" src={logo} alt="" />
+                <h3>{t("login.title")}</h3>
+                <div
+                  className="ml-auto"
+                  style={{
+                    display: "flex",
+                  }}
+                >
+                  <NavDropdown
+                    title={i18n.languages[0]}
+                    id="basic-nav-dropdown"
+                  >
+                    <NavDropdown.Item
+                      onClick={() => {
+                        changeLanguage("en");
+                      }}
+                    >
+                      <span className="flag-icon flag-icon-us"> </span> English
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                      onClick={() => {
+                        changeLanguage("es");
+                      }}
+                    >
+                      <span className="flag-icon flag-icon-es"> </span> Español
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </div>
+              </div>
+            </div>
             <div className="card-body">
               <div className="form-group">
                 <label>{t("login.username")}</label>
