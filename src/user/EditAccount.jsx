@@ -54,7 +54,7 @@ function EditAccount({ history }) {
         });
     } else {
       // only update the profile picture
-      console.log(fields.profileImgFile.name);
+      //console.log(fields.profileImgFile.name);
       accountService
         .uploadProfilePicture(fields.profileImgFile)
         .then((res) => {
@@ -104,29 +104,7 @@ function EditAccount({ history }) {
               <h3>{t("user.edit-account.update-account")}</h3>
               <div>
                 <div className="form-row">
-                  <div className="form-group col">
-                    <label>Title</label>
-                    <Field
-                      name="title"
-                      as="select"
-                      className={
-                        "form-control" +
-                        (errors.title && touched.title ? " is-invalid" : "")
-                      }
-                    >
-                      <option value=""></option>
-                      <option value="Mr">Mr</option>
-                      <option value="Mrs">Mrs</option>
-                      <option value="Miss">Miss</option>
-                      <option value="Ms">Ms</option>
-                    </Field>
-                    <ErrorMessage
-                      name="title"
-                      component="div"
-                      className="invalid-feedback"
-                    />
-                  </div>
-                  <div className="form-group col-5">
+                  <div className="form-group col-6">
                     <label>{t("user.edit-account.first-name")}</label>
                     <Field
                       name="firstName"
@@ -144,7 +122,7 @@ function EditAccount({ history }) {
                       className="invalid-feedback"
                     />
                   </div>
-                  <div className="form-group col-5">
+                  <div className="form-group col-6">
                     <label>{t("user.edit-account.last-name")}</label>
                     <Field
                       name="lastName"
@@ -243,7 +221,9 @@ function EditAccount({ history }) {
                     </button>
                   </div>
                 </div>
-                <h5 className="pt-3">{t("user.edit-account.change-password")}</h5>
+                <h5 className="pt-3">
+                  {t("user.edit-account.change-password")}
+                </h5>
                 <p>{t("user.edit-account.leave-psw-blank")}</p>
                 <div className="form-row">
                   <div className="form-group col">

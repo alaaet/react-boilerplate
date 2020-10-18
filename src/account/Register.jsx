@@ -181,15 +181,9 @@ function Register({ history }) {
                       }
                       onChange={(value) => {
                         props.form.setFieldValue("primaryPhone", value);
-                        //props.form.setFieldTouched("primary_phone");
                       }}
                       onBlur={() => {
                         props.form.setFieldTouched("primaryPhone");
-                        // if (props.form.values.publicPhone === "")
-                        //   props.form.setFieldValue(
-                        //     "publicPhone",
-                        //     props.field.value
-                        //   );
                       }}
                     />
                   );
@@ -448,10 +442,11 @@ function Register({ history }) {
                   );
                 }}
               </Field>
-                <div class="bs-callout bs-callout-info">
-                <i class="fa fa-lightbulb-o fa-2x pl-1" aria-hidden="true"></i>&nbsp;
+              <div class="bs-callout bs-callout-info">
+                <i class="fa fa-lightbulb-o fa-2x pl-1" aria-hidden="true"></i>
+                &nbsp;
                 {t("register.instructions")}
-</div>
+              </div>
             </div>
             <div className="form-group form-check">
               <Field

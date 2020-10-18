@@ -69,10 +69,10 @@ function authHeader(url) {
   const user = accountService.userValue;
   const isLoggedIn = user && user.jwtToken;
   const isApiUrl = url.startsWith(config.apiUrl);
-  console.log("api url", config.apiUrl);
+  //console.log("api url", config.apiUrl);
   //console.log(config.apiUrl+"/"+url)
   if (isLoggedIn && isApiUrl) {
-    console.log({ Authorization: `Bearer ${user.jwtToken}` });
+    //console.log({ Authorization: `Bearer ${user.jwtToken}` });
     return { Authorization: `Bearer ${user.jwtToken}` };
   } else {
     return {};

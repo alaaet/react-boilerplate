@@ -151,12 +151,12 @@
 
   "_comment": "//////////////THIS SECTION IS FOR AUTHENTICATED COMPONENTS//////////////",
   "nav": {
-    "home": "Página de inicio",
+    "home": "Inicio",
     "profile": "perfil",
     "tags": "etiquetas"
   },
   "footer": {
-    "home": "Página de inicio",
+    "home": "Inicio",
     "work-with-us": "Trabaja con nosotros",
     "about": "Sobre nosotros",
     "contact": "Contacto"
@@ -170,20 +170,20 @@
     "call-me": "Llámame",
     "contact-me": "Contáctame"
   },
-  "user":{
-    "index":{
+  "user": {
+    "index": {
       "account": "La cuenta",
       "public-profile": "Perfil público",
       "billing": "Facturación",
       "billing-tab-content": "Contenido de la pestaña de facturación"
     },
-    "edit-account":{
+    "edit-account": {
       "update-account": "Actualizar la cuenta",
       "first-name": "Nombre",
       "last-name": "Apellido",
       "email": "Correo electrónico",
       "profile-picture": "Foto del perfil",
-      "update-profile-image": "Actualizar foto del perfil",
+      "update-profile-image": "Actualizar",
       "change-password": "Cambia la contraseña",
       "leave-psw-blank": "Déjelo en blanco para mantener la misma contraseña",
       "password": "Contraseña",

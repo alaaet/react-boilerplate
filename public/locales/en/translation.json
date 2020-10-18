@@ -166,20 +166,20 @@
     "call-me": "Call me",
     "contact-me": "Contact me"
   },
-  "user":{
-    "index":{
+  "user": {
+    "index": {
       "account": "Account",
       "public-profile": "Public Profile",
       "billing": "Billing",
       "billing-tab-content": "Billing tab content"
     },
-    "edit-account":{
+    "edit-account": {
       "update-account": "Update Account",
       "first-name": "First Name",
       "last-name": "Last Name",
       "email": "Email",
       "profile-picture": "Profile Picture",
-      "update-profile-image": "Update Profile Image",
+      "update-profile-image": "Update",
       "change-password": "Change Password",
       "leave-psw-blank": "Leave blank to keep the same password",
       "password": "Password",

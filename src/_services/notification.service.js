@@ -47,6 +47,7 @@ function warn(message, options) {
 
 // core alert method
 function notify(notification) {
+  window.scrollTo(0, 0);
   notification.id = notification.id || defaultId;
   notification.autoClose =
     notification.autoClose === undefined ? true : notification.autoClose;

@@ -26,6 +26,8 @@ export const accountService = {
   getByTagCode,
   create,
   update,
+  updatePublicProfile,
+  getPublicProfile,
   delete: _delete,
   serverUrl,
   user: userSubject.asObservable(),
@@ -148,6 +150,13 @@ function update(id, params) {
     }
     return user;
   });
+}
+
+function updatePublicProfile(params) {
+  return fetchWrapper.post(`${baseUrl}/update-public-profile`, params);
+}
+function getPublicProfile() {
+  return fetchWrapper.get(`${baseUrl}/get-public-profile`);
 }
 
 // prefixed with underscore because 'delete' is a reserved word in javascript

@@ -4,12 +4,12 @@ import { EditAccount } from "./EditAccount";
 import { PublicProfile } from "./PublicProfile";
 import { useTranslation } from "react-i18next";
 
-const { t } = useTranslation();
 const User = ({ match }) => {
+  const { t } = useTranslation();
   const { path } = match;
   return (
-    <div className="container pb-3 mt-5">
-      <Tabs defaultTab="vertical-tab-one" vertical className="vertical-tabs">
+    <div className="container pb-3 mt-1 mb-5">
+      <Tabs defaultTab="vertical-tab-one" className="horizontal-tabs">
         <TabList>
           <Tab tabFor="vertical-tab-one">{t("user.index.account")}</Tab>
           <Tab tabFor="vertical-tab-two">{t("user.index.public-profile")}</Tab>

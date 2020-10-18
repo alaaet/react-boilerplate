@@ -17,7 +17,7 @@ function PrivateRoute({ component: Component, roles, path, ...rest }) {
         if (!user) {
           //console.log(ss_user);
           if (ss_user == null) {
-            console.log("User is not logged in");
+            //console.log("User is not logged in");
             // not logged in so redirect to login page with the return url
             return (
               <Redirect
@@ -28,7 +28,7 @@ function PrivateRoute({ component: Component, roles, path, ...rest }) {
               />
             );
           } else {
-            console.log("User was set from session storage");
+            //console.log("User was set from session storage");
             accountService.setUser(ss_user);
           }
         }
