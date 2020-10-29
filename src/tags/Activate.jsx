@@ -46,7 +46,7 @@ const Activate = (props) => {
               <div className="col blocktext pt-2">
                 <img
                   className="img-fluid img-thumbnail  "
-                  width="150px"
+                  width="100px"
                   src={require("../img/qr.png")}
                   alt="Profile image"
                 />
@@ -90,7 +90,7 @@ const Activate = (props) => {
               </div>
             </div>
             <div className="row">
-              <div className="form-group col p-2">
+              <div className="form-group col p-2 pb-0 mb-0">
                 <div className="col blocktext">
                   <button
                     type="submit"
@@ -100,6 +100,10 @@ const Activate = (props) => {
                     {isSubmitting && (
                       <span className="spinner-border spinner-border-sm mr-1"></span>
                     )}
+                    <i
+                      className="fa fa-check-square-o mr-1"
+                      aria-hidden="true"
+                    ></i>
                     {t("tags.submit")}
                   </button>
                   <hr />

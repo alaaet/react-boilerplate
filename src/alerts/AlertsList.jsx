@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import AlertItem from "./AlertItem";
+import { AlertItem } from "./AlertItem";
+import Header from "./header";
 import { notificationService } from "@/_services";
 import { useTranslation } from "react-i18next";
 
-const Alerts = ({ path }) => {
+const AlertsList = ({ match }) => {
+  const { path } = match;
   const { t } = useTranslation();
-
+  //console.log("AlertsList path:", path);
   const [currentAlerts, setCurrentAlerts] = useState(alerts);
   const [deletedAlert, setDeletedAlert] = useState(null);
   // Similar to componentDidMount and componentDidUpdate:
@@ -25,26 +27,28 @@ const Alerts = ({ path }) => {
   }, [deletedAlert]);
   return (
     <div>
-      {currentAlerts.length > 0 ? (
-        currentAlerts.map((alert, index) => {
-          return (
-            <AlertItem
-              alert={alert}
-              tag={tags[index]}
-              key={index}
-              index={index}
-              isGuest={false}
-              path={path}
-              handleDelete={setDeletedAlert}
-            />
-          );
-        })
-      ) : (
-        <p className={"text-muted blocktext pb-3"}>
-          you currently have no active alerts, to add a new alert, please check
-          the tags section!
-        </p>
-      )}
+      <Header path={path} />
+      <div className="row">
+        {currentAlerts.length > 0 ? (
+          currentAlerts.map((alert, index) => {
+            return (
+              <AlertItem
+                alert={alert}
+                key={index}
+                index={index}
+                isGuest={false}
+                path={path}
+                handleDelete={setDeletedAlert}
+              />
+            );
+          })
+        ) : (
+          <p className={"text-muted blocktext pb-3"}>
+            you currently have no active alerts, to add a new alert, please
+            check the tags section!
+          </p>
+        )}
+      </div>
     </div>
   );
 };
@@ -82,26 +86,4 @@ const alerts = [
   },
 ];
 
-const tags = [
-  {
-    id: 0,
-    code: "asdasd",
-  },
-  {
-    id: 1,
-    code: "mgmn",
-  },
-  {
-    id: 2,
-    code: "werewr",
-  },
-  {
-    id: 3,
-    code: "ppo5",
-  },
-  {
-    id: 4,
-    code: "qwe12",
-  },
-];
-export default Alerts;
+export { AlertsList };

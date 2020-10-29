@@ -153,7 +153,8 @@
   "nav": {
     "home": "Inicio",
     "profile": "perfil",
-    "tags": "etiquetas"
+    "tags": "etiquetas",
+    "alerts": "Alertas"
   },
   "footer": {
     "home": "Inicio",
@@ -227,6 +228,9 @@
     "no-tags": "actualmente no tiene etiquetas activas, use la sección Activación para comenzar a disfrutar de sus etiquetas"
   },
   "alerts": {
+    "header": {
+      "title": "Sus Alertas"
+    },
     "new-form": {
       "title": {
         "update": "Modificar",

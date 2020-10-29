@@ -118,6 +118,7 @@ function PublicProfile() {
       email:
         fields.publicEmail === "other" ? fields.otherEmail : fields.publicEmail,
       contactDetails: fields.additionalData,
+      enableProfilePicture: fields.enableProfilePicture,
     };
     accountService
       .updatePublicProfile(data)

@@ -63,12 +63,12 @@ const TagsList = ({ match }) => {
             <table className="table table-responsive table-striped table-bordered">
               <thead className="thead-dark bg-dark">
                 <tr>
-                  <th style={{ width: "30%" }}>{t("tags.table-h1")}</th>
+                  <th style={{ width: "35%" }}>{t("tags.table-h1")}</th>
                   <th style={{ width: "30%" }}>{t("tags.table-h2")}</th>
                   <th style={{ width: "25%" }} className="additional">
                     {t("tags.table-h3")}
                   </th>
-                  <th style={{ width: "15%" }}></th>
+                  <th style={{ width: "10%" }}></th>
                 </tr>
               </thead>
               <tbody>

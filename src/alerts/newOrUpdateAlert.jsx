@@ -65,16 +65,6 @@ function NewOrUpdateAlert(props) {
                 </h3>
                 <div className="card-body">
                   <div className="form-row">
-                    <div className="form-group col  d-flex justify-content-center align-items-center">
-                      <label className="mr-3">
-                        {t("alerts.new-form.tag")}:
-                      </label>
-                      <aside className="sticker cyan">
-                        {location.state.tag.code}
-                      </aside>
-                    </div>
-                  </div>
-                  <div className="form-row">
                     <div className="form-group col">
                       <label className="mr-3">
                         {t("alerts.new-form.alert-title")}{" "}

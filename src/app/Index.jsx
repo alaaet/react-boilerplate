@@ -11,6 +11,7 @@ import { User } from "@/user";
 import { Account } from "@/account";
 import { Tags } from "@/tags";
 import Inbox from "../inbox";
+import { Alerts } from "@/alerts";
 import Company from "../company";
 import Guest from "../guest";
 import { useTranslation } from "react-i18next";
@@ -45,7 +46,8 @@ function App() {
         <PrivateRoute path="/admin" roles={[Role.Admin]} component={Admin} />
         <PrivateRoute path="/tags" component={Tags} />
         <PrivateRoute path="/inbox" component={Inbox} />
-        <PrivateRoute path="/user" component={User} />
+        <PrivateRoute path="/alerts" component={Alerts} />
+        <PrivateRoute path="/user/:tab?" component={User} />
         <Route path="/account" component={Account} />
         <Route path="/company" component={Company} />
         <Route path="/guest" component={Guest} />

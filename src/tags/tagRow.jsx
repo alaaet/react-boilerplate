@@ -29,18 +29,10 @@ const TagRow = (props) => {
       <td className="additional">{formattedDate(tag.assignedAt)}</td>
       <td style={{ whiteSpace: "nowrap" }}>
         <Link
-          to={{
-            pathname: `${path}/create-alert/${tag.id}`,
-            state: { alert: null, tag: tag },
-          }}
-          className="btn btn-sm btn-success mr-1"
-        >
-          {t("tags.btns.new-alert")}
-        </Link>
-        <Link
           to={`${path}/edit/${tag.id}`}
-          className="btn btn-sm btn-primary mr-1"
+          className="btn btn-sm btn-secondary mr-1"
         >
+          <i className="fa fa-pencil-square-o mr-1" aria-hidden="true"></i>
           {t("tags.btns.edit")}
         </Link>
         <CustomModal
