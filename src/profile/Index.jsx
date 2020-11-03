@@ -7,9 +7,11 @@ function Profile({ match }) {
 
   return (
     <div className="container pb-3">
+      <div className="row">
       <Switch>
         <Route exact path={path} component={PublicProfile} />
       </Switch>
+        </div>
     </div>
   );
 }

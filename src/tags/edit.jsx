@@ -6,12 +6,12 @@ import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import { alertService } from "@/_services";
 import { useTranslation } from "react-i18next";
 
-function Edit({ history }) {
+function Edit({ history,match }) {
   const initialValues = {
     tagStatus: true,
   };
   const { t } = useTranslation();
-
+//console.log(match.params)
   const validationSchema = Yup.object().shape({});
 
   function onSubmit(fields, { setStatus, setSubmitting }) {

@@ -9,7 +9,7 @@ const User = ({ match }) => {
   const { path } = match;
   const [defaultTab, setDefaultTab] = useState("editAccount");
   useEffect(() => {
-    console.log(match.params);
+    //console.log(match.params);
     var tab = match.params.tab;
     if (tab != null) setDefaultTab(tab);
   }, []);

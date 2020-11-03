@@ -10,8 +10,8 @@ function Tags({ match }) {
   return (
     <div className="container pb-5">
       <Switch>
-        <Route path={`${path}/edit/:tagId`} component={Edit} />
-        <Route path={path} component={TagsList} />
+        <Route path={`${path}/edit/:tagId`} component={Edit} />        
+        <Route exact path={`${path}/:tagId?`} component={TagsList} />
       </Switch>
     </div>
   );

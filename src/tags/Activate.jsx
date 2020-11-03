@@ -5,10 +5,10 @@ import { useTranslation } from "react-i18next";
 import { tagService, notificationService } from "@/_services";
 
 const Activate = (props) => {
-  const { handleActivate } = props;
+  const { handleActivate ,tagId} = props;
   const { t } = useTranslation();
   const initialValues = {
-    tagCode: "",
+    tagCode: tagId,
     actCode: "",
   };
   const validationSchema = Yup.object().shape({

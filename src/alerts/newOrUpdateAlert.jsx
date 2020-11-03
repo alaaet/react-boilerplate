@@ -1,24 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage, Switch } from "formik";
 import * as Yup from "yup";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import { notificationService } from "@/_services";
 import { useTranslation } from "react-i18next";
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
 
 function NewOrUpdateAlert(props) {
   let location = useLocation();
-  const { match } = props;
+  const [tagsOptions, setTagsOptions] = useState([  { value: 'tag 1', label: 'Tag 1' },
+    { value: 'tag 2', label: 'Tag 2' },
+    { value: 'tag 3', label: 'Tag 3' },
+    { value: 'tag 4', label: 'Tag 4' },
+    { value: 'tag 5', label: 'Tag 5' },]);
+  //const { match } = props;
   const { t } = useTranslation();
   const initialValues = {
     title: "",
     description: "",
     isActive: true,
     compensation: "",
+    isGeneric: "1",
   };
   const isUpdate = location.state.alert;
-  console.log(location.state);
+  //console.log(location.state);
   // Similar to componentDidMount and componentDidUpdate:
+  const animatedComponents = makeAnimated();
+
   useEffect(() => {
     if (isUpdate) {
       initialValues.title = location.state.alert.title
@@ -42,7 +52,7 @@ function NewOrUpdateAlert(props) {
 
   function onSubmit(fields, { setStatus, setSubmitting }) {
     //setStatus();
-    console.log(fields.title);
+    console.log(fields);
   }
 
   return (
@@ -55,7 +65,7 @@ function NewOrUpdateAlert(props) {
             onSubmit={onSubmit}
             enableReinitialize={true}
           >
-            {({ errors, touched, isSubmitting }) => (
+            {({ values,errors, touched, isSubmitting }) => (
               <Form>
                 <h3 className="card-header">
                   {isUpdate
@@ -128,6 +138,28 @@ function NewOrUpdateAlert(props) {
                           );
                         }}
                       </Field>
+                    </div>
+                  </div>
+                  <div className="form-row">
+                    <div className="form-group col">
+                      <label>Linkage</label>
+                      <div role="group">
+                        <label  style={{alignItems:"center"}} className="w-100">
+                          <Field type="radio" name="isGeneric" value="1"  className="mr-1"></Field>
+                          This is a generic Alert
+                        </label>
+                        <label style={{alignItems:"center"}} className="w-100">
+                          <Field type="radio" name="isGeneric" value="0" className="mr-1"/>
+                          I would like to link this Alert to tag/s
+                        </label>
+                        {values.isGeneric=="0"&&<Select
+      closeMenuOnSelect={false}
+      components={animatedComponents}
+      defaultValue={[]}
+      isMulti
+      options={tagsOptions}
+    />}
+                      </div>
                     </div>
                   </div>
 

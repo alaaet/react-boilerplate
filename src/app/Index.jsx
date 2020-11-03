@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Switch, Redirect, useLocation } from "react-router-dom";
 
 import { Role, history } from "@/_helpers";
-import { accountService } from "@/_services";
+//import { accountService } from "@/_services";
 import { Nav, PrivateRoute, Alert, Footer, NotFoundPage } from "@/_components";
 import { Home } from "@/home";
 import { Profile } from "@/profile";
@@ -18,8 +18,8 @@ import { useTranslation } from "react-i18next";
 
 function App() {
   const { pathname } = useLocation();
-  const [user, setUser] = useState({});
-  const { t, i18n } = useTranslation();
+  //const [user, setUser] = useState({}); 
+  const { i18n } = useTranslation();
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
     localStorage.setItem("lang", language);
@@ -27,12 +27,13 @@ function App() {
   useEffect(() => {
     const lang = localStorage.getItem("lang");
     if (lang !== null) changeLanguage(lang);
-    const subscription = accountService.user.subscribe((x) => setUser(x));
-    return subscription.unsubscribe;
+    else localStorage.setItem("lang", "en");
+    //const subscription = accountService.user.subscribe((x) => setUser(x));
+    //return subscription.unsubscribe;
   }, []);
 
   return (
-    <div className={"app-container pb-4 " + user}>
+    <div className={"app-container pb-4 "}>
       <Nav
         lng={i18n.languages[0]}
         changeLanguage={changeLanguage}

@@ -6,8 +6,9 @@ import TagRow from "./tagRow";
 import { useTranslation } from "react-i18next";
 
 const TagsList = ({ match }) => {
-  const { path } = match;
+  const { path , params} = match;
   const [tags, setTags] = useState([]);
+  const [tagId, setTagId] = useState(params.tagId);
   const [offset, setOffset] = useState(0);
   const [tagsPerPage, setTagsPerPage] = useState(4);
   const [currentPageTags, setCurrentPageTags] = useState([]);
@@ -55,7 +56,7 @@ const TagsList = ({ match }) => {
 
   return (
     <React.Fragment>
-      <Activate handleActivate={insertTag} />
+      <Activate handleActivate={insertTag} tagId={tagId} />
       <div>
         <h1 className="blocktext">{t("tags.table-title")}</h1>
         {tags.length > 0 ? (

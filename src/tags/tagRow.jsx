@@ -29,7 +29,7 @@ const TagRow = (props) => {
       <td className="additional">{formattedDate(tag.assignedAt)}</td>
       <td style={{ whiteSpace: "nowrap" }}>
         <Link
-          to={`${path}/edit/${tag.id}`}
+          to={`/tags/edit/${tag.id}`}
           className="btn btn-sm btn-secondary mr-1"
         >
           <i className="fa fa-pencil-square-o mr-1" aria-hidden="true"></i>

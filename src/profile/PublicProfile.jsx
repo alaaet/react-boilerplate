@@ -30,7 +30,7 @@ function PublicProfile({ match }) {
   }, []);
 
   return (
-    <div>
+    <div className="col">
       <h5 className="blocktext mt-2 mb-2">
         {t("profile.pp-card-title")}&nbsp;
         <Link
@@ -78,9 +78,17 @@ function PublicProfile({ match }) {
               <i className="fa fa-envelope" aria-hidden="true"></i>{" "}
               {t("examine-result.profile.contact-me")}
             </a>
-          </div>
+          </div>          
         </div>
-      </div>
+        </div>
+      <div className="card card-one text-center mb-3 p-3 col-xl-4 col-md-8 shadow">
+        <Link to={{
+          pathname: `/alerts/create`,
+          state: { alert: null },
+        }}
+          className="text-uppercase text-warning font-weight-bold"><i className="fa fa-bell-o" aria-hidden="true"></i>{" "}Create Alert</Link>
+          </div>
+
     </div>
   );
 }

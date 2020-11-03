@@ -1,12 +1,12 @@
-import React, { Suspense } from "react";
+import React, { Suspense} from "react";
 import { Router } from "react-router-dom";
 import { render } from "react-dom";
 import { history } from "./_helpers";
 import { accountService, notificationService } from "./_services";
-import { i18n } from "@/_helpers";
+//import { i18n } from "@/_helpers";
 import { App } from "./app";
-
 import "./styles.less";
+import { LoadingSpinner } from "./_components";
 
 // attempt silent token refresh before startup
 //accountService.refreshToken().finally(startApp);
@@ -27,20 +27,31 @@ function handleCredentialResponse(res) {
 }
 
 function startApp() {
+  const user = JSON.parse(sessionStorage.getItem("user"));
+  let jwtToken, expires, timediff;
+  if (user) {
+    jwtToken = JSON.parse(atob(user.jwtToken.split(".")[1]));
+    expires = new Date(jwtToken.exp * 1000);
+    timediff = expires.getTime() - Date.now();
+  }
+  //console.info(history)
   window.onload = function () {
     google.accounts.id.initialize({
       client_id:
         "372978450413-75qr5g7hd8e3s00n7i1tv2hb0t72cpri.apps.googleusercontent.com",
       callback: handleCredentialResponse,
     });
+    if (!user || !jwtToken || timediff<0 )
+    {
     google.accounts.id.prompt();
+    }
   };
   render(
     <React.StrictMode>
-      <Router history={history}>
+      <Router history={history} >
         <Suspense
           fallback={
-            <span className="spinner-border spinner-border-lg align-center"></span>
+            <LoadingSpinner/>
           }
         >
           <App />
