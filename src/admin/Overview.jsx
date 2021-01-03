@@ -21,6 +21,12 @@ function Overview({ match }) {
         >
           Manage Tags
         </Link>
+        <Link
+          to={`${path}/email`}
+          className="list-group-item list-group-item-action"
+        >
+          Send an email
+        </Link>
       </div>
     </div>
   );

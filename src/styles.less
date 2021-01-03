@@ -2,6 +2,8 @@
 @import "react-datepicker/dist/react-datepicker.css";
 @import "react-phone-number-input/style.css";
 @import "react-web-tabs/dist/react-web-tabs.css";
+@import "./custom.less";
+
 
 // global styles
 .fill {
@@ -41,6 +43,21 @@ a {
     display: block;
   }
 }
+
+.component {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+/*
+.masthead {
+  background-image: url(./img/laptop.jpg) !important;
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}*/
+
 // settings menu
 #settings-dropdown::after {
   display: none;
@@ -60,6 +77,89 @@ a {
 .bs-callout code,
 .bs-callout .highlight {
   background-color: #fff;
+}
+/* Plan section*/
+section.pricing {
+  background: #007bff;
+  background: linear-gradient(to right, #4d5bed, #33AEFF);
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.pricing .card {
+  border: none;
+  border-radius: 1rem;
+  transition: all 0.2s;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.pricing hr {
+  margin: 1.5rem 0;
+}
+
+.pricing .card-title {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+}
+
+.pricing .card-price {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.pricing .card-price .period {
+  font-size: 0.8rem;
+}
+
+.pricing ul li {
+  margin-bottom: 1rem;
+}
+
+.pricing .text-muted {
+  opacity: 0.7;
+}
+
+.pricing .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  opacity: 0.7;
+  transition: all 0.2s;
+}
+
+/* Hover Effects on Card */
+
+@media (min-width: 992px) {
+  .pricing .card:hover {
+    margin-top: -.25rem;
+    margin-bottom: .25rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
+  }
+  .pricing .card:hover .btn {
+    opacity: 1;
+  }
+}
+
+/* Demo section*/
+.video-container div  {
+  float: none;
+  clear: both;
+  width: 100%;
+  position: relative;
+  padding-bottom: 70%;
+  padding-top: 25px;
+  height: 0;
+}
+.video-container div iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
 }
 
 /* Themes for different contexts */
@@ -99,6 +199,14 @@ a {
 .card-one {
   text-align: center;
   border-radius: 30px;
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+}
+
+.card-two {
+  text-align: center;
+  //border-radius: 30px;
   margin: 0 auto; /* Added */
   float: none; /* Added */
   margin-bottom: 10px; /* Added */
@@ -148,7 +256,7 @@ a {
   overflow-x: hidden;
 }
 .message-sent {
-  background-color: #dcf8c6;
+  background-color: #e7d9ea;
 }
 .conv-bg {
   background-color: #e5ddd5;
@@ -203,12 +311,15 @@ table {
   padding-top: 15px;
   @media only screen and (max-width: 900px) {
     padding-top: 0;
+    flex-wrap: unset;
   }
 }
+
 #footer a {
   text-decoration: none;
   @media only screen and (min-width: 900px) {
     margin-right: 20px;
+    font-size: 2;
   }
 }
 

@@ -1,36 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { AlertItem } from "./AlertItem";
 import Header from "./header";
-import { notificationService } from "@/_services";
+import { alertService,notificationService } from "@/_services";
 import { useTranslation } from "react-i18next";
 
 const AlertsList = ({ match }) => {
   const { path } = match;
   const { t } = useTranslation();
-  //console.log("AlertsList path:", path);
-  const [currentAlerts, setCurrentAlerts] = useState(alerts);
-  const [deletedAlert, setDeletedAlert] = useState(null);
-  // Similar to componentDidMount and componentDidUpdate:
+  const [alerts, setAlerts] = useState([]);
+
   useEffect(() => {
-    if (deletedAlert !== null) {
-      console.log(deletedAlert);
-      setCurrentAlerts(
-        currentAlerts.filter(function (alert) {
-          if (alert.id === deletedAlert.id)
-            notificationService.success(
-              t("alerts.del-notification", { alertTitle: alert.title })
-            );
-          else return true;
-        })
-      );
-    }
-  }, [deletedAlert]);
+    alertService.getAllByUser().then((x) => {
+      setAlerts(x)
+    });
+  }, []);
+
+  const deleteAlert = (alert) => { 
+    alertService.delete(alert.id).then(() => {
+      notificationService.success("Alert deleted successfully");
+      setAlerts(alerts.filter(a => a.id !== alert.id));
+    }).catch((error) => {
+        notificationService.error(error);
+      });
+  }
   return (
     <div>
       <Header path={path} />
-      <div className="row">
-        {currentAlerts.length > 0 ? (
-          currentAlerts.map((alert, index) => {
+      <div className="card-deck">
+        {alerts.length > 0 ? (
+          alerts.map((alert, index) => {
             return (
               <AlertItem
                 alert={alert}
@@ -38,52 +36,20 @@ const AlertsList = ({ match }) => {
                 index={index}
                 isGuest={false}
                 path={path}
-                handleDelete={setDeletedAlert}
+                handleDelete={deleteAlert}
               />
             );
           })
         ) : (
-          <p className={"text-muted blocktext pb-3"}>
-            you currently have no active alerts, to add a new alert, please
-            check the tags section!
-          </p>
+          <div className="w-100">
+          <p className="text-center">
+            <span className="spinner-border spinner-border-lg align-center"></span>
+              </p>
+              </div>
         )}
       </div>
     </div>
   );
 };
-
-const alerts = [
-  {
-    id: 0,
-    date: "Thursday 2020/07/22",
-    title: "I lost my wallet",
-    description: "The item was lost on day yyyy/mm/dd in the area of blabla",
-  },
-  {
-    id: 1,
-    date: "Thursday 2020/07/22",
-    title: "I lost my cat",
-    description: "The item was lost on day yyyy/mm/dd in the area of blabla",
-  },
-  {
-    id: 2,
-    date: "Thursday 2020/07/22",
-    title: "I lost my dog",
-    description: "The item was lost on day yyyy/mm/dd in the area of blabla",
-  },
-  {
-    id: 3,
-    date: "Thursday 2020/07/22",
-    title: "I lost my laptop",
-    description: "The item was lost on day yyyy/mm/dd in the area of blabla",
-  },
-  {
-    id: 4,
-    date: "Thursday 2020/07/22",
-    title: "I lost my bag",
-    description: "The item was lost on day yyyy/mm/dd in the area of blabla",
-  },
-];
 
 export { AlertsList };

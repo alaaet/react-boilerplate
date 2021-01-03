@@ -16,7 +16,7 @@ function Login({ history, location }) {
     localStorage.setItem("lang", language);
   };
   const responseGoogle = (res) => {
-    console.log(res.tokenObj);
+    //console.log(res.tokenObj);
     notificationService.clear();
     let token = parseJwt(res.tokenObj.id_token);
     accountService
@@ -31,7 +31,7 @@ function Login({ history, location }) {
       });
   };
   const responseFacebook = (res) => {
-    console.log(res);
+    //console.log(res);
     notificationService.clear();
     let name = res.name.split(" ");
     let token = {
@@ -64,6 +64,7 @@ function Login({ history, location }) {
   });
 
   function onSubmit({ username, password }, { setSubmitting }) {
+    google.accounts.id.cancel();
     notificationService.clear();
     accountService
       .login(username, password)
@@ -203,6 +204,7 @@ function Login({ history, location }) {
                     callback={responseFacebook}
                     fields="name,email,picture.type(large)"
                     scope="public_profile"
+                    authType= 'reauthenticate'
                     render={(renderProps) => (
                       <button
                         className="btn  btn-facebook m-1 text-uppercase"

@@ -7,7 +7,7 @@ const Message = (props) => {
   return (
     <div
       className={
-        "card text-center w-75 mb-3 shadow-sm interactive-hover" + isSentClass
+        "card text-center w-75 mb-3 shadow-sm" + isSentClass
       }
       style={{ float: float, borderRadius: "20px" }}
     >

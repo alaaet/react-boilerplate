@@ -7,10 +7,10 @@ function Alerts({ match }) {
   const { path } = match;
   //console.log("Alerts path: ", path);
   return (
-    <div className="container pb-3">
+    <div className="container pb-5">
       <Switch>
         <Route exact path={path} match={path} component={AlertsList} />
-        <Route path={`${path}/create/:alertId?`} component={NewOrUpdateAlert} />
+        <Route path={`${path}/create`} component={NewOrUpdateAlert} />
         <Route path={`${path}/edit/:alertId?`} component={NewOrUpdateAlert} />
       </Switch>
     </div>

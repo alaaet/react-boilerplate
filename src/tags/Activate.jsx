@@ -95,7 +95,7 @@ const Activate = (props) => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn btn-primary"
+                    className="btn btn-primary bg-violet-medium"
                   >
                     {isSubmitting && (
                       <span className="spinner-border spinner-border-sm mr-1"></span>

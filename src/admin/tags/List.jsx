@@ -68,7 +68,7 @@ function List({ match }) {
     else
       return items.filter((item, index) => {
         return (
-          item.materialType.material.toLowerCase() ===
+          item.materialType.toLowerCase() ===
           materialType.toLowerCase()
         );
       });
@@ -79,7 +79,7 @@ function List({ match }) {
     else
       return items.filter((item, index) => {
         return (
-          item.dimensionType.name.toLowerCase() === dimensionsType.toLowerCase()
+          item.dimensionType.toLowerCase() === dimensionsType.toLowerCase()
         );
       });
   };

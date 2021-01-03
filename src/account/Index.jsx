@@ -8,7 +8,7 @@ import { Register } from "./Register";
 import { VerifyEmail } from "./VerifyEmail";
 import { ForgotPassword } from "./ForgotPassword";
 import { ResetPassword } from "./ResetPassword";
-import InformForm from "../guest/informForm";
+//import InformForm from "../guest/SearchResult/informForm";
 
 function Account({ history, match }) {
   const { path } = match;
@@ -41,7 +41,7 @@ function Account({ history, match }) {
           </div>
         </div>
       </div>
-      <div className="row">
+      {/* <div className="row">
         <div className="col-sm-8 offset-sm-2">
           <div className="card m-3">
             <Switch>
@@ -49,7 +49,7 @@ function Account({ history, match }) {
             </Switch>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

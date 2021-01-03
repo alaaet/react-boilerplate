@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { ImageUploaderModal } from "@/_components";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
@@ -29,15 +29,18 @@ function EditAccount({ history }) {
     lastName: Yup.string().required(t("user.edit-account.validation.lname")),
     email: Yup.string().email(t("user.edit-account.validation.email-validity")).required(t("user.edit-account.validation.email")),
     password: Yup.string().min(6, t("user.edit-account.validation.password-min-length")),
-    confirmPassword: Yup.string()
-      .when("password", (password, schema) => {
-        if (password) return schema.required(t("user.edit-account.validation.confirm-password"));
-      })
-      .oneOf([Yup.ref("password")], t("user.edit-account.validation.password-matching")),
+    // confirmPassword: Yup.string()
+    //   .when("password", (password, schema) => {
+    //     if (password!=="") return schema.required(t("user.edit-account.validation.confirm-password"));
+    //     else return schema.nullable();
+    //   })
+    //   .oneOf([Yup.ref("password")], t("user.edit-account.validation.password-matching")),
   });
 
   function onSubmit(fields, { setStatus, setSubmitting }) {
+    console.log("fields: ",fields)
     if (fields.profileImgFile === null) {
+      console.log("Updating the whole account")
       setStatus();
       accountService
         .update(user.id, fields)
@@ -54,18 +57,19 @@ function EditAccount({ history }) {
         });
     } else {
       // only update the profile picture
-      //console.log(fields.profileImgFile.name);
+      //console.log("Updating the image: ",fields.profileImgFile.name);
       accountService
         .uploadProfilePicture(fields.profileImgFile)
         .then((res) => {
           notificationService.success(
-            t("user.edit-account.validation.notification-update-picture"),
+            "Profile image was updated successfully!",
             {
               keepAfterRouteChange: true,
             }
           );
           //history.push(".");
-          accountService.updateProfileImage(res.message);
+          accountService.updateProfileImage(fields.profileImgFile);
+          window.location.reload(false);
           setSubmitting(false);
         })
         .catch((error) => {
@@ -75,17 +79,13 @@ function EditAccount({ history }) {
     }
   }
 
-  function onDelete() {
-    if (confirm(t("user.edit-account.validation.notification-confirm-delete"))) {
-      setIsDeleting(true);
-      accountService
-        .delete(user.id)
-        .then(() =>
-          notificationService.success(t("user.edit-account.validation.notification-delete-success"))
-        );
-    }
+  function blobToFile(theBlob, fileName){
+    //A Blob() is almost a File() - it's just missing the two properties below which we will add
+    theBlob.lastModifiedDate = new Date();
+    theBlob.name = fileName;
+    return theBlob;
   }
-
+  
   return (
     <div className="container">
       <Formik
@@ -93,7 +93,7 @@ function EditAccount({ history }) {
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
-        {({ values, errors, touched, isSubmitting, setFieldValue }) => {
+        {({ values, errors, touched, isSubmitting, setFieldValue,submitForm  }) => {
           // check if any value really changed
           Object.keys(touched).forEach((key) => {
             if (initialValues[key] !== values[key])
@@ -200,6 +200,7 @@ function EditAccount({ history }) {
                             extFile == "png"
                           ) {
                             setFieldValue("profileImgFile", file);
+                            console.log("profileImgFile", file)
                             setProfileImagePath(true);
                           } else {
                             alert("Only jpg/jpeg and png files are allowed!");
@@ -212,13 +213,18 @@ function EditAccount({ history }) {
                       }}
                       className="form-control"
                     />
-                    <button
-                      type="submit"
-                      className="btn btn-success w-100"
+                    <ImageUploaderModal
+                      image={values["profileImgFile"]}
+                      handleAction={(blob) => {
+                        //var file = new File([blob], "profile-image.jpg", {lastModified: 1534584790000});
+                        //var file = blobToFile(blob,"profile-image.jpg")
+                        //console.log(file)
+                        setFieldValue("profileImgFile", blob);
+                        console.log("profileImgFile", values["profileImgFile"])
+                        submitForm();
+                      }}
                       disabled={!profileImagePathIsSet}
-                    >
-                      {t("user.edit-account.update-profile-image")}
-                    </button>
+                      />
                   </div>
                 </div>
                 <h5 className="pt-3">
@@ -230,6 +236,7 @@ function EditAccount({ history }) {
                     <label>{t("user.edit-account.password")}</label>
                     <Field
                       name="password"
+                      autocomplete="false"
                       type="password"
                       className={
                         "form-control" +

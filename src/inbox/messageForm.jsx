@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect} from "react";
 import { useTranslation } from "react-i18next";
+import { sockService } from "@/_services";
 
-const MessageForm = () => {
+const MessageForm = (props) => {
   //handleExpand();
   const { t } = useTranslation();
-
+  const { sendMessage ,conversation} = props;
+  const submit = () => {
+    sendMessage(
+      conversation.isSender ? conversation.recipientId : conversation.senderId,
+      $("#message").val()
+    );
+    document.getElementById("message").value = "";
+  }
+  
   return (
     <div className="row">
       <div className="container p-2">
@@ -21,7 +30,7 @@ const MessageForm = () => {
             </div>
             <div style={{ width: "20%" }}>
               <span className="input-group-btn">
-                <button className="btn btn-lg btn-primary m-1" type="button">
+                <button className="btn btn-lg bg-violet-medium text-white m-1" type="button" onClick={submit}>
                   <i className="fa fa-paper-plane"></i>
                   <span className="d-none d-md-inline">
                     &nbsp;{t("inbox.send-btn")}

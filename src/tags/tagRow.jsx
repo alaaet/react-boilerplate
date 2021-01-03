@@ -25,7 +25,7 @@ const TagRow = (props) => {
   return (
     <tr key={tag.id}>
       <td>{tag.value}</td>
-      <td>{tag.materialType.material}</td>
+      <td>{tag.lostAt!=null?"Lost":"Not lost"}</td>
       <td className="additional">{formattedDate(tag.assignedAt)}</td>
       <td style={{ whiteSpace: "nowrap" }}>
         <Link
@@ -47,6 +47,8 @@ const TagRow = (props) => {
 };
 
 const formattedDate = (elms) => {
-  return new Date(...elms).toLocaleDateString().toString();
+  let date =new Date(elms[0]+"-"+elms[1]+"-"+elms[2]).toLocaleDateString().toString();
+  console.log("Date: ", date);
+  return date;
 };
 export default TagRow;

@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { AlertItem } from "../alerts/AlertItem";
-import ContactUser from "./contactUser";
-import { accountService } from "@/_services";
+import { AlertView } from "./alertView";
+import AddComment from "./Comments/addComment";
+import { accountService ,commentService} from "@/_services";
 import { useTranslation } from "react-i18next";
 import {LoadingSpinner} from "@/_components";
+import Comments from "./Comments";
 
 const PublicAlert = ({ history, match }) => {
-  const { id } = match.params;
+  const { id, hash } = match.params;
   const { t } = useTranslation();
+  const [comments, setComments] = useState([]);
   const [publicProfile, setPublicProfile] = useState({
     name: "",
     email: "",
     profilePicture: "",
     contactDetails: [{ type: "", value: "" }],
-  });
-  const [alert, setAlert] = useState({
-    date: "Thursday 2020/07/22",
-    title: "I lost my wallet",
-    description: "The item was lost on day yyyy/mm/dd in the area of blabla",
+    alerts: [],
   });
   const [loading, setLoading] = useState(true);
+  const user = JSON.parse(sessionStorage.getItem("user"));
+
   useEffect(() => {
     // Update the document title using the browser API
     document.title = `This is the public information for the Tag: ${id}`;
@@ -40,6 +40,13 @@ const PublicAlert = ({ history, match }) => {
           const { from } = { from: { pathname: "/guest/not-found" } };
           history.push(from);
         }
+      });
+    commentService.getByTagCode(id)
+      .then((comnts) => {
+        setComments(comnts)
+        console.log("COMMENTS: ", comnts);
+      }).catch((e) => {
+        console.error(e);
       });
   }, [id]);
 
@@ -63,7 +70,7 @@ const PublicAlert = ({ history, match }) => {
                       <img
                         className="img-fluid img-thumbnail rounded-circle"
                         width="150px"
-                        src={require("../img/no_profile_img.png")}
+                        src={require("../../img/no_profile_img.png")}
                         alt="Profile image"
                       />
                     )}
@@ -90,10 +97,25 @@ const PublicAlert = ({ history, match }) => {
                   </div>
                 </div>
               </div>
+              {publicProfile.alerts.length > 0 && <><hr /><h4>Alerts</h4></>}
+              <div className="card-deck">
+                {publicProfile.alerts?.map((alert, index) => {
+                    return (
+                      <AlertView
+                        alert={alert}
+                        key={index}
+                        index={index}
+                        isGuest={false}
+                        path={null}
+                        handleDelete={null}
+                      />
+                    );
+                  })
+                }
+              </div>
               <hr />
-              <AlertItem alert={alert} index={1} isGuest={true} />
-              <hr />
-              <ContactUser username={publicProfile.firstName} />
+              {comments.length>0&&<Comments items={comments} />}
+              <AddComment user={user} tagCode={id} hash={hash}/>
             </React.Fragment>
             :
             <div className="card card-one text-center mt-3 mb-3 col-xl-4 col-md-8 shadow">

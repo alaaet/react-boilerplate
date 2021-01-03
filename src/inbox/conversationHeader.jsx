@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ConversationHeader = (props) => {
-  const { handleClick } = props;
+  const { handleClick, conversation } = props;
   return (
     <div className="row ">
       <div className="card" style={{ width: "100%" }}>
@@ -12,7 +12,7 @@ const ConversationHeader = (props) => {
             style={{ float: "left" }}
             className="btn btn-outline-secondary pb-1"
             onClick={() => {
-              handleClick(0);
+              handleClick(null);
             }}
           >
             <i className="fa fa-arrow-left" aria-hidden="true"></i>
@@ -25,8 +25,8 @@ const ConversationHeader = (props) => {
             <i className="fa fa-trash" aria-hidden="true"></i>
           </Link>
           <p className="blocktext">
-            Conversation with Admin{"  "}
-            <a className="btn btn-outline-primary pb-1" href="tel:632-804271">
+            Conversation with {conversation.isSender?conversation.recipientName:conversation.senderName} &nbsp; &nbsp; 
+            <a className="btn btn-outline-violet pb-1" href="tel:632-804271">
               <i className="fa fa-phone" aria-hidden="true">
                 {" "}
                 <span className="d-none d-md-inline"> 632-804-271</span>

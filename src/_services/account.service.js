@@ -4,8 +4,8 @@ import config from "config";
 import { fetchWrapper, history } from "@/_helpers";
 
 const userSubject = new BehaviorSubject(null);
-const serverUrl = "http://localhost:8080";
-//const serverUrl = "http://167.86.81.129:8080/Aqar";
+//const serverUrl = "http://localhost:8080";
+const serverUrl = "https://idsheet.com/Aqar";
 const baseUrl = `${serverUrl}/users`;
 
 export const accountService = {
@@ -69,8 +69,9 @@ function socialLogin(token, provider) {
       return user;
     });
 }
-function updateProfileImage(link) {
-  userSubject.value.profileImage = link;
+function updateProfileImage(val) {
+  userSubject.value.profileImage = val;
+  sessionStorage.setItem("user", JSON.stringify(userSubject.value));
   userSubject.next(userSubject.value);
 }
 function logout() {
@@ -80,7 +81,7 @@ function logout() {
   fetchWrapper.post(`${baseUrl}/revoke-token`, {});
   stopRefreshTokenTimer();
   userSubject.next(null);
-  history.push("/account/login");
+  history.push("/guest");
 }
 
 function refreshToken() {
@@ -121,7 +122,8 @@ function resetPassword({ token, password, confirmPassword }) {
 }
 
 function uploadProfilePicture(file) {
-  return fetchWrapper.postFile(`${baseUrl}/upload-profile-picture`, file);
+  //return fetchWrapper.postFile(`${baseUrl}/upload-profile-picture`, file);
+  return fetchWrapper.postBlob(`${baseUrl}/upload-profile-picture`, file);
 }
 
 function getAll() {

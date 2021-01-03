@@ -1,58 +1,94 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect,useState,useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage, Switch } from "formik";
-import * as Yup from "yup";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
-import { notificationService } from "@/_services";
+import * as Yup from "yup";
+import { tagService,alertService,notificationService } from "@/_services";
 import { useTranslation } from "react-i18next";
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 
-function NewOrUpdateAlert(props) {
+function NewOrUpdateAlert({ history,match }) {
+  const [id, setId] = useState(match.params.alertId); 
+  const formRef = useRef();
   let location = useLocation();
-  const [tagsOptions, setTagsOptions] = useState([  { value: 'tag 1', label: 'Tag 1' },
-    { value: 'tag 2', label: 'Tag 2' },
-    { value: 'tag 3', label: 'Tag 3' },
-    { value: 'tag 4', label: 'Tag 4' },
-    { value: 'tag 5', label: 'Tag 5' },]);
-  //const { match } = props;
+  const [selectedTags,setSelectedTags] = useState([]);
+  const [tagsOptions, setTagsOptions] = useState([]);
   const { t } = useTranslation();
-  const initialValues = {
+  const [initialValues, setInitialValues] = useState({
     title: "",
-    description: "",
-    isActive: true,
-    compensation: "",
+    body: "",
+    compensation: 0,
     isGeneric: "1",
+  });
+  const setFormValues = (args) => {
+    setInitialValues({
+      ...formRef.current.values,
+      ...args,
+    });
   };
   const isUpdate = location.state.alert;
-  //console.log(location.state);
-  // Similar to componentDidMount and componentDidUpdate:
+
   const animatedComponents = makeAnimated();
 
   useEffect(() => {
+    //TODO: if is edit get Alert
+    //setIsLoading(false);
+    tagService.getAllByUser().then((x) => {
+      console.info(x)
+      setTagsOptions(x.map(tag => { return {value:tag.id,label:tag.value}}));
+    });
+  }, []);
+  
+  useEffect(() => {
     if (isUpdate) {
-      initialValues.title = location.state.alert.title
-        ? location.state.alert.title
-        : "";
-      initialValues.description = location.state.alert.description
-        ? location.state.alert.description
-        : "";
-      initialValues.compensation = location.state.alert.compensation
-        ? location.state.alert.compensation
-        : 0;
+      console.log("THIS IS AN UPDATE", location.state.alert)
+      let formInitialData = location.state.alert;
+      formInitialData.isGeneric = formInitialData.tags.length > 0 ? "0" : "1";
+      setFormValues(formInitialData);
+      if (formInitialData.tags.length > 0)
+      {
+        setSelectedTags(formInitialData.tags.map(t => ({value: t.id, label: t.value})));
+       }
     }
-  });
+  },[tagsOptions]);
+
   const validationSchema = Yup.object().shape({
     title: Yup.string().required(t("alerts.new-form.validation.title")),
-    description: Yup.string().required(
-      t("alerts.new-form.validation.description")
+    body: Yup.string().required(
+      t("alerts.new-form.validation.body")
     ),
     compensation: Yup.number(),
   });
 
   function onSubmit(fields, { setStatus, setSubmitting }) {
     //setStatus();
-    console.log(fields);
+    let tagsIds = fields.isGeneric == "0" ? selectedTags.map(tag => (tag.value)) : [];
+    if (!isUpdate)
+    { 
+      alertService.create({ ...fields, tagsIds, isGeneric: fields.isGeneric == "1" }).then(() => {
+        notificationService.success("Alert added successfully", {
+          keepAfterRouteChange: true,
+        });
+        history.push(".");
+      })
+        .catch((error) => {
+          setSubmitting(false);
+          notificationService.error(error);
+        });
+    } else
+    {
+      alertService.update(id,{ ...fields, tagsIds, isGeneric: fields.isGeneric == "1" }).then(() => {
+        notificationService.success("Alert updated successfully", {
+          keepAfterRouteChange: true,
+        });
+        history.push("..");
+      })
+        .catch((error) => {
+          setSubmitting(false);
+          notificationService.error(error);
+        });
+     }
   }
 
   return (
@@ -64,6 +100,7 @@ function NewOrUpdateAlert(props) {
             validationSchema={validationSchema}
             onSubmit={onSubmit}
             enableReinitialize={true}
+            innerRef={formRef}
           >
             {({ values,errors, touched, isSubmitting }) => (
               <Form>
@@ -100,46 +137,22 @@ function NewOrUpdateAlert(props) {
                         {t("alerts.new-form.description")}{" "}
                       </label>
                       <Field
-                        name="description"
+                        name="body"
                         component="textarea"
                         className={
                           "form-control" +
-                          (errors.description && touched.description
+                          (errors.body && touched.body
                             ? " is-invalid"
                             : "")
                         }
                       />
                       <ErrorMessage
-                        name="description"
+                        name="body"
                         component="div"
                         className="invalid-feedback"
                       />
                     </div>
-                  </div>
-                  <div className="form-row">
-                    <div className="form-group col">
-                      <label className="mr-3">
-                        {t("alerts.new-form.status")}{" "}
-                      </label>
-                      <Field name="isActive">
-                        {(props) => {
-                          return (
-                            <BootstrapSwitchButton
-                              checked={props.field.value}
-                              onlabel=" "
-                              offlabel=" "
-                              onstyle="success"
-                              offstyle="outline-danger"
-                              size="xs"
-                              onChange={(checked) => {
-                                props.form.setFieldValue("isActive", checked);
-                              }}
-                            />
-                          );
-                        }}
-                      </Field>
-                    </div>
-                  </div>
+                  </div>                  
                   <div className="form-row">
                     <div className="form-group col">
                       <label>Linkage</label>
@@ -153,12 +166,14 @@ function NewOrUpdateAlert(props) {
                           I would like to link this Alert to tag/s
                         </label>
                         {values.isGeneric=="0"&&<Select
-      closeMenuOnSelect={false}
-      components={animatedComponents}
-      defaultValue={[]}
-      isMulti
-      options={tagsOptions}
-    />}
+                          closeMenuOnSelect={false}
+                          components={animatedComponents}
+                          defaultValue={selectedTags}
+                          onChange={setSelectedTags}
+                          isMulti
+                          options={tagsOptions}
+                          menuPortalTarget={document.body}
+                          styles={{ menuPortal: base => ({ ...base, zIndex: 9999 }) }}/>}
                       </div>
                     </div>
                   </div>

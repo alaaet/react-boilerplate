@@ -1,8 +1,12 @@
 import React from "react";
 import Message from "./message";
 
-const Conversation = () => {
-  enableHover();
+const Conversation = (props) => {
+  const { messages } = props;
+  const  updateScroll= ()=>{
+    var element = document.getElementById("yourDivID");
+    element.scrollTop = element.scrollHeight;
+}
   return (
     <div id="conversation" className="row">
       <div className="container p-2" style={{ position: "relative" }}>
@@ -11,12 +15,12 @@ const Conversation = () => {
             <Message
               isSent={message.isSent}
               key={index}
-              text={message.text}
+              text={message.content}
               timestamp={message.timestamp}
             />
           );
         })}
-        <div
+        {messages.length > 5 && <div
           className="the-end-shadow"
           style={{
             position: "absolute",
@@ -24,36 +28,10 @@ const Conversation = () => {
             right: "0",
             width: "100%",
           }}
-        />
+        />}
       </div>
     </div>
   );
 };
-
-const enableHover = () => {
-  $(".interactive-hover").hover(
-    function () {
-      $(this).addClass("shadow").css("cursor", "pointer");
-    },
-    function () {
-      $(this).removeClass("shadow");
-    }
-  );
-};
-
-const messages = [
-  { isSent: false, text: "Something 1", timestamp: Date.now() },
-  { isSent: true, text: "Something 2", timestamp: Date.now() },
-  { isSent: false, text: "Something 3", timestamp: Date.now() },
-  { isSent: true, text: "Something 4", timestamp: Date.now() },
-  { isSent: false, text: "Something 5", timestamp: Date.now() },
-  { isSent: true, text: "Something 6", timestamp: Date.now() },
-  { isSent: false, text: "Something 7", timestamp: Date.now() },
-  { isSent: true, text: "Something 8", timestamp: Date.now() },
-  { isSent: false, text: "Something 9", timestamp: Date.now() },
-  { isSent: true, text: "Something 10", timestamp: Date.now() },
-  { isSent: false, text: "Something 11", timestamp: Date.now() },
-  { isSent: true, text: "Something 12", timestamp: Date.now() },
-];
 
 export default Conversation;

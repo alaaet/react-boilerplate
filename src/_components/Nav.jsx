@@ -32,8 +32,7 @@ function Nav(props) {
   return (
     <div>
       <nav
-        className="navbar navbar-expand-lg navbar-dark  "
-        style={{ backgroundColor: "#28a745" }}
+        className="navbar navbar-expand-lg navbar-dark bg-violet-dark "
       >
         <Header exact to="/" />
         <span className="nav-phone-title mr-auto" style={{ color: "#fff" }}>
@@ -57,42 +56,41 @@ function Nav(props) {
           } navbar-collapse`}
           id="navbarsExample09"
         >
-          <NavLink exact to="/" className={`nav-item nav-link ${
-            isMobile ? "mr-auto" : ""
-          } `}>
+          <NavLink exact to="/" className={`nav-item nav-link ${isMobile ? "mr-auto" : ""
+            } `} onClick={() => { setIsNavCollapsed(true)}}>
             {t("nav.home")}
           </NavLink>
           <NavLink to="/profile" className={`nav-item nav-link ${
             isMobile ? "mr-auto" : ""
-          } `}>
+          } `} onClick={() => { setIsNavCollapsed(true)}}>
             {t("nav.profile")}
           </NavLink>
           {user.role === Role.User && (
             <>
             <NavLink to="/tags" className={`nav-item nav-link ${
               isMobile ? "mr-auto" : ""
-            } `}>
+            } `} onClick={() => { setIsNavCollapsed(true)}}>
               {t("nav.tags")}
             </NavLink>
             <NavLink to="/alerts" className={`nav-item nav-link ${
               isMobile ? "mr-auto" : ""
-            } `}>
+            } `} onClick={() => { setIsNavCollapsed(true)}}>
               {t("nav.alerts")}
             </NavLink>
             <NavLink to="/inbox" className={`nav-item nav-link ${
               isMobile ? "mr-auto" : ""
-            } pr-3`}>
+            } pr-3`} onClick={() => { setIsNavCollapsed(true)}}>
               Inbox
             </NavLink>
             { isMobile && (<>
               <NavLink to="/user" className={`nav-item nav-link ${
               isMobile ? "mr-auto" : ""
-            } pr-3`}>
+            } pr-3`} onClick={() => { setIsNavCollapsed(true)}}>
               Account Settings
             </NavLink>
             <NavLink to="/test" className={`nav-item nav-link ${
               isMobile ? "mr-auto" : ""
-            } pr-3`}>
+            } pr-3`} onClick={() => { setIsNavCollapsed(true)}}>
               Help Center
             </NavLink>
             </>)}
@@ -116,6 +114,7 @@ function Nav(props) {
               <NavDropdown.Item
                 onClick={() => {
                   changeLanguage("en");
+                  setIsNavCollapsed(true)
                 }}
               >
                 <span className="flag-icon flag-icon-us"> </span> English
@@ -123,6 +122,7 @@ function Nav(props) {
               <NavDropdown.Item
                 onClick={() => {
                   changeLanguage("es");
+                  setIsNavCollapsed(true)
                 }}
               >
                 <span className="flag-icon flag-icon-es"> </span> Español
@@ -137,7 +137,7 @@ function Nav(props) {
                 <NavDropdown.Item eventKey="/user">
                   Account Settings
                 </NavDropdown.Item>
-                <NavDropdown.Item eventKey="/">Help Center</NavDropdown.Item>
+                <NavDropdown.Item eventKey="/guest/help-center">Help Center</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item eventKey="/LOGOUT">Logout</NavDropdown.Item>
               </NavDropdown>
@@ -165,6 +165,9 @@ function AdminNav({ match }) {
         </NavLink>
         <NavLink to={`${path}/tags`} className="nav-item nav-link">
           Tags
+        </NavLink>
+        <NavLink to={`${path}/email`} className="nav-item nav-link">
+          Emails
         </NavLink>
       </div>
     </nav>

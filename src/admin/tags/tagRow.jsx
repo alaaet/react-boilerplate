@@ -27,7 +27,7 @@ const TagRow = (props) => {
       <td className="additional">
         {tag.userId == null ? "Unassigned" : tag.userId}
       </td>
-      <td>{tag.alerts.length > 0 ? "Yse" : "No"}</td>
+      <td>{tag.alerts.length > 0 ? "Yes" : "No"}</td>
       <td style={{ whiteSpace: "nowrap" }}>
         <Link
           to={`${path}/edit/${tag.id}`}

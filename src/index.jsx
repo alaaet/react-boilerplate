@@ -27,7 +27,7 @@ function handleCredentialResponse(res) {
 }
 
 function startApp() {
-  const user = JSON.parse(sessionStorage.getItem("user"));
+  const user =sessionStorage.getItem("user")!==null? JSON.parse(sessionStorage.getItem("user")):null;
   let jwtToken, expires, timediff;
   if (user) {
     jwtToken = JSON.parse(atob(user.jwtToken.split(".")[1]));
@@ -40,6 +40,7 @@ function startApp() {
       client_id:
         "372978450413-75qr5g7hd8e3s00n7i1tv2hb0t72cpri.apps.googleusercontent.com",
       callback: handleCredentialResponse,
+      cancel_on_tap_outside:true,
     });
     if (!user || !jwtToken || timediff<0 )
     {

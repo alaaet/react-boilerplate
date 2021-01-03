@@ -52,7 +52,7 @@ function App() {
         <Route path="/account" component={Account} />
         <Route path="/company" component={Company} />
         <Route path="/guest" component={Guest} />
-        <Route path={/^\/.{0,6}$/} component={Guest} />
+        <Route path={/^\/.{0,6}|^\/.{0,6}\/.{32}$/} component={Guest} />
         <Route path="*" component={NotFoundPage} />
       </Switch>
       <Footer />

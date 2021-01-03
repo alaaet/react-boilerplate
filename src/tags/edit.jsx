@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Formik, Field, Form, ErrorMessage, Switch } from "formik";
+import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
-import { alertService } from "@/_services";
+//import { alertService } from "@/_services";
 import { useTranslation } from "react-i18next";
 
 function Edit({ history,match }) {
@@ -61,7 +61,7 @@ function Edit({ history,match }) {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="btn btn-primary mr-2"
+                        className="btn btn-primary bg-violet-medium mr-2"
                       >
                         {isSubmitting && (
                           <span className="spinner-border spinner-border-sm mr-1"></span>
@@ -69,7 +69,7 @@ function Edit({ history,match }) {
                         {t("tags.edit-form.submit")}
                       </button>
                       <Link
-                        to="."
+                        to=".."
                         className="btn btn-outline-danger ml-2"
                         style={{ width: "100px" }}
                       >

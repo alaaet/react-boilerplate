@@ -5,6 +5,7 @@ export const fetchWrapper = {
   get,
   post,
   postFile,
+  postBlob,
   put,
   delete: _delete,
 };
@@ -12,7 +13,8 @@ export const fetchWrapper = {
 function get(url) {
   const requestOptions = {
     method: "GET",
-    headers: authHeader(url),
+    headers: { ...authHeader(url)},
+    //mode: "cors"
   };
   //console.log(requestOptions)
   return fetch(url, requestOptions).then(handleResponse);
@@ -34,6 +36,21 @@ function postFile(url, file) {
   const formData = new FormData();
   // Update the formData object
   formData.append("file", file);
+  const requestOptions = {
+    method: "POST",
+    headers: { ...authHeader(url) },
+    //credentials: 'include',
+    body: formData,
+  };
+  //console.log(requestOptions);
+  return fetch(url, requestOptions).then(handleResponse);
+}
+
+function postBlob(url, blob) {
+  // Create an object of formData
+  const formData = new FormData();
+  // Update the formData object
+  formData.append("file",  blob);
   const requestOptions = {
     method: "POST",
     headers: { ...authHeader(url) },
@@ -80,8 +97,9 @@ function authHeader(url) {
 }
 
 function handleResponse(response) {
+  //console.log("response:",response);
   return response.text().then((text) => {
-    //console.log(text);
+    //console.log("text",text);
     const data = text && JSON.parse(text);
 
     if (!response.ok) {

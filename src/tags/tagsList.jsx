@@ -62,7 +62,7 @@ const TagsList = ({ match }) => {
         {tags.length > 0 ? (
           <React.Fragment>
             <table className="table table-responsive table-striped table-bordered">
-              <thead className="thead-dark bg-dark">
+              <thead className="bg-violet-medium text-white">
                 <tr>
                   <th style={{ width: "35%" }}>{t("tags.table-h1")}</th>
                   <th style={{ width: "30%" }}>{t("tags.table-h2")}</th>
@@ -103,7 +103,7 @@ const TagsList = ({ match }) => {
                 previousLinkClassName={"page-link"}
                 nextClassName={"page-item"}
                 nextLinkClassName={"page-link"}
-                activeClassName={"active"}
+                activeClassName={"active"}                
               />
             )}
           </React.Fragment>
